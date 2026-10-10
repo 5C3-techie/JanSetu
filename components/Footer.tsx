@@ -16,8 +16,12 @@ export default function Footer() {
           {/* Col 1: Brand & Tagline */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">
-                <ShieldCheck className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shadow-xs">
+                <img 
+                  src="/images/logo.png" 
+                  alt="Jan-Setu Logo" 
+                  className="w-full h-full object-contain"
+                />
               </div>
               <span className="text-xl font-bold text-white">{t.appName}</span>
             </div>

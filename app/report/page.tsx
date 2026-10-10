@@ -56,8 +56,12 @@ export default function ReadinessReportPage() {
         {/* Header Branding */}
         <div className="flex items-center justify-between border-b-2 border-slate-900 pb-4">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold">
-              <ShieldCheck className="w-6 h-6" />
+            <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center border border-slate-200">
+              <img 
+                src="/images/logo.png" 
+                alt="Jan-Setu Logo" 
+                className="w-full h-full object-contain"
+              />
             </div>
             <div>
               <h1 className="text-2xl font-black tracking-tight text-slate-900">Jan-Setu</h1>

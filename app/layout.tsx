@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   title: 'Jan-Setu — AI Welfare Discovery & Application Readiness',
   description: 'Bridging citizens to the government welfare benefits they are entitled to using deterministic rule matching, document vault readiness, and AI explanations.',
   keywords: ['welfare schemes', 'government benefits', 'Jan-Setu', 'PM-KISAN', 'Aasara', 'Telangana schemes', 'eligibility engine'],
+  icons: {
+    icon: '/images/logo.png',
+    apple: '/images/logo.png',
+  },
 };
 
 export default function RootLayout({

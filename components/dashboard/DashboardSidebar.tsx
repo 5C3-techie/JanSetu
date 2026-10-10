@@ -134,8 +134,12 @@ export default function DashboardSidebar({
           onClick={onClose}
           className="flex items-center gap-3 group transition-transform focus:outline-hidden"
         >
-          <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
-            <ShieldCheck className="w-5 h-5" />
+          <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
+            <img 
+              src="/images/logo.png" 
+              alt="Jan-Setu Logo" 
+              className="w-full h-full object-contain"
+            />
           </div>
           <div>
             <span className="text-base font-extrabold tracking-tight text-slate-900 block leading-tight">

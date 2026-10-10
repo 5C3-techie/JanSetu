@@ -56,9 +56,13 @@ export default function LandingPage() {
 
         {/* Minimalist Top Bar (Image 1 style: Work // Profile // Journal // Contact) */}
         <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 pb-8 mb-8 border-b border-slate-200/60 text-xs text-slate-500 font-medium">
-          <div className="flex items-center gap-2 font-bold tracking-tight text-slate-900">
-            <div className="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md shadow-blue-500/20">
-              <ShieldCheck className="w-4 h-4" />
+          <div className="flex items-center gap-2.5 font-bold tracking-tight text-slate-900">
+            <div className="w-8 h-8 rounded-xl overflow-hidden flex items-center justify-center">
+              <img 
+                src="/images/logo.png" 
+                alt="Jan-Setu Logo" 
+                className="w-full h-full object-contain"
+              />
             </div>
             <span className="text-sm uppercase tracking-wider font-extrabold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
               JAN-SETU

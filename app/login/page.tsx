@@ -87,8 +87,12 @@ function LoginContent() {
     <div className="min-h-screen flex flex-col justify-center items-center bg-slate-50 px-4 py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md flex flex-col items-center mb-8">
         <Link href="/" className="flex items-center space-x-3 group mb-6">
-          <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-md shadow-blue-500/25">
-            <ShieldCheck className="w-6 h-6" />
+          <div className="w-12 h-12 rounded-2xl overflow-hidden flex items-center justify-center shadow-md shadow-blue-500/10 group-hover:scale-105 transition-transform">
+            <img 
+              src="/images/logo.png" 
+              alt="Jan-Setu Logo" 
+              className="w-full h-full object-contain"
+            />
           </div>
           <span className="text-2xl font-extrabold tracking-tight text-slate-900">
             JAN-SETU

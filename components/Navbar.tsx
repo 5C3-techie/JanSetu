@@ -51,22 +51,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           
-          {/* Logo & Tagline */}
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+          {/* Brand Logo Only */}
+          <Link href="/" className="flex items-center group py-1">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
               <img 
-                src="/logo.png" 
-                alt="Jan-Setu Logo" 
-                className="w-full h-full object-contain"
+                src="/images/logo.png" 
+                alt="Jan-Setu" 
+                className="w-full h-full object-contain drop-shadow-xs"
               />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-black tracking-tight text-slate-900 leading-tight">
-                Jan-Setu
-              </span>
-              <span className="hidden md:block text-[10px] font-semibold text-slate-500 tracking-widest uppercase">
-                {language === 'te' ? 'సంక్షేమ పథకాల వారధి' : 'Bridging Citizens to Opportunities'}
-              </span>
             </div>
           </Link>
 
