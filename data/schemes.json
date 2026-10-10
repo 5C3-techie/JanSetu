@@ -2,9 +2,16 @@
   {
     "schemeId": "scheme_001",
     "name": "Rythu Bharosa / Rythu Bandhu Scheme",
+    "officialName": "Telangana Rythu Bharosa Investment Support Scheme",
     "teluguName": "రైతు భరోసా / రైతు బంధు పథకం",
+    "level": "State",
+    "ministry": "Department of Agriculture",
+    "department": "Agriculture & Farmers Welfare Department, Telangana",
+    "states": [
+      "Telangana"
+    ],
     "sector": "Agriculture",
-    "description": "Financial assistance program providing investment support to farmers for agriculture and horticulture crops per season.",
+    "description": "Financial assistance program providing investment support to farmers in Telangana for agriculture and horticulture crops per season.",
     "teluguDescription": "వ్యవసాయం మరియు ఉద్యానవన పంటల పెట్టుబడి సహాయం కోసం రైతులకు ఆర్థిక సహాయ పథకం.",
     "benefits": [
       "₹7,500 per acre per season investment assistance",
@@ -19,12 +26,20 @@
     "eligibility": {
       "minAge": 18,
       "maxAge": 80,
-      "occupation": ["farmer", "agricultural_labourer", "small_farmer"],
+      "occupation": [
+        "farmer",
+        "agricultural_labourer",
+        "small_farmer"
+      ],
       "incomeMax": 250000,
-      "states": ["Telangana"],
+      "states": [
+        "Telangana"
+      ],
       "ruralOnly": true,
-      "landOwnership": null,
-      "category": ["All"],
+      "landOwnership": true,
+      "category": [
+        "All"
+      ],
       "gender": "all"
     },
     "requiredDocuments": [
@@ -35,19 +50,41 @@
     ],
     "applicationSteps": [
       "Visit local Agriculture Extension Officer (AEO) or Rythu Seva Kendra",
-      "Submit land ownership record and Aadhaar copy",
+      "Submit land ownership record (Pattadar passbook) and Aadhaar copy",
       "Verify linked bank account details for DBT enrollment"
     ],
+    "applicationProcess": [
+      "Visit local Agriculture Extension Officer (AEO) or Rythu Seva Kendra",
+      "Submit land ownership record (Pattadar passbook) and Aadhaar copy",
+      "Verify linked bank account details for DBT enrollment"
+    ],
+    "applicationMode": "Both",
     "officialSource": "https://rythubandhu.telangana.gov.in",
+    "officialSourceUrl": "https://rythubandhu.telangana.gov.in",
+    "applicationUrl": "https://rythubandhu.telangana.gov.in",
+    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/rythu-bandhu",
     "deadline": "2026-10-31",
+    "applicationDeadline": "2026-10-31",
     "deadlineType": "recurring",
-    "deadlineDetails": "Seasonal enrollment open until end of Kharif registration window.",
-    "lastVerified": "2026-09-15"
+    "deadlineDetails": "Seasonal enrollment open until end of Kharif/Rabi registration window.",
+    "deadlineSource": "Agriculture Department Notification",
+    "deadlineLastVerified": "2026-09-15",
+    "lastVerified": "2026-09-15",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against Telangana Agriculture Department Portal and myScheme."
   },
   {
     "schemeId": "scheme_002",
     "name": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN)",
+    "officialName": "Pradhan Mantri Kisan Samman Nidhi Scheme",
     "teluguName": "ప్రధాన మంత్రి కిసాన్ సమ్మాన్ నిధి (PM-KISAN)",
+    "level": "Central",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Department of Agriculture and Farmers Welfare",
+    "states": [
+      "All"
+    ],
     "sector": "Agriculture",
     "description": "Central sector scheme providing income support of ₹6,000 per year to all landholding farmer families across India.",
     "teluguDescription": "భారతదేశవ్యాప్తంగా ఉన్న రైతు కుటుంబాలకు ఏటా ₹6,000 ఆదాయ మద్దతు అందించే కేంద్ర ప్రభుత్వ పథకం.",
@@ -64,12 +101,20 @@
     "eligibility": {
       "minAge": 18,
       "maxAge": 85,
-      "occupation": ["farmer", "small_farmer", "agricultural_labourer"],
+      "occupation": [
+        "farmer",
+        "small_farmer",
+        "agricultural_labourer"
+      ],
       "incomeMax": 300000,
-      "states": ["All"],
+      "states": [
+        "All"
+      ],
       "ruralOnly": false,
       "landOwnership": true,
-      "category": ["All"],
+      "category": [
+        "All"
+      ],
       "gender": "all"
     },
     "requiredDocuments": [
@@ -83,596 +128,2548 @@
       "Complete Aadhaar e-KYC verification",
       "Upload land record details for state government verification"
     ],
+    "applicationProcess": [
+      "Register online at pmkisan.gov.in or visit nearest CSC center",
+      "Complete Aadhaar e-KYC verification",
+      "Upload land record details for state government verification"
+    ],
+    "applicationMode": "Both",
     "officialSource": "https://pmkisan.gov.in",
+    "officialSourceUrl": "https://pmkisan.gov.in",
+    "applicationUrl": "https://pmkisan.gov.in",
+    "guidelineSourceUrl": "https://pmkisan.gov.in/Documents/RevisedKisanSchemeGuidelines.pdf",
     "deadline": null,
+    "applicationDeadline": null,
     "deadlineType": "rolling",
     "deadlineDetails": "Continuous registration available throughout the year.",
-    "lastVerified": "2026-09-01"
+    "deadlineSource": "PM-KISAN Portal",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against PM-KISAN official portal."
   },
   {
     "schemeId": "scheme_003",
-    "name": "Pradhan Mantri Awas Yojana - Gramin (PMAY-G)",
-    "teluguName": "ప్రధాన మంత్రి ఆవాస్ యోజన - గ్రామీణ్ (PMAY-G)",
-    "sector": "Housing",
-    "description": "Financial assistance to houseless and low-income rural households for construction of pucca houses with basic amenities.",
-    "teluguDescription": "ఇల్లు లేని మరియు అల్ప ఆదాయ గ్రామీణ కుటుంబాలకు పక్కా ఇళ్ల నిర్మాణానికి ఆర్థిక సహాయం అందించే పథకం.",
+    "name": "Telangana Aasara Pension Scheme",
+    "officialName": "Aasara Pension Scheme Telangana",
+    "teluguName": "తెలంగాణ ఆసరా పింఛను పథకం",
+    "level": "State",
+    "ministry": "Panchayat Raj & Rural Development Department",
+    "department": "Department of Social Welfare, Telangana",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Social Welfare",
+    "description": "Monthly pension for senior citizens, widows, differently-abled persons, weavers, and toddy tappers to ensure social security.",
+    "teluguDescription": "వయోవృద్ధులు, వితంతువులు, దివ్యాంగులు మరియు చేనేత కార్మికులకు సామాజిక భద్రత అందించే నెలవారీ పింఛను పథకం.",
     "benefits": [
-      "Financial grant up to ₹1,30,000 for house construction in plain areas",
-      "Additional 90/95 days of unskilled labour wages under MGNREGA",
-      "Financial assistance of ₹12,000 for toilet construction under SBM-G"
+      "₹2,016 per month for Senior Citizens, Widows, Weavers & Toddy Tappers",
+      "₹3,016 to ₹4,016 per month for Differently-Abled individuals",
+      "Direct monthly bank disbursement"
     ],
     "teluguBenefits": [
-      "ఇంటి నిర్మాణానికి ₹1,30,000 వరకు ఆర్థిక గ్రాంట్",
-      "ఉపాధి హామీ పథకం కింద 90/95 రోజుల వేతన సహాయం",
-      "మరుగుదొడ్డి నిర్మాణానికి ప్రత్యేకంగా ₹12,000 సహాయం"
+      "వయోవృద్ధులు, వితంతువులకు నెలవారీ ₹2,016 పింఛను",
+      "దివ్యాంగులకు నెలవారీ ₹3,016 నుండి ₹4,016 వరకు పింఛను",
+      "నేరుగా లబ్ధిదారుల బ్యాంకు ఖాతాలో జమ"
     ],
     "eligibility": {
-      "minAge": 18,
-      "maxAge": 90,
-      "occupation": ["agricultural_labourer", "unorganised_worker", "artisan", "unemployed", "farmer"],
+      "minAge": 57,
+      "maxAge": 100,
+      "occupation": [
+        "all",
+        "unemployed",
+        "agricultural_labourer",
+        "homemaker",
+        "weaver"
+      ],
       "incomeMax": 150000,
-      "states": ["All"],
-      "ruralOnly": true,
-      "landOwnership": false,
-      "category": ["SC", "ST", "BC", "Minority", "General"],
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
       "gender": "all"
     },
     "requiredDocuments": [
       "Aadhaar Card",
-      "Income Certificate",
-      "Job Card / MGNREGA Card",
+      "Age Proof / Birth Certificate",
+      "Income Certificate (Issued by Meeseva)",
       "Bank Passbook",
-      "Residence Certificate"
+      "Ration Card / Food Security Card"
     ],
     "applicationSteps": [
-      "Gram Sabha identifies eligible beneficiaries using SECC data",
-      "Submit application to Gram Panchayat or CSC operator",
-      "Site verification by Rural Development Officer"
+      "Apply through local Gram Panchayat office or Meeseva Center",
+      "Submit Aadhaar, Income Certificate, and Age proof",
+      "Field verification by Panchayat Secretary / MPDO officer"
     ],
-    "officialSource": "https://pmayg.nic.in",
-    "deadline": "2026-12-31",
-    "deadlineType": "fixed_date",
-    "deadlineDetails": "Current phase allocation window closes end of December 2026.",
-    "lastVerified": "2026-08-20"
+    "applicationProcess": [
+      "Apply through local Gram Panchayat office or Meeseva Center",
+      "Submit Aadhaar, Income Certificate, and Age proof",
+      "Field verification by Panchayat Secretary / MPDO officer"
+    ],
+    "applicationMode": "CSC",
+    "officialSource": "https://aasara.telangana.gov.in",
+    "officialSourceUrl": "https://aasara.telangana.gov.in",
+    "applicationUrl": "https://aasara.telangana.gov.in",
+    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/aasara-pension-scheme",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Applications processed on rolling basis via Meeseva centers.",
+    "deadlineSource": "Telangana Social Welfare Portal",
+    "deadlineLastVerified": "2026-09-10",
+    "lastVerified": "2026-09-10",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against Aasara portal and Telangana GO directives."
   },
   {
     "schemeId": "scheme_004",
-    "name": "Telangana Aarogyasri Health Insurance Scheme",
-    "teluguName": "తెలంగాణ ఆరోగ్యశ్రీ హెల్త్ ఇన్సూరెన్స్ పథకం",
-    "sector": "Health",
-    "description": "State flagship health scheme providing cashless medical treatment for catastrophic illnesses to low-income families.",
-    "teluguDescription": "పేద కుటుంబాలకు తీవ్రమైన వ్యాధుల నివారణకు ఉచిత క్యాష్‌లెస్ వైద్య చికిత్స అందించే రాష్ట్ర ప్రభుత్వ పథకం.",
+    "name": "Telangana Mahalakshmi Scheme",
+    "officialName": "Mahalakshmi Scheme for Women in Telangana",
+    "teluguName": "తెలంగాణ మహాలక్ష్మి పథకం",
+    "level": "State",
+    "ministry": "Department of Women Development & Child Welfare",
+    "department": "Women & Child Welfare Department, Telangana",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Women and Child",
+    "description": "Comprehensive empowerment scheme providing free bus travel, financial assistance, and subsidized LPG cylinders for women in Telangana.",
+    "teluguDescription": "తెలంగాణలోని మహిళలకు ఉచిత బస్సు ప్రయాణం, నెలవారీ ఆర్థిక సాయం మరియు రాయితీ ఎల్‌పిజి సిలిండర్లు అందించే పథకం.",
     "benefits": [
-      "Cashless treatment up to ₹10,00,000 per family per year",
-      "Coverage across 1,672 listed surgeries and therapies",
-      "Free post-hospitalization medicines and follow-up care for 10 days"
+      "Free travel for women in TSRTC (TGSRTC) non-AC buses across Telangana",
+      "Monthly financial aid of ₹2,500 for eligible women family heads",
+      "LPG cylinder at subsidized rate of ₹500"
     ],
     "teluguBenefits": [
-      "కుటుంబానికి ఏడాదికి ₹10,00,000 వరకు ఉచిత క్యాష్‌లెస్ వైద్యం",
-      "1,672 కంటే ఎక్కువ శస్త్రచికిత్సలు మరియు చికిత్సలకు వర్తింపు",
-      "డిశ్చార్జ్ తర్వాత ఉచిత మందులు మరియు ఫాలో-అప్ సంరక్షణ"
+      "తెలంగాణ వ్యాప్తంగా TSRTC బస్సుల్లో మహిళలకు ఉచిత ప్రయాణం",
+      "కుటుంబ మహిళా యజమానికి నెలకు ₹2,500 ఆర్థిక సహాయం",
+      "₹500 కే ఎల్‌పిజి గ్యాస్ సిలిండర్ సరఫరా"
     ],
     "eligibility": {
-      "minAge": null,
-      "maxAge": null,
-      "occupation": [],
+      "minAge": 18,
+      "maxAge": 80,
+      "occupation": [
+        "all",
+        "homemaker",
+        "agricultural_labourer",
+        "student",
+        "self_employed"
+      ],
       "incomeMax": 200000,
-      "states": ["Telangana"],
+      "states": [
+        "Telangana"
+      ],
       "ruralOnly": false,
       "landOwnership": null,
-      "category": ["All"],
+      "category": [
+        "All"
+      ],
+      "gender": "female"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Food Security Card / Ration Card",
+      "Residence Certificate / Domicile Proof",
+      "Bank Passbook"
+    ],
+    "applicationSteps": [
+      "Carry valid Aadhaar/Voter ID for immediate free bus travel",
+      "Submit Praja Palana application form at local Gram Panchayat / Ward Office for financial & LPG benefits",
+      "Verification by local municipal/panchayat administration"
+    ],
+    "applicationProcess": [
+      "Carry valid Aadhaar/Voter ID for immediate free bus travel",
+      "Submit Praja Palana application form at local Gram Panchayat / Ward Office for financial & LPG benefits",
+      "Verification by local municipal/panchayat administration"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://telangana.gov.in",
+    "officialSourceUrl": "https://telangana.gov.in",
+    "applicationUrl": "https://prajapalana.telangana.gov.in",
+    "guidelineSourceUrl": "https://prajapalana.telangana.gov.in",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Praja Palana application windows open periodically across Telangana districts.",
+    "deadlineSource": "Telangana State Portal",
+    "deadlineLastVerified": "2026-09-05",
+    "lastVerified": "2026-09-05",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against Praja Palana guidelines."
+  },
+  {
+    "schemeId": "scheme_005",
+    "name": "Telangana Gruha Jyothi Scheme",
+    "officialName": "Gruha Jyothi Free Electricity Scheme",
+    "teluguName": "తెలంగాణ గృహ జ్యోతి పథకం",
+    "level": "State",
+    "ministry": "Energy Department",
+    "department": "Telangana State Electricity Distribution Companies (TSSPDCL / TSNPDCL)",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Housing",
+    "description": "Free electricity supply up to 200 units per month for all eligible domestic households in Telangana.",
+    "teluguDescription": "తెలంగాణలోని నిరుపేద అర్హత కలిగిన కుటుంబాలకు నెలకు 200 యూనిట్ల వరకు ఉచిత విద్యుత్ అందించే పథకం.",
+    "benefits": [
+      "Zero electricity bill up to 200 units consumption per month",
+      "Direct credit/discount in monthly power utility billing",
+      "Reduced monthly household expenditure for low/middle income families"
+    ],
+    "teluguBenefits": [
+      "నెలవారీ 200 యూనిట్ల వినియోగం వరకు సున్నా కరెంట్ బిల్లు",
+      "నెలవారీ కరెంట్ బిల్లులో నేరుగా రాయితీ వర్తింపు",
+      "కుటుంబ నెలవారీ విద్యుత్ ఖర్చుల నుండి పూర్తి ఉపశమనం"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 90,
+      "occupation": [
+        "all"
+      ],
+      "incomeMax": 200000,
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Electricity Meter Consumer Number / Bill Copy",
+      "Food Security Card / Ration Card"
+    ],
+    "applicationSteps": [
+      "Link Aadhaar Card with Domestic Electricity Meter Consumer ID",
+      "Submit application via Praja Palana counter or online portal",
+      "Verification by DISCOM billing team"
+    ],
+    "applicationProcess": [
+      "Link Aadhaar Card with Domestic Electricity Meter Consumer ID",
+      "Submit application via Praja Palana counter or online portal",
+      "Verification by DISCOM billing team"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://tssouthernpower.com",
+    "officialSourceUrl": "https://tssouthernpower.com",
+    "applicationUrl": "https://prajapalana.telangana.gov.in",
+    "guidelineSourceUrl": "https://tssouthernpower.com/gruhajyothi",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Eligible domestic consumers can link meter ID anytime.",
+    "deadlineSource": "TSSPDCL Official Notice",
+    "deadlineLastVerified": "2026-09-08",
+    "lastVerified": "2026-09-08",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against TSSPDCL notification."
+  },
+  {
+    "schemeId": "scheme_006",
+    "name": "Telangana Indiramma Indlu Scheme",
+    "officialName": "Indiramma Housing Scheme Telangana",
+    "teluguName": "తెలంగాణ ఇందిరమ్మ ఇండ్లు పథకం",
+    "level": "State",
+    "ministry": "Housing Department",
+    "department": "Telangana State Housing Corporation Limited",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Housing",
+    "description": "Financial grant of ₹5 Lakhs for construction of RCC pucca house for land-owning poor families, plus free house site for landless poor.",
+    "teluguDescription": "సొంత స్థలం ఉన్న పేద కుటుంబాలకు ఇల్లు కట్టుకోవడానికి ₹5 లక్షల సహాయం మరియు స్థలం లేని పేదలకు ఉచిత ఇళ్ల స్థలం అందించే పథకం.",
+    "benefits": [
+      "Financial assistance of ₹5,000,000 (₹5 Lakhs) phased for home construction",
+      "Free plot allocation for homeless & landless families",
+      "Special priority for SC, ST, and homeless women"
+    ],
+    "teluguBenefits": [
+      "ఇంటి నిర్మాణానికి దశలవారీగా ₹5 లక్షల ఆర్థిక సహాయం",
+      "నివాస స్థలం లేని పేదలకు ఉచిత ఇళ్ల స్థలం కేటాయింపు",
+      "ఎస్సీ, ఎస్టీ మరియు మహిళా లబ్ధిదారులకు ప్రత్యేక ప్రాధాన్యత"
+    ],
+    "eligibility": {
+      "minAge": 21,
+      "maxAge": 75,
+      "occupation": [
+        "all",
+        "agricultural_labourer",
+        "daily_wager",
+        "homemaker"
+      ],
+      "incomeMax": 200000,
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
       "gender": "all"
     },
     "requiredDocuments": [
       "Aadhaar Card",
       "Food Security Card / Ration Card",
-      "Income Certificate"
-    ],
-    "applicationSteps": [
-      "Present Food Security Card / Aarogyasri Card at empanelled hospital",
-      "Aarogyamithra desk at hospital assists with instant verification",
-      "Pre-authorization processed automatically for treatment"
-    ],
-    "officialSource": "https://aarogyasri.telangana.gov.in",
-    "deadline": null,
-    "deadlineType": "rolling",
-    "deadlineDetails": "Always active for eligible Ration Card holders in Telangana.",
-    "lastVerified": "2026-09-10"
-  },
-  {
-    "schemeId": "scheme_005",
-    "name": "Ayushman Bharat - PM-JAY",
-    "teluguName": "ఆయుష్మాన్ భారత్ - ప్రధాన్ మంత్రి జన్ ఆరోగ్య యోజన",
-    "sector": "Health",
-    "description": "National health protection scheme covering secondary and tertiary hospitalisation for vulnerable families.",
-    "teluguDescription": "అపాయంలో ఉన్న కుటుంబాలకు దవాఖాన ఖర్చుల కోసం రూ. 5 లక్షల వరకు ఉచిత ఆరోగ్య బీమా అందించే జాతీయ పథకం.",
-    "benefits": [
-      "Health cover of ₹5,00,000 per family per year",
-      "Cashless and paperless access to services at point of care",
-      "No restriction on family size, age, or gender"
-    ],
-    "teluguBenefits": [
-      "కుటుంబానికి ఏడాదికి ₹5,00,000 ఆరోగ్య బీమా కవరేజ్",
-      "నెట్‌వర్క్ ఆసుపత్రుల్లో పూర్తిగా ఉచిత చికిత్స",
-      "కుటుంబ పరిమాణం లేదా వయస్సుపై ఎటువంటి పరిమితి లేదు"
-    ],
-    "eligibility": {
-      "minAge": null,
-      "maxAge": null,
-      "occupation": ["agricultural_labourer", "unorganised_worker", "artisan", "domestic_worker"],
-      "incomeMax": 180000,
-      "states": ["All"],
-      "ruralOnly": false,
-      "landOwnership": false,
-      "category": ["SC", "ST", "BC", "General"],
-      "gender": "all"
-    },
-    "requiredDocuments": [
-      "Aadhaar Card",
-      "Ration Card / Socio-Economic Status Proof",
-      "Active Mobile Number"
-    ],
-    "applicationSteps": [
-      "Check eligibility at pmjay.gov.in or visit any empaneled government/private hospital",
-      "Verify Identity via Ayushman Mitra desk",
-      "Receive Golden Ayushman Card"
-    ],
-    "officialSource": "https://pmjay.gov.in",
-    "deadline": null,
-    "deadlineType": "rolling",
-    "deadlineDetails": "Continuous enrollment active.",
-    "lastVerified": "2026-09-01"
-  },
-  {
-    "schemeId": "scheme_006",
-    "name": "Telangana Aasara Pension Scheme",
-    "teluguName": "తెలంగాణ ఆసరా పెన్షన్ పథకం",
-    "sector": "Social Welfare",
-    "description": "Social security pension for senior citizens, widows, differently-abled persons, and unorganised sector workers.",
-    "teluguDescription": "వృద్ధులు, వితంతువులు, దివ్యాంగులు మరియు అసంఘటిత రంగ కార్మికులకు సామాజిక భద్రతా పింఛను అందించే పథకం.",
-    "benefits": [
-      "₹2,016 per month for Senior Citizens, Widows, and Weavers",
-      "₹3,016 per month for Differently Abled individuals",
-      "Direct monthly transfer to beneficiary bank/post office account"
-    ],
-    "teluguBenefits": [
-      "వృద్ధులు, వితంతువులు మరియు చేనేత కార్మికులకు నెలకు ₹2,016",
-      "దివ్యాంగులకు నెలకు ₹3,016 పింఛను సాయం",
-      "ప్రతి నెలా నేరుగా పోస్టల్/బ్యాంకు ఖాతాలో జమ"
-    ],
-    "eligibility": {
-      "minAge": 57,
-      "maxAge": 100,
-      "occupation": ["agricultural_labourer", "unorganised_worker", "artisan", "unemployed"],
-      "incomeMax": 150000,
-      "states": ["Telangana"],
-      "ruralOnly": false,
-      "landOwnership": false,
-      "category": ["All"],
-      "gender": "all"
-    },
-    "requiredDocuments": [
-      "Aadhaar Card",
-      "Age Proof / Birth Certificate",
-      "Income Certificate",
-      "Residence Certificate",
-      "Bank Passbook"
-    ],
-    "applicationSteps": [
-      "Submit application form at Meeseva / Gram Panchayat center",
-      "Verification by Mandal Parishad Development Officer (MPDO)",
-      "Approval by District Collectorate"
-    ],
-    "officialSource": "https://aasara.telangana.gov.in",
-    "deadline": "2026-11-15",
-    "deadlineType": "fixed_date",
-    "deadlineDetails": "Bi-annual review application cycle closes Nov 15.",
-    "lastVerified": "2026-08-15"
-  },
-  {
-    "schemeId": "scheme_007",
-    "name": "Pradhan Mantri Shram Yogi Maandhan (PM-SYM)",
-    "teluguName": "ప్రధాన మంత్రి శ్రమ్ యోగి మాన్-ధన్ (PM-SYM)",
-    "sector": "Livelihood",
-    "description": "Voluntary and contributory pension scheme for unorganised workers like agricultural labourers, street vendors, and domestic workers.",
-    "teluguDescription": "అసంఘటిత రంగ కార్మికులు, వ్యవసాయ కూలీలు, వీధి వ్యాపారుల కోసం స్వచ్ఛంద మరియు భాగస్వామ్య పెన్షన్ పథకం.",
-    "benefits": [
-      "Assured monthly pension of ₹3,000 after attaining age 60",
-      "50% matching monthly contribution by Central Government",
-      "Family pension benefit of 50% for spouse upon beneficiary death"
-    ],
-    "teluguBenefits": [
-      "60 ఏళ్లు నిండిన తర్వాత నెలకు ₹3,000 హామీ ఇవ్వబడిన పింఛను",
-      "కేంద్ర ప్రభుత్వం నుండి 50% సమానమైన నెలవారీ విరాళం",
-      "లబ్ధిదారుని మరణానంతరం జీవిత భాగస్వామికి 50% కుటుంబ పింఛను"
-    ],
-    "eligibility": {
-      "minAge": 18,
-      "maxAge": 40,
-      "occupation": ["agricultural_labourer", "unorganised_worker", "street_vendor", "domestic_worker", "artisan"],
-      "incomeMax": 180000,
-      "states": ["All"],
-      "ruralOnly": false,
-      "landOwnership": null,
-      "category": ["All"],
-      "gender": "all"
-    },
-    "requiredDocuments": [
-      "Aadhaar Card",
-      "Savings Bank Account / Jan Dhan Account with IFSC",
-      "Active Mobile Number"
-    ],
-    "applicationSteps": [
-      "Visit nearest Common Services Centre (CSC)",
-      "Provide Aadhaar and Bank details for auto-debit consent",
-      "Receive Shram Yogi Pension Card"
-    ],
-    "officialSource": "https://maandhan.in",
-    "deadline": null,
-    "deadlineType": "rolling",
-    "deadlineDetails": "Open enrollment for workers aged 18 to 40.",
-    "lastVerified": "2026-09-05"
-  },
-  {
-    "schemeId": "scheme_008",
-    "name": "MGNREGA Rural Employment Guarantee",
-    "teluguName": "మహాత్మా గాంధీ జాతీయ గ్రామీణ ఉపాధి హామీ పథకం (MGNREGA)",
-    "sector": "Livelihood",
-    "description": "Legal guarantee of 100 days of wage employment per financial year to adult members of any rural household willing to do manual work.",
-    "teluguDescription": "అకుశల శ్రమపని చేయడానికి సిద్ధంగా ఉన్న గ్రామీణ కుటుంబాలకు ఏడాదికి 100 రోజుల వేతన ఉపాధి హామీ పథకం.",
-    "benefits": [
-      "Guaranteed 100 days wage employment per household per year",
-      "Statutory minimum daily wage paid directly to bank account within 15 days",
-      "Unemployment allowance if job is not provided within 15 days of demand"
-    ],
-    "teluguBenefits": [
-      "కుటుంబానికి ఏడాదికి 100 రోజుల హామీ ఇవ్వబడిన వేతన ఉపాధి",
-      "చట్టబద్ధమైన రోజువారీ వేతనం నేరుగా 15 రోజుల్లో బ్యాంకులో జమ",
-      "పని కోరిన 15 రోజుల్లో పని కల్పించకపోతే నిరుద్యోగ భత్యం"
-    ],
-    "eligibility": {
-      "minAge": 18,
-      "maxAge": 75,
-      "occupation": ["agricultural_labourer", "unorganised_worker", "unemployed", "farmer"],
-      "incomeMax": 200000,
-      "states": ["All"],
-      "ruralOnly": true,
-      "landOwnership": null,
-      "category": ["All"],
-      "gender": "all"
-    },
-    "requiredDocuments": [
-      "Aadhaar Card",
-      "Residence Proof / Gram Panchayat Declaration",
-      "Bank Passbook",
-      "Passport Photograph"
-    ],
-    "applicationSteps": [
-      "Apply in plain paper to Gram Panchayat office",
-      "Receive Job Card within 15 days of application",
-      "Submit work demand application when employment is needed"
-    ],
-    "officialSource": "https://nrega.nic.in",
-    "deadline": null,
-    "deadlineType": "rolling",
-    "deadlineDetails": "Job cards issued round the year.",
-    "lastVerified": "2026-09-12"
-  },
-  {
-    "schemeId": "scheme_009",
-    "name": "Pradhan Mantri Ujjwala Yojana 2.0",
-    "teluguName": "ప్రధాన మంత్రి ఉజ్వల యోజన 2.0",
-    "sector": "Social Welfare",
-    "description": "Deposit-free LPG connection to adult women from poor households to ensure clean cooking fuel access.",
-    "teluguDescription": "పేద కుటుంబాలకు చెందిన మహిళలకు ఉచిత ఎల్‌పీజీ గ్యాస్ కనెక్షన్ మరియు పొయ్యి అందించే పథకం.",
-    "benefits": [
-      "Free LPG connection including stove and first refill",
-      "₹300 targeted subsidy per 14.2 kg cylinder for up to 12 refills a year",
-      "Protection from indoor air pollution"
-    ],
-    "teluguBenefits": [
-      "స్టవ్ మరియు ఉచిత మొదటి రీఫిల్‌తో ఎల్‌పీజీ కనెక్షన్ ఉచితం",
-      "ఏడాదికి 12 రీఫిళ్ల వరకు సిలిండర్‌పై ₹300 సబ్సిడీ",
-      "పొగలేని పరిశుభ్రమైన వంట ఇంధనం"
-    ],
-    "eligibility": {
-      "minAge": 18,
-      "maxAge": 80,
-      "occupation": ["agricultural_labourer", "unorganised_worker", "domestic_worker", "unemployed", "farmer"],
-      "incomeMax": 180000,
-      "states": ["All"],
-      "ruralOnly": false,
-      "landOwnership": null,
-      "category": ["SC", "ST", "BC", "General"],
-      "gender": "female"
-    },
-    "requiredDocuments": [
-      "Aadhaar Card of Female Applicant",
-      "Ration Card / Food Security Card",
+      "Land Ownership Deed / Plot Document (if land owned)",
       "Bank Passbook",
       "Residence Certificate"
     ],
     "applicationSteps": [
-      "Submit application form to nearest LPG distributor or online at pmuy.gov.in",
-      "Attach Aadhaar and Ration Card copies of all family members",
-      "Distributor performs de-duplication check and issues LPG cylinder"
+      "Submit Praja Palana housing form at Gram Sabha / Ward meeting",
+      "Site verification by Housing Department Revenue Officials",
+      "Approval & stage-wise fund release directly to bank account"
     ],
-    "officialSource": "https://pmuy.gov.in",
+    "applicationProcess": [
+      "Submit Praja Palana housing form at Gram Sabha / Ward meeting",
+      "Site verification by Housing Department Revenue Officials",
+      "Approval & stage-wise fund release directly to bank account"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://tshousing.cgg.gov.in",
+    "officialSourceUrl": "https://tshousing.cgg.gov.in",
+    "applicationUrl": "https://prajapalana.telangana.gov.in",
+    "guidelineSourceUrl": "https://tshousing.cgg.gov.in",
     "deadline": null,
+    "applicationDeadline": null,
     "deadlineType": "rolling",
-    "deadlineDetails": "Ujjwala 2.0 open for poor households.",
-    "lastVerified": "2026-09-02"
+    "deadlineDetails": "Phase-wise sanction lists released by District Collectors.",
+    "deadlineSource": "Housing Dept Notification",
+    "deadlineLastVerified": "2026-09-12",
+    "lastVerified": "2026-09-12",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against Telangana Housing Corp."
+  },
+  {
+    "schemeId": "scheme_007",
+    "name": "Rajiv Aarogyasri / Cheyutha Health Scheme",
+    "officialName": "Rajiv Aarogyasri Health Insurance Scheme Telangana",
+    "teluguName": "రాజీవ్ ఆరోగ్యశ్రీ / చేయూత ఆరోగ్య పథకం",
+    "level": "State",
+    "ministry": "Health, Medical & Family Welfare Department",
+    "department": "Aarogyasri Health Care Trust, Telangana",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Health",
+    "description": "Comprehensive cashless health coverage up to ₹10 Lakhs per family per year in empanelled government and private hospitals.",
+    "teluguDescription": "ఎంపిక చేసిన ప్రభుత్వ మరియు ప్రైవేట్ ఆసుపత్రులలో కుటుంబానికి ఏడాదికి ₹10 లక్షల వరకు నగదు రహిత వైద్య చికిత్స అందించే ఆరోగ్య పథకం.",
+    "benefits": [
+      "Cashless medical treatment up to ₹10,000,000 (₹10 Lakhs) per family annually",
+      "Coverage for 1,600+ surgical and medical procedures",
+      "Includes pre-existing disease coverage, diagnostics, and post-operative medicines"
+    ],
+    "teluguBenefits": [
+      "కుటుంబానికి ఏడాదికి ₹10 లక్షల వరకు పూర్తి నగదు రహిత ఉచిత వైద్యం",
+      "1,600 కంటే ఎక్కువ శస్త్రచికిత్సలు మరియు తీవ్ర అనారోగ్యాలకు వర్తింపు",
+      "ఉచిత పరీక్షలు, ఔషధాలు మరియు చికిత్స అనంతర రవాణా సాయం"
+    ],
+    "eligibility": {
+      "minAge": 0,
+      "maxAge": 100,
+      "occupation": [
+        "all"
+      ],
+      "incomeMax": 500000,
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Telangana Food Security Card (BPL Ration Card) / Aarogyasri Health Card",
+      "Patient Identity Proof"
+    ],
+    "applicationSteps": [
+      "Present BPL Food Security Card or Aadhaar at Aarogyasri desk in empanelled hospital",
+      "Aarogyamithra assists in immediate cashless admission and treatment authorization",
+      "Treatment provided without out-of-pocket expenses"
+    ],
+    "applicationProcess": [
+      "Present BPL Food Security Card or Aadhaar at Aarogyasri desk in empanelled hospital",
+      "Aarogyamithra assists in immediate cashless admission and treatment authorization",
+      "Treatment provided without out-of-pocket expenses"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://aarogyasri.telangana.gov.in",
+    "officialSourceUrl": "https://aarogyasri.telangana.gov.in",
+    "applicationUrl": "https://aarogyasri.telangana.gov.in",
+    "guidelineSourceUrl": "https://aarogyasri.telangana.gov.in/AHCT/index.html",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Instant cashless access upon emergency/planned hospitalization.",
+    "deadlineSource": "Aarogyasri Health Care Trust",
+    "deadlineLastVerified": "2026-09-02",
+    "lastVerified": "2026-09-02",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against Aarogyasri Trust portal."
+  },
+  {
+    "schemeId": "scheme_008",
+    "name": "Pradhan Mantri Awas Yojana - Gramin (PMAY-G)",
+    "officialName": "Pradhan Mantri Awas Yojana - Gramin",
+    "teluguName": "ప్రధాన మంత్రి ఆవాస్ యోజన - గ్రామీణ్ (PMAY-G)",
+    "level": "Central",
+    "ministry": "Ministry of Rural Development",
+    "department": "Department of Rural Development",
+    "states": [
+      "All"
+    ],
+    "sector": "Housing",
+    "description": "Financial assistance to houseless and low-income rural households for construction of pucca houses with basic amenities.",
+    "teluguDescription": "ఇల్లు లేని మరియు అల్ప ఆదాయ గ్రామీణ కుటుంబాలకు పక్కా ఇళ్ల నిర్మాణానికి ఆర్థిక సహాయం అందించే పథకం.",
+    "benefits": [
+      "Financial grant of ₹1,20,000 (plain) to ₹1,30,000 (hilly/difficult areas)",
+      "90–95 days of unskilled labor wage support under MGNREGA",
+      "Financial grant for toilet construction under Swachh Bharat Mission"
+    ],
+    "teluguBenefits": [
+      "ఇంటి నిర్మాణానికి ₹1,20,000 ఆర్థిక గ్రాంట్",
+      "ఉపాధి హామీ కింద 90 రోజులకు పైగా కూలి పని లబ్ధి",
+      "స్వచ్ఛ భారత్ మిషన్ కింద ఉచిత శౌచాలయ నిర్మాణ నిధులు"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 80,
+      "occupation": [
+        "agricultural_labourer",
+        "daily_wager",
+        "artisan",
+        "unemployed",
+        "all"
+      ],
+      "incomeMax": 180000,
+      "states": [
+        "All"
+      ],
+      "ruralOnly": true,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Job Card (MGNREGA)",
+      "Bank Passbook",
+      "Sworn Affidavit of non-ownership of pucca house"
+    ],
+    "applicationSteps": [
+      "Identification based on Socio-Economic Caste Census (SECC) / Awas+ survey",
+      "Gram Sabha verification of beneficiary priority list",
+      "Geotagged construction milestones & direct fund transfer to bank account"
+    ],
+    "applicationProcess": [
+      "Identification based on Socio-Economic Caste Census (SECC) / Awas+ survey",
+      "Gram Sabha verification of beneficiary priority list",
+      "Geotagged construction milestones & direct fund transfer to bank account"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://pmayg.nic.in",
+    "officialSourceUrl": "https://pmayg.nic.in",
+    "applicationUrl": "https://pmayg.nic.in",
+    "guidelineSourceUrl": "https://pmayg.nic.in/netiic/PMAYG_framework.pdf",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Beneficiaries identified during ongoing Gram Sabha Awas+ verification drives.",
+    "deadlineSource": "Ministry of Rural Development",
+    "deadlineLastVerified": "2026-08-25",
+    "lastVerified": "2026-08-25",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against PMAY-G portal."
+  },
+  {
+    "schemeId": "scheme_009",
+    "name": "Pradhan Mantri Awas Yojana - Urban (PMAY-U)",
+    "officialName": "Pradhan Mantri Awas Yojana - Urban Housing for All",
+    "teluguName": "ప్రధాన మంత్రి ఆవాస్ యోజన - అర్బన్ (PMAY-U)",
+    "level": "Central",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "department": "Housing for All Division",
+    "states": [
+      "All"
+    ],
+    "sector": "Housing",
+    "description": "Affordable urban housing initiative providing Credit Linked Subsidy (CLSS) and financial assistance for urban EWS/LIG families.",
+    "teluguDescription": "పట్టణ ప్రాంతాలలో ఉన్న ఇల్లు లేని పేద మరియు నిరుపేద కుటుంబాలకు సబ్సిడీ మరియు పక్కా ఇళ్ల సదుపాయం.",
+    "benefits": [
+      "Interest subsidy up to ₹2.67 Lakhs under Credit Linked Subsidy Scheme",
+      "Direct central assistance of ₹1.5 Lakhs per house under Beneficiary Led Construction",
+      "Pucca home ownership in planned urban municipal layout"
+    ],
+    "teluguBenefits": [
+      "గృహ రుణంపై ₹2.67 లక్షల వరకు వడ్డీ సబ్సిడీ లబ్ధి",
+      "సొంత స్థలంలో ఇల్లు కట్టుకునేవారికి ₹1.5 లక్షల ప్రత్యక్ష ఆర్థిక సాయం",
+      "పట్టణ నివాస ప్రాంతాలలో పక్కా గృహ వసతి"
+    ],
+    "eligibility": {
+      "minAge": 21,
+      "maxAge": 70,
+      "occupation": [
+        "all",
+        "salaried",
+        "self_employed",
+        "informal_worker"
+      ],
+      "incomeMax": 300000,
+      "states": [
+        "All"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Income Certificate",
+      "Bank Passbook",
+      "Property/Plot Papers or Rent Agreement"
+    ],
+    "applicationSteps": [
+      "Apply online via pmaymis.gov.in or near Urban Local Body (ULB) / Municipal Office",
+      "Verification of annual household income and urban residence",
+      "Subsidy release directly into home loan account"
+    ],
+    "applicationProcess": [
+      "Apply online via pmaymis.gov.in or near Urban Local Body (ULB) / Municipal Office",
+      "Verification of annual household income and urban residence",
+      "Subsidy release directly into home loan account"
+    ],
+    "applicationMode": "Online",
+    "officialSource": "https://pmaymis.gov.in",
+    "officialSourceUrl": "https://pmaymis.gov.in",
+    "applicationUrl": "https://pmaymis.gov.in",
+    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/pmay-u",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Rolling applications managed by Municipal Corporations.",
+    "deadlineSource": "MoHUA Portal",
+    "deadlineLastVerified": "2026-08-30",
+    "lastVerified": "2026-08-30",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against MoHUA mis portal."
   },
   {
     "schemeId": "scheme_010",
-    "name": "PM Mudra Yojana (Shishu & Kishor Loan)",
-    "teluguName": "ప్రధాన మంత్రి ముద్రా యోజన (చిన్న తరహా రుణాలు)",
-    "sector": "Livelihood",
-    "description": "Collateral-free micro loans up to ₹10 lakh for micro/small business enterprises, artisans, and self-employed individuals.",
-    "teluguDescription": "చిన్న వ్యాపారులు, చేతివృత్తుల వారు, స్వయం ఉపాధి పొందే వ్యక్తులకు ఎటువంటి తాకట్టు లేకుండా రూ. 10 లక్షల వరకు రుణాలు.",
+    "name": "Ayushman Bharat - PM-JAY",
+    "officialName": "Ayushman Bharat Pradhan Mantri Jan Arogya Yojana",
+    "teluguName": "ఆయుష్మాన్ భారత్ - పిఎమ్-జేఏవై",
+    "level": "Central",
+    "ministry": "Ministry of Health and Family Welfare",
+    "department": "National Health Authority (NHA)",
+    "states": [
+      "All"
+    ],
+    "sector": "Health",
+    "description": "World's largest government-funded health insurance scheme offering ₹5 Lakhs annual health cover per family for secondary & tertiary hospital care.",
+    "teluguDescription": "కుటుంబానికి ఏటా ₹5 లక్షల వరకు ఉచిత హాస్పిటల్ చికిత్స అందించే ప్రపంచంలోనే అతిపెద్ద ప్రభుత్వ ఆరోగ్య భీమా పథకం.",
     "benefits": [
-      "Collateral-free business loans from ₹50,000 (Shishu) up to ₹5,00,000 (Kishor)",
-      "No processing fee for Shishu category micro enterprises",
-      "Mudra Card for flexible working capital withdrawal"
+      "Cashless health insurance cover up to ₹500,000 per family per year",
+      "Paperless admission in 27,000+ empanelled government and private hospitals across India",
+      "Covers 1,900+ secondary and tertiary medical/surgical treatments"
     ],
     "teluguBenefits": [
-      "తాకట్టు లేకుండా ₹50,000 నుండి ₹5,00,000 వరకు వ్యాపార రుణాలు",
-      "శిశు రుణాలకు ఎటువంటి ప్రాసెసింగ్ రుసుము ఉండదు",
-      "వర్కింగ్ క్యాపిటల్ ఉపసంహరణకు ముద్రా డిజిటల్ కార్డ్"
+      "కుటుంబానికి ఏడాదికి ₹5 లక్షల వరకు ఉచిత హాస్పిటలైజేషన్ భీమా",
+      "దేశవ్యాప్తంగా 27,000 పైగా ఆసుపత్రులలో నగదు రహిత చికిత్స",
+      "1,900 కి పైగా శస్త్రచికిత్సలు మరియు వైద్య పరీక్షల ఉచిత వర్తింపు"
+    ],
+    "eligibility": {
+      "minAge": 0,
+      "maxAge": 100,
+      "occupation": [
+        "all",
+        "agricultural_labourer",
+        "daily_wager",
+        "informal_worker",
+        "unemployed"
+      ],
+      "incomeMax": 250000,
+      "states": [
+        "All"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Ration Card / PM-JAY Family Identification Card",
+      "Active Mobile Number"
+    ],
+    "applicationSteps": [
+      "Check eligibility at beneficiary.nha.gov.in using Aadhaar or Mobile Number",
+      "Visit Ayushman Mitra counter at empanelled hospital or CSC center",
+      "Complete e-KYC and download Ayushman Card for instant cashless hospital care"
+    ],
+    "applicationProcess": [
+      "Check eligibility at beneficiary.nha.gov.in using Aadhaar or Mobile Number",
+      "Visit Ayushman Mitra counter at empanelled hospital or CSC center",
+      "Complete e-KYC and download Ayushman Card for instant cashless hospital care"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://nha.gov.in",
+    "officialSourceUrl": "https://nha.gov.in",
+    "applicationUrl": "https://beneficiary.nha.gov.in",
+    "guidelineSourceUrl": "https://pmjay.gov.in/about/pmjay",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Ayushman Card generation available anytime online or at CSC centers.",
+    "deadlineSource": "National Health Authority",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against NHA PM-JAY official portal."
+  },
+  {
+    "schemeId": "scheme_011",
+    "name": "Telangana National Food Security Scheme (Food Security Card)",
+    "officialName": "Telangana Public Distribution System - Food Security Card",
+    "teluguName": "తెలంగాణ ఆహార భద్రత కార్డు పథకం (రేషన్ కార్డు)",
+    "level": "State",
+    "ministry": "Consumer Affairs, Food & Civil Supplies Department",
+    "department": "Civil Supplies Department, Telangana",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Social Welfare",
+    "description": "Subsidized food grains (rice at ₹1/kg or free) and essential commodities distributed monthly through Fair Price Shops to BPL families.",
+    "teluguDescription": "పేద కుటుంబాలకు నెలకు ఉచిత/రాయితీ బియ్యం మరియు నిత్యావసర సరుకులను రేషన్ షాపుల ద్వారా పంపిణీ చేసే ఆహార భద్రత పథకం.",
+    "benefits": [
+      "6 kg free rice per person per month for BPL cardholders",
+      "Subsidized sugar, salt, and red gram / pulses distribution",
+      "Serves as primary identity & eligibility proof for all welfare schemes"
+    ],
+    "teluguBenefits": [
+      "కుటుంబంలోని ప్రతి వ్యక్తికి నెలకు 6 కిలోల ఉచిత బియ్యం",
+      "రాయితీ ధరలపై చక్కెర, ఉప్పు మరియు పప్పుధాన్యాల పంపిణీ",
+      "అన్ని ప్రభుత్వ సంక్షేమ పథకాలకు ప్రాథమిక అర్హత పత్రంగా వినియోగం"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 100,
+      "occupation": [
+        "all",
+        "agricultural_labourer",
+        "daily_wager",
+        "informal_worker"
+      ],
+      "incomeMax": 150000,
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card of all family members",
+      "Residence Proof / Electricity Bill",
+      "Income Certificate (Meeseva)"
+    ],
+    "applicationSteps": [
+      "Apply through Meeseva center or Praja Palana counter",
+      "Verification by Revenue Inspector (RI) and Tahsildar office",
+      "E-PDS card generation and FPS mapping"
+    ],
+    "applicationProcess": [
+      "Apply through Meeseva center or Praja Palana counter",
+      "Verification by Revenue Inspector (RI) and Tahsildar office",
+      "E-PDS card generation and FPS mapping"
+    ],
+    "applicationMode": "CSC",
+    "officialSource": "https://epds.telangana.gov.in",
+    "officialSourceUrl": "https://epds.telangana.gov.in",
+    "applicationUrl": "https://epds.telangana.gov.in",
+    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/telangana-food-security-card",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Ongoing registration via Meeseva portals.",
+    "deadlineSource": "Telangana Civil Supplies",
+    "deadlineLastVerified": "2026-09-04",
+    "lastVerified": "2026-09-04",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against ePDS Telangana."
+  },
+  {
+    "schemeId": "scheme_012",
+    "name": "Pradhan Mantri Fasal Bima Yojana (PMFBY)",
+    "officialName": "Pradhan Mantri Fasal Bima Yojana",
+    "teluguName": "ప్రధాన మంత్రి ఫసల్ భీమా యోజన (PMFBY)",
+    "level": "Central",
+    "ministry": "Ministry of Agriculture and Farmers Welfare",
+    "department": "Credit Division, Dept of Agriculture",
+    "states": [
+      "All"
+    ],
+    "sector": "Agriculture",
+    "description": "Comprehensive crop insurance scheme protecting farmers against crop loss due to drought, floods, pests, and natural calamities.",
+    "teluguDescription": "అనావృష్టి, వరదలు మరియు ప్రకృతి వైపరీత్యాల వలన కలిగే పంట నష్టాల నుండి రైతులకు భీమా రక్షణ కల్పించే పథకం.",
+    "benefits": [
+      "Nominal premium rate: 2% for Kharif crops, 1.5% for Rabi crops, 5% for commercial/horticultural crops",
+      "Full insured amount paid for localized crop loss & post-harvest loss",
+      "Direct insurance claim settlement into farmer's bank account"
+    ],
+    "teluguBenefits": [
+      "తక్కువ ప్రీమియం: ఖరీఫ్‌కు 2%, రబీకి 1.5%, ఉద్యానవన పంటలకు 5%",
+      "పంట నష్టం మరియు కోత అనంతర నష్టానికి పూర్తి భీమా పరిహారం",
+      "నేరుగా రైతు బ్యాంకు ఖాతాలో భీమా క్లెయిమ్ విడుదల"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 80,
+      "occupation": [
+        "farmer",
+        "small_farmer",
+        "tenant_farmer"
+      ],
+      "incomeMax": 400000,
+      "states": [
+        "All"
+      ],
+      "ruralOnly": true,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Land Ownership Record / Tenant Agreement (Pahani / Adangal)",
+      "Bank Passbook",
+      "Sowing Certificate issued by Agriculture Extension Officer"
+    ],
+    "applicationSteps": [
+      "Enroll through National Crop Insurance Portal (pmfby.gov.in) or primary agricultural credit bank",
+      "Pay crop premium before cut-off deadline for the season",
+      "Report crop damage within 72 hours via crop insurance app or helpline"
+    ],
+    "applicationProcess": [
+      "Enroll through National Crop Insurance Portal (pmfby.gov.in) or primary agricultural credit bank",
+      "Pay crop premium before cut-off deadline for the season",
+      "Report crop damage within 72 hours via crop insurance app or helpline"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://pmfby.gov.in",
+    "officialSourceUrl": "https://pmfby.gov.in",
+    "applicationUrl": "https://pmfby.gov.in",
+    "guidelineSourceUrl": "https://pmfby.gov.in/pdf/Revised_Operational_Guidelines.pdf",
+    "deadline": "2026-07-31",
+    "applicationDeadline": "2026-07-31",
+    "deadlineType": "recurring",
+    "deadlineDetails": "Cut-off date is July 31 for Kharif season and Dec 31 for Rabi season.",
+    "deadlineSource": "PMFBY Seasonal Guidelines",
+    "deadlineLastVerified": "2026-06-01",
+    "lastVerified": "2026-06-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against PMFBY official portal."
+  },
+  {
+    "schemeId": "scheme_013",
+    "name": "Telangana Rythu Bima Scheme",
+    "officialName": "Telangana Farmers Group Life Insurance Scheme",
+    "teluguName": "తెలంగాణ రైతు భీమా పథకం",
+    "level": "State",
+    "ministry": "Department of Agriculture",
+    "department": "Agriculture & Farmers Welfare Department, Telangana",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Agriculture",
+    "description": "100% government-funded group life insurance scheme providing ₹5 Lakhs immediate relief to families of deceased landholding farmers.",
+    "teluguDescription": "పట్టాదారు రైతు అనుమానాస్పదంగా లేదా సహజంగా మరణించినట్లయితే వారి కుటుంబానికి 100% ప్రభుత్వ వ్యయంతో ₹5 లక్షల పరిహారం అందించే ఉచిత జీవన భీమా పథకం.",
+    "benefits": [
+      "₹500,000 (₹5 Lakhs) life insurance claim paid within 10 days of farmer's death",
+      "Entire premium is borne 100% by the Telangana State Government",
+      "No health checkup or complex paperwork required"
+    ],
+    "teluguBenefits": [
+      "రైతు మరణించిన 10 రోజుల్లో కుటుంబానికి ₹5 లక్షల తక్షణ ఉచిత భీమా క్లెయిమ్",
+      "భీమా ప్రీమియం రూ.1 కూడా రైతు చెల్లించనక్కర్లేదు (100% ప్రభుత్వమే చెల్లిస్తుంది)",
+      "ఎలాంటి వైద్య పరీక్షలు లేకుండా సులభంగా నామినీ ఖాతాలో సొమ్ము జమ"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 59,
+      "occupation": [
+        "farmer",
+        "small_farmer"
+      ],
+      "incomeMax": null,
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": true,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card of Farmer",
+      "Pattadar Passbook / Title Deed",
+      "Nominee Aadhaar Card & Bank Passbook"
+    ],
+    "applicationSteps": [
+      "Enrollment during annual Rythu Bima drive through local Agriculture Extension Officer (AEO)",
+      "Nominee details captured in LIC portal by AEO",
+      "In case of demise, AEO submits claim form for automatic transfer of ₹5 Lakhs"
+    ],
+    "applicationProcess": [
+      "Enrollment during annual Rythu Bima drive through local Agriculture Extension Officer (AEO)",
+      "Nominee details captured in LIC portal by AEO",
+      "In case of demise, AEO submits claim form for automatic transfer of ₹5 Lakhs"
+    ],
+    "applicationMode": "Offline",
+    "officialSource": "https://rythubima.telangana.gov.in",
+    "officialSourceUrl": "https://rythubima.telangana.gov.in",
+    "applicationUrl": "https://rythubima.telangana.gov.in",
+    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/rythu-bima",
+    "deadline": "2026-08-15",
+    "applicationDeadline": "2026-08-15",
+    "deadlineType": "recurring",
+    "deadlineDetails": "Annual fresh enrollment drive usually conducted in August.",
+    "deadlineSource": "Telangana Agriculture Notification",
+    "deadlineLastVerified": "2026-08-01",
+    "lastVerified": "2026-08-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against Rythu Bima official portal."
+  },
+  {
+    "schemeId": "scheme_014",
+    "name": "Pradhan Mantri Matru Vandana Yojana (PMMVY)",
+    "officialName": "Pradhan Mantri Matru Vandana Yojana",
+    "teluguName": "ప్రధాన మంత్రి మాతృ వందన యోజన (PMMVY)",
+    "level": "Central",
+    "ministry": "Ministry of Women and Child Development",
+    "department": "Maternal and Child Welfare Division",
+    "states": [
+      "All"
+    ],
+    "sector": "Women and Child",
+    "description": "Direct benefit cash incentive scheme of ₹5,000 for pregnant women and lactating mothers for first and second childbirth.",
+    "teluguDescription": "గర్భిణీ స్త్రీలు మరియు పాలిచ్చే తల్లులకు సరైన పోషకాహారం మరియు ఆర్థిక సాయం అందించే కేంద్ర ప్రభుత్వ పథకం.",
+    "benefits": [
+      "Financial assistance of ₹5,000 for first child in 2 installments",
+      "Additional financial assistance of ₹6,000 for second girl child",
+      "Compensates for wage loss and promotes institutional health checkups & immunization"
+    ],
+    "teluguBenefits": [
+      "మొదటి ప్రసవానికి ₹5,000 ఉచిత ఆర్థిక ప్రోత్సాహకం",
+      "రెండవ ఆడపిల్ల జన్మిస్తే ₹6,000 ప్రోత్సాహకం",
+      "తల్లి మరియు బిడ్డ పోషకాహారం, టీకాల ఖర్చులకు సహాయం"
+    ],
+    "eligibility": {
+      "minAge": 19,
+      "maxAge": 45,
+      "occupation": [
+        "homemaker",
+        "agricultural_labourer",
+        "daily_wager",
+        "informal_worker"
+      ],
+      "incomeMax": 250000,
+      "states": [
+        "All"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "female"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card of Mother and Husband",
+      "Mother and Child Protection (MCP) Card / Anganwadi Record",
+      "Bank Passbook seeded with Aadhaar"
+    ],
+    "applicationSteps": [
+      "Register at local Anganwadi Center (AWC) or ANM health clinic within 270 days of pregnancy",
+      "Submit MCP Card details and Aadhaar copies",
+      "Funds credited directly into mother's Aadhaar-linked bank account"
+    ],
+    "applicationProcess": [
+      "Register at local Anganwadi Center (AWC) or ANM health clinic within 270 days of pregnancy",
+      "Submit MCP Card details and Aadhaar copies",
+      "Funds credited directly into mother's Aadhaar-linked bank account"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://pmmvy.wcd.gov.in",
+    "officialSourceUrl": "https://pmmvy.wcd.gov.in",
+    "applicationUrl": "https://pmmvy.wcd.gov.in",
+    "guidelineSourceUrl": "https://pmmvy.wcd.gov.in/assets/docs/PMMVY_Guidelines.pdf",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Registration permitted up to 270 days post-LMP.",
+    "deadlineSource": "WCD Portal",
+    "deadlineLastVerified": "2026-08-20",
+    "lastVerified": "2026-08-20",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against PMMVY WCD portal."
+  },
+  {
+    "schemeId": "scheme_015",
+    "name": "Telangana Kanti Velugu Scheme",
+    "officialName": "Kanti Velugu Free Eye Care & Screening Scheme",
+    "teluguName": "తెలంగాణ కాంతి వెలుగు పథకం",
+    "level": "State",
+    "ministry": "Health, Medical & Family Welfare Department",
+    "department": "Public Health & Family Welfare, Telangana",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Health",
+    "description": "Mass eye screening initiative providing free eye checkups, prescription spectacles, and cataract surgeries across Telangana.",
+    "teluguDescription": "తెలంగాణలోని పౌరులందరికీ ఉచిత కంటి పరీక్షలు, ఉచిత కంటి అద్దాలు మరియు ఉచిత శుక్లాల శస్త్రచికిత్సలు అందించే కాంతి వెలుగు పథకం.",
+    "benefits": [
+      "100% free comprehensive eye examination by specialized medical teams",
+      "Free reading glasses and custom prescription spectacles distributed on the spot",
+      "Free cataract surgery arrangement at government ophthalmic centers"
+    ],
+    "teluguBenefits": [
+      "ఉచిత కంటి పరీక్షలు మరియు నేత్ర వైద్య నిపుణుల సలహాలు",
+      "అవసరమైన వారికి ఉచిత రీడింగ్ కంటి అద్దాల పంపిణీ",
+      "ప్రభుత్వ ఆసుపత్రులలో ఉచితంగా కంటి శుక్లాల (కాటరాక్ట్) శస్త్రచికిత్స"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 100,
+      "occupation": [
+        "all"
+      ],
+      "incomeMax": null,
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card"
+    ],
+    "applicationSteps": [
+      "Walk in to designated Kanti Velugu camp set up in your Gram Panchayat or Municipal Ward",
+      "Present Aadhaar Card for digital registration",
+      "Undergo eye testing and receive free glasses or surgery referral"
+    ],
+    "applicationProcess": [
+      "Walk in to designated Kanti Velugu camp set up in your Gram Panchayat or Municipal Ward",
+      "Present Aadhaar Card for digital registration",
+      "Undergo eye testing and receive free glasses or surgery referral"
+    ],
+    "applicationMode": "Offline",
+    "officialSource": "https://kantivelugu.telangana.gov.in",
+    "officialSourceUrl": "https://kantivelugu.telangana.gov.in",
+    "applicationUrl": "https://kantivelugu.telangana.gov.in",
+    "guidelineSourceUrl": "https://telangana.gov.in",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Camps scheduled per district health calendar.",
+    "deadlineSource": "Telangana Health Dept",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against Kanti Velugu portal."
+  },
+  {
+    "schemeId": "scheme_016",
+    "name": "Telangana Post-Matric Scholarship (ePASS)",
+    "officialName": "Telangana Post-Matric Scholarships for SC/ST/BC/EBC/Minority Students",
+    "teluguName": "తెలంగాణ పోస్ట్-మెట్రిక్ స్కాలర్‌షిప్ (ePASS)",
+    "level": "State",
+    "ministry": "Welfare Departments (SC, ST, BC, Minorities)",
+    "department": "Telangana ePASS (Electronic Payment & Application System of Scholarships)",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Education",
+    "description": "Full reimbursement of tuition fees (RTF) and monthly maintenance allowance (MTF) for post-matric students belonging to SC/ST/BC/EBC/Minority categories.",
+    "teluguDescription": "ఎస్సీ, ఎస్టీ, బిసి, ఈబిసి మరియు మైనార్టీ విద్యార్థులకు కళాశాల ఫీజుల రీఎంబర్స్‌మెంట్ మరియు హాస్టల్ మెస్ ఛార్జీల చెల్లింపు పథకం.",
+    "benefits": [
+      "100% Tuition Fee Reimbursement (RTF) directly to college account",
+      "Monthly Maintenance Fee (MTF) credited to student bank account",
+      "Covers Intermediate, Degree, PG, Engineering, and Professional courses"
+    ],
+    "teluguBenefits": [
+      "కళాశాల ట్యూషన్ ఫీజు 100% రీఎంబర్స్‌మెంట్ సదుపాయం",
+      "విద్యార్థుల మెస్ మరియు హాస్టల్ ఖర్చులకు నెలవారీ స్టైఫండ్",
+      "ఇంటర్, డిగ్రీ, పీజీ, ఇంజనీరింగ్ కోర్సులకు వర్తింపు"
+    ],
+    "eligibility": {
+      "minAge": 15,
+      "maxAge": 35,
+      "occupation": [
+        "student"
+      ],
+      "incomeMax": 200000,
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "SC",
+        "ST",
+        "BC",
+        "EBC",
+        "Minority"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Caste Certificate (Meeseva)",
+      "Income Certificate (Meeseva)",
+      "SSC Hall Ticket Number & Pass Certificate",
+      "Student Bank Passbook",
+      "College Bonafide Certificate"
+    ],
+    "applicationSteps": [
+      "Apply online on Telangana ePASS portal (telanganaepass.cgg.gov.in)",
+      "Upload caste, income, and educational certificates",
+      "College principal verification followed by District Welfare Officer approval"
+    ],
+    "applicationProcess": [
+      "Apply online on Telangana ePASS portal (telanganaepass.cgg.gov.in)",
+      "Upload caste, income, and educational certificates",
+      "College principal verification followed by District Welfare Officer approval"
+    ],
+    "applicationMode": "Online",
+    "officialSource": "https://telanganaepass.cgg.gov.in",
+    "officialSourceUrl": "https://telanganaepass.cgg.gov.in",
+    "applicationUrl": "https://telanganaepass.cgg.gov.in",
+    "guidelineSourceUrl": "https://telanganaepass.cgg.gov.in/Guidelines.do",
+    "deadline": "2026-11-30",
+    "applicationDeadline": "2026-11-30",
+    "deadlineType": "recurring",
+    "deadlineDetails": "Annual academic registration window usually closes in November.",
+    "deadlineSource": "Telangana ePASS Notification",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against Telangana ePASS official website."
+  },
+  {
+    "schemeId": "scheme_017",
+    "name": "Telangana Pre-Matric Scholarship (ePASS)",
+    "officialName": "Telangana Pre-Matric Scholarships for SC/ST/BC Students",
+    "teluguName": "తెలంగాణ ప్రీ-మెట్రిక్ స్కాలర్‌షిప్ (ePASS)",
+    "level": "State",
+    "ministry": "Welfare Departments (SC, ST, BC)",
+    "department": "Telangana ePASS",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Education",
+    "description": "Financial stipend to SC, ST, and BC school students studying in classes 5 to 10 to reduce school dropout rates.",
+    "teluguDescription": "5వ తరగతి నుండి 10వ తరగతి వరకు చదువుతున్న ఎస్సీ, ఎస్టీ, బిసి పాఠశాల విద్యార్థులకు అందించే ప్రోత్సాహక ఉపకార వేతనం.",
+    "benefits": [
+      "Annual scholarship grant ranging from ₹1,000 to ₹3,500 depending on class & gender",
+      "Book allowance and uniform support",
+      "Encourages retention in government & local body schools"
+    ],
+    "teluguBenefits": [
+      "ఏడాదికి ₹1,000 నుండి ₹3,500 వరకు స్కాలర్‌షిప్ పొందే వెసులుబాటు",
+      "పాఠ్యపుస్తకాలు, యూనిఫాం కొనుగోలుకు ప్రత్యేక సహాయం",
+      "బడి మానేసే ప్రమాదం లేకుండా నిరంతర విద్యాభ్యాసానికి తోడ్పాటు"
+    ],
+    "eligibility": {
+      "minAge": 9,
+      "maxAge": 17,
+      "occupation": [
+        "student"
+      ],
+      "incomeMax": 200000,
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "SC",
+        "ST",
+        "BC"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Student Aadhaar Card",
+      "Caste Certificate (Meeseva)",
+      "Income Certificate",
+      "School Bonafide Certificate",
+      "Bank Account details (Student or Joint with parent)"
+    ],
+    "applicationSteps": [
+      "School Headmaster registers eligible students on telanganaepass.cgg.gov.in portal",
+      "Verification of caste and income details by District Welfare Officer",
+      "Disbursement via direct benefit transfer"
+    ],
+    "applicationProcess": [
+      "School Headmaster registers eligible students on telanganaepass.cgg.gov.in portal",
+      "Verification of caste and income details by District Welfare Officer",
+      "Disbursement via direct benefit transfer"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://telanganaepass.cgg.gov.in",
+    "officialSourceUrl": "https://telanganaepass.cgg.gov.in",
+    "applicationUrl": "https://telanganaepass.cgg.gov.in",
+    "guidelineSourceUrl": "https://telanganaepass.cgg.gov.in",
+    "deadline": "2026-10-15",
+    "applicationDeadline": "2026-10-15",
+    "deadlineType": "recurring",
+    "deadlineDetails": "School submission window closes mid-October.",
+    "deadlineSource": "Telangana ePASS Portal",
+    "deadlineLastVerified": "2026-08-15",
+    "lastVerified": "2026-08-15",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against ePASS Telangana portal."
+  },
+  {
+    "schemeId": "scheme_018",
+    "name": "Pradhan Mantri Mudra Yojana (PMMY)",
+    "officialName": "Pradhan Mantri Mudra Yojana (Micro Units Development & Refinance Agency)",
+    "teluguName": "ప్రధాన మంత్రి ముద్రా యోజన (PMMY)",
+    "level": "Central",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Financial Services",
+    "states": [
+      "All"
+    ],
+    "sector": "Skill Development",
+    "description": "Collateral-free business loans up to ₹10 Lakhs for non-corporate, non-farm small/micro enterprises (Shishu, Kishore, and Tarun categories).",
+    "teluguDescription": "చిన్న మరియు సూక్ష్మ వ్యాపారాలు ప్రారంభించడానికి ఎలాంటి షూరిటీ లేకుండా ₹10 లక్షల వరకు ఇచ్చే ముద్రా రుణ పథకం.",
+    "benefits": [
+      "Shishu: Loans up to ₹50,000 for starting new micro business",
+      "Kishore: Loans above ₹50,000 up to ₹5 Lakhs for expanding operations",
+      "Tarun: Loans above ₹5 Lakhs up to ₹10 Lakhs for established enterprises",
+      "No collateral or third-party guarantee required"
+    ],
+    "teluguBenefits": [
+      "శిశు రకం: కొత్త వ్యాపార ప్రారంభానికి ₹50,000 వరకు రుణం",
+      "కిశోర్ రకం: వ్యాపారాభివృద్ధికి ₹50,000 నుండి ₹5 లక్షల వరకు రుణం",
+      "తరుణ్ రకం: వ్యాపార విస్తరణకు ₹5 లక్షల నుండి ₹10 లక్షల వరకు రుణం",
+      "ఎలాంటి తణఖా లేదా డిపాజిట్లు అవసరం లేదు"
     ],
     "eligibility": {
       "minAge": 18,
       "maxAge": 65,
-      "occupation": ["artisan", "street_vendor", "unorganised_worker", "small_entrepreneur"],
-      "incomeMax": 500000,
-      "states": ["All"],
+      "occupation": [
+        "self_employed",
+        "artisan",
+        "trader",
+        "shopkeeper",
+        "vendor",
+        "small_business_owner"
+      ],
+      "incomeMax": null,
+      "states": [
+        "All"
+      ],
       "ruralOnly": false,
       "landOwnership": null,
-      "category": ["All"],
+      "category": [
+        "All"
+      ],
       "gender": "all"
     },
     "requiredDocuments": [
-      "Aadhaar Card",
-      "Business Proposal / Plan Summary",
-      "Bank Statement (Last 6 Months)",
-      "Residence Certificate",
-      "Category Certificate (If applicable)"
+      "Aadhaar Card & PAN Card",
+      "Proof of Business Address / GST Registration (if applicable)",
+      "Bank Account Statement (Last 6 months)",
+      "Projected Business Plan / Quotation"
     ],
     "applicationSteps": [
-      "Apply online via UdyamiMitra portal or visit commercial/gramin bank branch",
-      "Submit identity proof, address proof, and business proposal",
-      "Bank evaluates proposal and sanctions Mudra loan"
+      "Apply online on Udyamimitra portal (udyamimitra.in) or visit any commercial bank branch",
+      "Submit application form with business proposal",
+      "Sanction and disbursement by lender without collateral"
     ],
+    "applicationProcess": [
+      "Apply online on Udyamimitra portal (udyamimitra.in) or visit any commercial bank branch",
+      "Submit application form with business proposal",
+      "Sanction and disbursement by lender without collateral"
+    ],
+    "applicationMode": "Both",
     "officialSource": "https://mudra.org.in",
+    "officialSourceUrl": "https://mudra.org.in",
+    "applicationUrl": "https://udyamimitra.in",
+    "guidelineSourceUrl": "https://mudra.org.in/Offerings",
     "deadline": null,
+    "applicationDeadline": null,
     "deadlineType": "rolling",
-    "deadlineDetails": "Year-round bank loan window.",
-    "lastVerified": "2026-08-28"
+    "deadlineDetails": "Continuous credit facility available at all public & private bank branches.",
+    "deadlineSource": "MUDRA Official Portal",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against MUDRA official site."
   },
   {
-    "schemeId": "scheme_011",
-    "name": "PM SVANidhi (Street Vendor Loan)",
-    "teluguName": "ప్రధాన మంత్రి స్వనిధి పథకం (వీధి వ్యాపారుల రుణం)",
-    "sector": "Livelihood",
-    "description": "Micro-credit facility for street vendors to restart micro-businesses with interest subsidy and digital cashbacks.",
-    "teluguDescription": "వీధి వ్యాపారులకు వారి వ్యాపారాల పునరుద్ధరణ కోసం వడ్డీ సబ్సిడీతో కూడిన మైక్రో క్రెడిట్ రుణం.",
+    "schemeId": "scheme_019",
+    "name": "PM Vishwakarma Scheme",
+    "officialName": "PM Vishwakarma Scheme for Traditional Artisans and Craftspeople",
+    "teluguName": "పీఎం విశ్వకర్మ పథకం",
+    "level": "Central",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises (MSME)",
+    "department": "Development Commissioner (MSME)",
+    "states": [
+      "All"
+    ],
+    "sector": "Skill Development",
+    "description": "Comprehensive support scheme providing skill training, toolkit incentive of ₹15,000, collateral-free loan up to ₹3 Lakhs, and market support to 18 traditional artisan trades.",
+    "teluguDescription": "చేతివృత్తులు, కులవృత్తుల కళాకారులకు ఉచిత శిక్షణ, ₹15,000 టూల్‌కిట్ సాయం మరియు సబ్సిడీపై రుణ సదుపాయం.",
     "benefits": [
-      "Working capital loan starting at ₹10,00, scaling to ₹20,000 and ₹50,000 upon timely repayment",
-      "7% annual interest subsidy credited directly to bank account",
-      "Digital transaction cashback incentive up to ₹1,200 per year"
+      "Skill verification and 5-7 days basic training with ₹500/day stipend",
+      "Toolkit incentive grant of ₹15,000 upon training completion",
+      "Collateral-free credit support up to ₹3 Lakhs at concessional 5% interest rate"
     ],
     "teluguBenefits": [
-      "క్రమం తప్పకుండా చెల్లిస్తే ₹10,000 నుండి ₹50,000 వరకు సులభ రుణాలు",
-      "సకాలంలో చెల్లించే రుణాలపై ఏటా 7% వడ్డీ సబ్సిడీ",
-      "డిజిటల్ లావాదేవీలపై సంవత్సరానికి ₹1,200 వరకు క్యాష్‌బ్యాక్"
+      "ఉచిత స్కిల్ శిక్షణ మరియు రోజుకు ₹500 స్టైఫండ్",
+      "వృత్తి పరికరాల కొనుగోలుకు ₹15,000 ఉచిత టూల్‌కిట్ గ్రాంట్",
+      "కేవలం 5% తక్కువ వడ్డీకే ₹3 లక్షల వరకు పూచీకత్తు లేని రుణం"
     ],
     "eligibility": {
       "minAge": 18,
       "maxAge": 70,
-      "occupation": ["street_vendor", "artisan", "unorganised_worker"],
-      "incomeMax": 200000,
-      "states": ["All"],
+      "occupation": [
+        "artisan",
+        "carpenter",
+        "blacksmith",
+        "goldsmith",
+        "potter",
+        "sculptor",
+        "cobbler",
+        "tailor",
+        "weaver",
+        "barber",
+        "washerman"
+      ],
+      "incomeMax": 300000,
+      "states": [
+        "All"
+      ],
       "ruralOnly": false,
       "landOwnership": null,
-      "category": ["All"],
+      "category": [
+        "All"
+      ],
       "gender": "all"
     },
     "requiredDocuments": [
       "Aadhaar Card",
-      "Vending Certificate / Letter of Recommendation (LoR)",
       "Bank Passbook",
-      "Mobile Number linked with Aadhaar"
+      "Active Mobile Number",
+      "Skill Trade Verification Certificate from Gram Panchayat / ULB"
     ],
     "applicationSteps": [
-      "Approach nearest CSC or apply online at pmsvanidhi.mohua.gov.in",
-      "Upload Vending Certificate or Municipal Urban Local Body (ULB) recommendation",
-      "Bank disburses loan directly to account"
+      "Register at nearby Common Services Center (CSC) on pmvishwakarma.gov.in",
+      "Three-step verification: Gram Panchayat/ULB, District Implementation Committee, and Screening Committee",
+      "Receive Vishwakarma Digital Card & Certificate for benefits access"
     ],
-    "officialSource": "https://pmsvanidhi.mohua.gov.in",
-    "deadline": "2026-12-31",
-    "deadlineType": "fixed_date",
-    "deadlineDetails": "Extended scheme window active till December 2026.",
-    "lastVerified": "2026-09-08"
+    "applicationProcess": [
+      "Register at nearby Common Services Center (CSC) on pmvishwakarma.gov.in",
+      "Three-step verification: Gram Panchayat/ULB, District Implementation Committee, and Screening Committee",
+      "Receive Vishwakarma Digital Card & Certificate for benefits access"
+    ],
+    "applicationMode": "CSC",
+    "officialSource": "https://pmvishwakarma.gov.in",
+    "officialSourceUrl": "https://pmvishwakarma.gov.in",
+    "applicationUrl": "https://pmvishwakarma.gov.in",
+    "guidelineSourceUrl": "https://pmvishwakarma.gov.in/Guidelines",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Ongoing registration through CSC centers.",
+    "deadlineSource": "MSME Ministry Guidelines",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against PM Vishwakarma official portal."
   },
   {
-    "schemeId": "scheme_012",
-    "name": "Telangana Post-Matric Scholarship & Fee Reimbursement",
-    "teluguName": "తెలంగాణ పోస్ట్-మెట్రిక్ స్కాలర్‌షిప్ & ఫీజు రీయింబర్స్‌మెంట్",
-    "sector": "Education",
-    "description": "Financial assistance and full tuition fee reimbursement for SC, ST, BC, EBC, and Differently Abled students pursuing post-matriculation courses.",
-    "teluguDescription": "ఎస్సీ, ఎస్టీ, బిసి, ఈబిసి మరియు దివ్యాంగ విద్యార్థులకు ఉన్నత చదువుల కోసం పూర్తి ఫీజు రీయింబర్స్‌మెంట్ మరియు స్కాలర్‌షిప్.",
+    "schemeId": "scheme_020",
+    "name": "PM SVANidhi Scheme",
+    "officialName": "PM Street Vendor's AtmaNirbhar Nidhi",
+    "teluguName": "పీఎం స్వనిధి పథకం (వీధి వ్యాపారుల స్వలంబన)",
+    "level": "Central",
+    "ministry": "Ministry of Housing and Urban Affairs",
+    "department": "Urban Poverty Alleviation Division",
+    "states": [
+      "All"
+    ],
+    "sector": "Employment",
+    "description": "Micro-credit scheme providing working capital loans up to ₹50,000 with 7% interest subsidy for street vendors.",
+    "teluguDescription": "వీధి వ్యాపారులకు పెట్టుబడి కింద ₹50,000 వరకు వ్యాపార రుణం మరియు 7% వడ్డీ సబ్సిడీ అందించే పథకం.",
     "benefits": [
-      "Full tuition fee reimbursement for professional and degree courses",
-      "Monthly Maintenance Allowance (RTF & MTF) up to ₹1,200 per month",
-      "Coverage for polytechnic, degree, engineering, and postgraduate studies"
+      "1st Tranche loan up to ₹10,000, 2nd Tranche up to ₹20,000, 3rd Tranche up to ₹50,000",
+      "7% interest subsidy credited directly to bank account on timely repayment",
+      "Cashback up to ₹1,200 per year on digital transactions"
     ],
     "teluguBenefits": [
-      "డిగ్రీ, ఇంజనీరింగ్, పాలిటెక్నిక్ విద్యార్థులకు పూర్తి ఫీజు రీయింబర్స్‌మెంట్",
-      "విద్యార్థుల ఖర్చుల కోసం నెలకు ₹1,200 వరకు మెయింటెనెన్స్ అలవెన్స్",
-      "నేరుగా విద్యా సంస్థలు మరియు విద్యార్థుల ఖాతాల్లో జమ"
-    ],
-    "eligibility": {
-      "minAge": 15,
-      "maxAge": 30,
-      "occupation": ["student"],
-      "incomeMax": 200000,
-      "states": ["Telangana"],
-      "ruralOnly": false,
-      "landOwnership": null,
-      "category": ["SC", "ST", "BC", "EBC", "Differently Abled"],
-      "gender": "all"
-    },
-    "requiredDocuments": [
-      "Aadhaar Card",
-      "Income Certificate (Issued after April 1)",
-      "Caste Certificate",
-      "SSC Hall Ticket / Marks Memo",
-      "Bank Account linked with Aadhaar",
-      "College Bonafide Certificate"
-    ],
-    "applicationSteps": [
-      "Register on Telangana ePASS portal (telanganaepass.cgg.gov.in)",
-      "Upload bonafide, income, and caste certificates",
-      "Physical verification by College Principal and District Welfare Officer"
-    ],
-    "officialSource": "https://telanganaepass.cgg.gov.in",
-    "deadline": "2026-11-30",
-    "deadlineType": "fixed_date",
-    "deadlineDetails": "Academic year 2026-27 registration closes November 30.",
-    "lastVerified": "2026-09-14"
-  },
-  {
-    "schemeId": "scheme_013",
-    "name": "PM Vishwakarma Scheme",
-    "teluguName": "ప్రధాన మంత్రి విశ్వకర్మ పథకం",
-    "sector": "Livelihood",
-    "description": "End-to-end support scheme for traditional artisans and craftspeople working with hands and tools.",
-    "teluguDescription": "చేతివృత్తుల వారు మరియు సాంప్రదాయ విశ్వకర్మల కోసం సమగ్ర నైపుణ్య అభివృద్ధి మరియు రూ. 3 లక్షల వరకు రుణాలు.",
-    "benefits": [
-      "PM Vishwakarma Digital Certificate and ID Card",
-      "Basic training of 5-7 days with ₹500/day stipend + ₹15,000 Toolkit Grant",
-      "Collateral-free credit support up to ₹3,00,000 at concessional 5% interest rate"
-    ],
-    "teluguBenefits": [
-      "డిజిటల్ విశ్వకర్మ గుర్తింపు కార్డు మరియు సర్టిఫికేట్",
-      "రోజుకు ₹500 స్టైపెండ్‌తో ఉచిత శిక్షణ + ₹15,000 టూల్‌కిట్ గ్రాంట్",
-      "5% సబ్సిడీ వడ్డీతో ₹3,00,000 వరకు తాకట్టు లేని రుణం"
+      "మొదటి విడతలో ₹10,000, సకాలంలో తీరిస్తే తదుపరి ₹20,000 మరియు ₹50,000 వరకు రుణం",
+      "సకాలంలో చెల్లించే రుణాలకు 7% వడ్డీ సబ్సిడీ నగదు పునరావృతం",
+      "డిజిటల్ లావాదేవీలపై ఏటా ₹1,200 వరకు క్యాష్‌బ్యాక్"
     ],
     "eligibility": {
       "minAge": 18,
       "maxAge": 75,
-      "occupation": ["artisan", "unorganised_worker"],
-      "incomeMax": 250000,
-      "states": ["All"],
+      "occupation": [
+        "street_vendor",
+        "trader",
+        "informal_worker",
+        "hawker"
+      ],
+      "incomeMax": null,
+      "states": [
+        "All"
+      ],
       "ruralOnly": false,
       "landOwnership": null,
-      "category": ["All"],
+      "category": [
+        "All"
+      ],
       "gender": "all"
     },
     "requiredDocuments": [
       "Aadhaar Card",
-      "Bank Passbook",
-      "Skill/Artisan Self Declaration",
+      "Certificate of Vending (CoV) / Identity Card issued by Urban Local Body (ULB)",
+      "Bank Passbook"
+    ],
+    "applicationSteps": [
+      "Apply online at pmsvanidhi.mohua.gov.in or via bank branch / CSC",
+      "ULB recommendation & verification of vending location",
+      "Direct loan credit into bank account"
+    ],
+    "applicationProcess": [
+      "Apply online at pmsvanidhi.mohua.gov.in or via bank branch / CSC",
+      "ULB recommendation & verification of vending location",
+      "Direct loan credit into bank account"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://pmsvanidhi.mohua.gov.in",
+    "officialSourceUrl": "https://pmsvanidhi.mohua.gov.in",
+    "applicationUrl": "https://pmsvanidhi.mohua.gov.in",
+    "guidelineSourceUrl": "https://pmsvanidhi.mohua.gov.in/Schemes.aspx",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Continuous micro-credit facility for urban street vendors.",
+    "deadlineSource": "MoHUA Portal",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against PM SVANidhi portal."
+  },
+  {
+    "schemeId": "scheme_021",
+    "name": "Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA)",
+    "officialName": "Mahatma Gandhi National Rural Employment Guarantee Scheme",
+    "teluguName": "మహాత్మా గాంధీ జాతీయ గ్రామీణ ఉపాధి హామీ పథకం (ఉపాధి హామీ)",
+    "level": "Central",
+    "ministry": "Ministry of Rural Development",
+    "department": "Department of Rural Development",
+    "states": [
+      "All"
+    ],
+    "sector": "Employment",
+    "description": "Legal guarantee of at least 100 days of wage employment in a financial year to every rural household whose adult members volunteer to do unskilled manual work.",
+    "teluguDescription": "గ్రామీణ ప్రాంతాలలో నివసించే ప్రతి కుటుంబానికి కనీసం 100 రోజుల వేతన ఉపాధి హామీ కల్పించే చట్టబద్ధమైన పథకం.",
+    "benefits": [
+      "Guaranteed 100 days unskilled manual work per household per year",
+      "Statutory daily wage rate transferred directly into bank account (approx. ₹300/day in Telangana)",
+      "Unemployment allowance if work is not assigned within 15 days of demand"
+    ],
+    "teluguBenefits": [
+      "ప్రతి గ్రామీణ కుటుంబానికి ఏడాదికి 100 రోజుల పని హామీ",
+      "నేరుగా బ్యాంకు ఖాతాలో నిర్ణీత రోజువారీ కూలి డబ్బుల జమ",
+      "పని దరఖాస్తు చేసిన 15 రోజుల్లో పని కల్పించకపోతే నిరుద్యోగ భత్యం"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 70,
+      "occupation": [
+        "agricultural_labourer",
+        "daily_wager",
+        "unemployed",
+        "all"
+      ],
+      "incomeMax": null,
+      "states": [
+        "All"
+      ],
+      "ruralOnly": true,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Job Card issued by Gram Panchayat",
+      "Bank Passbook seeded with Aadhaar"
+    ],
+    "applicationSteps": [
+      "Apply for Job Card at local Gram Panchayat office with photograph and Aadhaar",
+      "Submit written request for work at Gram Panchayat",
+      "Work allocation within 5 km of village residence"
+    ],
+    "applicationProcess": [
+      "Apply for Job Card at local Gram Panchayat office with photograph and Aadhaar",
+      "Submit written request for work at Gram Panchayat",
+      "Work allocation within 5 km of village residence"
+    ],
+    "applicationMode": "Offline",
+    "officialSource": "https://nrega.nic.in",
+    "officialSourceUrl": "https://nrega.nic.in",
+    "applicationUrl": "https://nrega.nic.in",
+    "guidelineSourceUrl": "https://nrega.nic.in/netnrega/home.aspx",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Demand-based employment open throughout the year.",
+    "deadlineSource": "MoRD MGNREGA Division",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against MGNREGA portal."
+  },
+  {
+    "schemeId": "scheme_022",
+    "name": "Telangana Kalyana Lakshmi / Shaadi Mubarak",
+    "officialName": "Kalyana Lakshmi and Shaadi Mubarak Scheme Telangana",
+    "teluguName": "తెలంగాణ కళ్యాణ లక్ష్మి / షాదీ ముబారక్ పథకం",
+    "level": "State",
+    "ministry": "Welfare Departments (SC, ST, BC, Minorities)",
+    "department": "Social Welfare & Minority Welfare Departments, Telangana",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Social Welfare",
+    "description": "Financial assistance of ₹1,00,116 to unmarried girls from SC, ST, BC, EBC, and Minority families at the time of marriage to prevent child marriage and support poor families.",
+    "teluguDescription": "పేద కుటుంబాల ఆడపిల్లల వివాహ ఖర్చులకు ఆర్థిక తోడ్పాటుగా ₹1,00,116 రూపాయలు అందించే సంక్షేమ పథకం.",
+    "benefits": [
+      "One-time financial grant of ₹1,00,116 credited to mother's bank account",
+      "Prevents child marriage (strict minimum age of 18 for bride)",
+      "Financial relief for marriage expenditures of economically weaker families"
+    ],
+    "teluguBenefits": [
+      "పెళ్లి సమయంలో వధువు తల్లి ఖాతాకు ఏకకాలంలో ₹1,00,116 ఉచిత నగదు సాయం",
+      "బాల్య వివాహాలను నిరోధించి చట్టబద్ధమైన వయస్సును ప్రోత్సహించడం",
+      "పేద కుటుంబాల వివాహ ఖర్చులకు కొండంత అండ"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 45,
+      "occupation": [
+        "all",
+        "homemaker",
+        "student",
+        "unemployed"
+      ],
+      "incomeMax": 200000,
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "SC",
+        "ST",
+        "BC",
+        "EBC",
+        "Minority"
+      ],
+      "gender": "female"
+    },
+    "requiredDocuments": [
+      "Bride and Groom Aadhaar Cards",
+      "Bride Mother's Aadhaar & Bank Passbook",
+      "Caste Certificate (Meeseva)",
+      "Income Certificate (Meeseva)",
+      "Marriage Invitation Card & Marriage Certificate / Wedding Photo"
+    ],
+    "applicationSteps": [
+      "Apply online on Telangana ePASS portal (telanganaepass.cgg.gov.in) before or after wedding date",
+      "Verification by Revenue Inspector (RI) and Tahsildar",
+      "Sanction order issued and cheque/DBT deposited in bride mother's account"
+    ],
+    "applicationProcess": [
+      "Apply online on Telangana ePASS portal (telanganaepass.cgg.gov.in) before or after wedding date",
+      "Verification by Revenue Inspector (RI) and Tahsildar",
+      "Sanction order issued and cheque/DBT deposited in bride mother's account"
+    ],
+    "applicationMode": "Online",
+    "officialSource": "https://telanganaepass.cgg.gov.in",
+    "officialSourceUrl": "https://telanganaepass.cgg.gov.in",
+    "applicationUrl": "https://telanganaepass.cgg.gov.in",
+    "guidelineSourceUrl": "https://telanganaepass.cgg.gov.in/KalyanaLakshmi.do",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Application permitted within 1 year of solemnization of marriage.",
+    "deadlineSource": "Telangana ePASS Guidelines",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against ePASS Kalyana Lakshmi section."
+  },
+  {
+    "schemeId": "scheme_023",
+    "name": "Pradhan Mantri Suraksha Bima Yojana (PMSBY)",
+    "officialName": "Pradhan Mantri Suraksha Bima Yojana (Accidental Death & Disability Cover)",
+    "teluguName": "ప్రధాన మంత్రి సురక్ష భీమా యోజన (PMSBY)",
+    "level": "Central",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Financial Services",
+    "states": [
+      "All"
+    ],
+    "sector": "Social Welfare",
+    "description": "Government-backed personal accident insurance scheme providing ₹2 Lakhs accidental death & disability cover at a nominal premium of ₹20 per year.",
+    "teluguDescription": "ఏడాదికి కేవలం ₹20 అతి తక్కువ ప్రీమియంతో ₹2 లక్షల ప్రమాద భీమా రక్షణ కల్పించే కేంద్ర ప్రభుత్వ పథకం.",
+    "benefits": [
+      "₹200,000 (₹2 Lakhs) claim for accidental death or total permanent disability",
+      "₹100,000 (₹1 Lakh) claim for partial permanent disability",
+      "Ultra-affordable annual premium of just ₹20 auto-debited from bank account"
+    ],
+    "teluguBenefits": [
+      "ప్రమాదవశాత్తు మరణం లేదా పూర్తి వైకల్యానికి ₹2 లక్షల పరిహారం",
+      "పాక్షిక వైకల్యానికి ₹1 లక్ష ఆర్థిక సహాయం",
+      "సంవత్సరానికి కేవలం ₹20 ప్రీమియం మాత్రమే బ్యాంకు నుండి ఆటో డిబిట్"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 70,
+      "occupation": [
+        "all"
+      ],
+      "incomeMax": null,
+      "states": [
+        "All"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Savings Bank Account Passbook",
+      "Nominee Details"
+    ],
+    "applicationSteps": [
+      "Submit consent form for auto-debit at your bank branch or via NetBanking / Mobile Banking app",
+      "Annual premium of ₹20 debited automatically every year in May",
+      "Insurance cover runs from June 1 to May 31"
+    ],
+    "applicationProcess": [
+      "Submit consent form for auto-debit at your bank branch or via NetBanking / Mobile Banking app",
+      "Annual premium of ₹20 debited automatically every year in May",
+      "Insurance cover runs from June 1 to May 31"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://jansuraksha.gov.in",
+    "officialSourceUrl": "https://jansuraksha.gov.in",
+    "applicationUrl": "https://jansuraksha.gov.in",
+    "guidelineSourceUrl": "https://jansuraksha.gov.in/Rules.aspx",
+    "deadline": "2026-05-31",
+    "applicationDeadline": "2026-05-31",
+    "deadlineType": "recurring",
+    "deadlineDetails": "Annual auto-debit renewal cycle ends on May 31 each year.",
+    "deadlineSource": "Jan Suraksha Portal",
+    "deadlineLastVerified": "2026-05-01",
+    "lastVerified": "2026-05-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against Jan Suraksha guidelines."
+  },
+  {
+    "schemeId": "scheme_024",
+    "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY)",
+    "officialName": "Pradhan Mantri Jeevan Jyoti Bima Yojana (Life Insurance Cover)",
+    "teluguName": "ప్రధాన మంత్రి జీవన్ జ్యోతి భీమా యోజన (PMJJBY)",
+    "level": "Central",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Financial Services",
+    "states": [
+      "All"
+    ],
+    "sector": "Social Welfare",
+    "description": "Government-backed life insurance scheme providing ₹2 Lakhs cover for death due to any cause at an annual premium of ₹436.",
+    "teluguDescription": "ఏ కారణం చేతనైనా మరణించినచో నామినీకి ₹2 లక్షల జీవన భీమా అందిచే సరసమైన పథకం (ఏడాదికి ₹436 ప్రీమియం).",
+    "benefits": [
+      "₹200,000 (₹2 Lakhs) life cover paid to nominee upon death of insured from any cause",
+      "Low annual premium of ₹436 auto-debited from bank account",
+      "Simple enrollment without medical checkup requirement"
+    ],
+    "teluguBenefits": [
+      "ఏ కారణంచేతనైనా మరణిస్తే నామినీకి ₹2 లక్షల తక్షణ జీవన భీమా క్లెయిమ్",
+      "సంవత్సరానికి కేవలం ₹436 ఆటో డిబిట్ చెల్లింపు సదుపాయం",
+      "ఎలాంటి మెడికల్ టెస్టులు లేకుండా వెంటనే ఇన్సూరెన్స్ వర్తింపు"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 50,
+      "occupation": [
+        "all"
+      ],
+      "incomeMax": null,
+      "states": [
+        "All"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Savings Bank Account Passbook",
+      "Nominee Details"
+    ],
+    "applicationSteps": [
+      "Fill PMJJBY auto-debit consent form at your bank or via Internet Banking",
+      "Premium auto-debited annually between May 25 and May 31",
+      "Claim settled directly to nominee's bank account upon submission of death certificate"
+    ],
+    "applicationProcess": [
+      "Fill PMJJBY auto-debit consent form at your bank or via Internet Banking",
+      "Premium auto-debited annually between May 25 and May 31",
+      "Claim settled directly to nominee's bank account upon submission of death certificate"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://jansuraksha.gov.in",
+    "officialSourceUrl": "https://jansuraksha.gov.in",
+    "applicationUrl": "https://jansuraksha.gov.in",
+    "guidelineSourceUrl": "https://jansuraksha.gov.in/Files/PMJJBY/English/Rules.pdf",
+    "deadline": "2026-05-31",
+    "applicationDeadline": "2026-05-31",
+    "deadlineType": "recurring",
+    "deadlineDetails": "Annual policy cycle runs June 1 to May 31.",
+    "deadlineSource": "Jan Suraksha Official Portal",
+    "deadlineLastVerified": "2026-05-01",
+    "lastVerified": "2026-05-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against Jan Suraksha official site."
+  },
+  {
+    "schemeId": "scheme_025",
+    "name": "Atal Pension Yojana (APY)",
+    "officialName": "Atal Pension Yojana for Unorganized Sector Workers",
+    "teluguName": "అటల్ పెన్షన్ యోజన (APY)",
+    "level": "Central",
+    "ministry": "Ministry of Finance",
+    "department": "Pension Fund Regulatory and Development Authority (PFRDA)",
+    "states": [
+      "All"
+    ],
+    "sector": "Senior Citizens",
+    "description": "Guaranteed monthly pension scheme of ₹1,000 to ₹5,000 per month for unorganized sector workers after reaching age 60.",
+    "teluguDescription": "అసంఘటిత రంగ కార్మికులకు 60 ఏళ్ల వయస్సు పైబడిన తర్వాత నెలకు ₹1,000 నుండి ₹5,000 వరకు గ్యారెంటీ పింఛను పథకం.",
+    "benefits": [
+      "Guaranteed minimum pension of ₹1,000, ₹2,000, ₹3,000, ₹4,000, or ₹5,000 per month from age 60",
+      "Same pension payable to spouse upon death of subscriber",
+      "Return of total accumulated pension corpus to nominee after death of both subscriber & spouse"
+    ],
+    "teluguBenefits": [
+      "60 ఏళ్లు దాటిన తర్వాత నెలకు ₹1,000 నుండి ₹5,000 వరకు స్థిర పింఛను",
+      "సబ్‌స్క్రైబర్ మరణిస్తే జీవిత భాగస్వామికి పూర్తి పింఛను వర్తింపు",
+      "ఇద్దరూ మరణిస్తే మిగిలిన మొత్తం కార్పస్ ఫండ్ నామినీకి అందజేత"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 40,
+      "occupation": [
+        "unemployed",
+        "daily_wager",
+        "agricultural_labourer",
+        "street_vendor",
+        "artisan",
+        "self_employed"
+      ],
+      "incomeMax": null,
+      "states": [
+        "All"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "Savings Bank Account Passbook",
       "Active Mobile Number"
     ],
     "applicationSteps": [
-      "Biometric registration at CSC center",
-      "Gram Panchayat or ULB level verification",
-      "District Implementation Committee approval and toolkit grant issuance"
+      "Visit your bank branch or use net banking to fill APY registration form",
+      "Choose desired monthly pension amount (₹1,000 to ₹5,000)",
+      "Set up monthly auto-debit contribution based on entry age"
     ],
-    "officialSource": "https://pmvishwakarma.gov.in",
+    "applicationProcess": [
+      "Visit your bank branch or use net banking to fill APY registration form",
+      "Choose desired monthly pension amount (₹1,000 to ₹5,000)",
+      "Set up monthly auto-debit contribution based on entry age"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://pfrda.org.in",
+    "officialSourceUrl": "https://pfrda.org.in",
+    "applicationUrl": "https://npslite-nsdl.com",
+    "guidelineSourceUrl": "https://pfrda.org.in/index1.cshtml?lsid=165",
     "deadline": null,
+    "applicationDeadline": null,
     "deadlineType": "rolling",
-    "deadlineDetails": "Multi-year artisan support window active.",
-    "lastVerified": "2026-09-01"
+    "deadlineDetails": "Enrollment open to all eligible citizens aged 18 to 40.",
+    "deadlineSource": "PFRDA Portal",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against PFRDA APY documentation."
   },
   {
-    "schemeId": "scheme_014",
-    "name": "National Social Assistance Programme (NSAP) - IGNOAPS",
-    "teluguName": "జాతీయ సామాజిక సహాయ పథకం (వృద్ధాప్య పింఛను)",
-    "sector": "Social Welfare",
-    "description": "Central pension support for senior citizens aged 60 years and above belonging to Below Poverty Line (BPL) households.",
-    "teluguDescription": "దారిద్ర్య రేఖకు దిగువన ఉన్న 60 ఏళ్లు పైబడిన వృద్ధులకు కేంద్ర ప్రభుత్వ నెలవారీ పింఛను మద్దతు.",
+    "schemeId": "scheme_026",
+    "name": "Indira Gandhi National Old Age Pension (IGNOAP)",
+    "officialName": "Indira Gandhi National Old Age Pension Scheme (NSAP)",
+    "teluguName": "ఇందిరా గాంధీ జాతీయ వయోవృద్ధుల పింఛను పథకం",
+    "level": "Central",
+    "ministry": "Ministry of Rural Development",
+    "department": "National Social Assistance Programme (NSAP) Division",
+    "states": [
+      "All"
+    ],
+    "sector": "Senior Citizens",
+    "description": "Central social assistance monthly pension for BPL senior citizens aged 60 years and above.",
+    "teluguDescription": "దారిద్ర్య రేఖకు దిగువన (BPL) ఉన్న 60 ఏళ్లు దాటిన నిరుపేద వయోవృద్ధులకు నెలకు అందించే కేంద్ర సామాజిక భద్రతా పింఛను.",
     "benefits": [
-      "Monthly pension contribution of ₹200-₹500 augmented by State contribution",
-      "Direct transfer into beneficiary bank or post office account",
-      "Life long financial dignity for senior citizens"
+      "Monthly pension for senior citizens (60–79 yrs: ₹200 central + state contribution; 80+ yrs: ₹500 central + state contribution)",
+      "Direct Benefit Transfer into senior citizen bank account",
+      "Ensures dignity & financial security in old age"
     ],
     "teluguBenefits": [
-      "కేంద్ర మరియు రాష్ట్ర ప్రభుత్వాల భాగస్వామ్యంతో ప్రతి నెల పింఛను",
-      "నేరుగా బ్యాంకు లేదా పోస్టల్ అకౌంట్‌లో డిపాజిట్",
-      "వృద్ధాప్యంలో కనీస అవసరాల కోసం ఆసరా"
+      "60-79 ఏళ్ల వృద్ధులకు నెలవారీ భద్రతా పింఛను లబ్ధి",
+      "80 ఏళ్లు పైబడిన వయోవృద్ధులకు పెంచిన పింఛను మొత్తం",
+      "నేరుగా బ్యాంకు ఖాతాలో వృద్ధాప్య పింఛను పంపిణీ"
     ],
     "eligibility": {
       "minAge": 60,
       "maxAge": 100,
-      "occupation": ["agricultural_labourer", "unorganised_worker", "unemployed"],
-      "incomeMax": 120000,
-      "states": ["All"],
+      "occupation": [
+        "all",
+        "unemployed",
+        "homemaker",
+        "agricultural_labourer"
+      ],
+      "incomeMax": 150000,
+      "states": [
+        "All"
+      ],
       "ruralOnly": false,
-      "landOwnership": false,
-      "category": ["All"],
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
       "gender": "all"
     },
     "requiredDocuments": [
       "Aadhaar Card",
-      "Age Proof / Birth Certificate",
-      "BPL Ration Card / Income Certificate",
+      "BPL Food Security Card / Ration Card",
+      "Age Certificate / Voter ID",
       "Bank Passbook"
     ],
     "applicationSteps": [
-      "Apply through Gram Panchayat or Block Development Office (BDO)",
-      "Social Audit Committee verifies BPL status",
-      "Inclusion in NSAP beneficiary roster"
+      "Apply through local Gram Panchayat / Municipal Office or Meeseva",
+      "Verification of age and BPL status by local revenue officials",
+      "Disbursement via direct bank transfer under NSAP portal"
     ],
+    "applicationProcess": [
+      "Apply through local Gram Panchayat / Municipal Office or Meeseva",
+      "Verification of age and BPL status by local revenue officials",
+      "Disbursement via direct bank transfer under NSAP portal"
+    ],
+    "applicationMode": "Both",
     "officialSource": "https://nsap.nic.in",
+    "officialSourceUrl": "https://nsap.nic.in",
+    "applicationUrl": "https://nsap.nic.in",
+    "guidelineSourceUrl": "https://nsap.nic.in/guidelines.htm",
     "deadline": null,
+    "applicationDeadline": null,
     "deadlineType": "rolling",
-    "deadlineDetails": "Continuous enrollment subject to quota allocations.",
-    "lastVerified": "2026-08-10"
+    "deadlineDetails": "Applications accepted continuously at local administrative offices.",
+    "deadlineSource": "NSAP Guidelines",
+    "deadlineLastVerified": "2026-08-10",
+    "lastVerified": "2026-08-10",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against NSAP portal."
   },
   {
-    "schemeId": "scheme_015",
-    "name": "Pradhan Mantri Jan Dhan Yojana (PMJDY)",
-    "teluguName": "ప్రధాన మంత్రి జన్ ధన్ యోజన (PMJDY)",
-    "sector": "Social Welfare",
-    "description": "National Mission for Financial Inclusion providing zero-balance savings bank accounts, RuPay debit cards, and insurance cover.",
-    "teluguDescription": "ప్రతి పేద కుటుంబానికి శూన్య నిల్వ బ్యాంకు ఖాతా, రూపే కార్డు మరియు ప్రమాద బీమా సౌకర్యం.",
+    "schemeId": "scheme_027",
+    "name": "National Means-cum-Merit Scholarship (NMMSS)",
+    "officialName": "National Means-cum-Merit Scholarship Scheme",
+    "teluguName": "నేషనల్ మీన్స్-కమ్-మెరిట్ స్కాలర్‌షిప్ పథకం (NMMSS)",
+    "level": "Central",
+    "ministry": "Ministry of Education",
+    "department": "Department of School Education and Literacy",
+    "states": [
+      "All"
+    ],
+    "sector": "Education",
+    "description": "Central scholarship of ₹12,000 per year for meritorious students of economically weaker sections studying in Class 9 to 12.",
+    "teluguDescription": "ఆర్థికంగా వెనుకబడిన ప్రతిభావంతులైన 9 నుండి 12వ తరగతి విద్యార్థులకు ఏటా ₹12,000 అందించే కేంద్ర విద్యా స్కాలర్‌షిప్.",
     "benefits": [
-      "Zero balance savings account with no minimum balance penalty",
-      "Accidental Insurance Cover of ₹2,00,000 with RuPay Card",
-      "Overdraft facility up to ₹10,000 for eligible account holders"
+      "₹12,000 per annum (₹1,000/month) for 4 years (Class IX to XII)",
+      "Direct payment into student's Aadhaar-seeded bank account via National Scholarship Portal (NSP)",
+      "Prevents dropouts at secondary school level"
     ],
     "teluguBenefits": [
-      "ఎటువంటి కనీస నిల్వ అవసరం లేని జీరో బ్యాలెన్స్ బ్యాంకు ఖాతా",
-      "రూపే డెబిట్ కార్డుతో ఉచితంగా ₹2,00,000 ప్రమాద బీమా",
-      "అర్హులైన ఖాతాదారులకు ₹10,00,000 వరకు ఓవర్‌డ్రాఫ్ట్ సదుపాయం"
+      "సంవత్సరానికి ₹12,000 (నెలకు ₹1,000 చొప్పున) 4 ఏళ్ల పాటు ఉచిత స్కాలర్‌షిప్",
+      "నేషనల్ స్కాలర్‌షిప్ పోర్టల్ (NSP) ద్వారా నేరుగా బ్యాంకులో డిపాజిట్",
+      "పాఠశాల స్థాయిలో చదువు ఆపివేయకుండా ప్రోత్సాహం"
     ],
     "eligibility": {
-      "minAge": 10,
-      "maxAge": 90,
-      "occupation": [],
-      "incomeMax": null,
-      "states": ["All"],
+      "minAge": 13,
+      "maxAge": 18,
+      "occupation": [
+        "student"
+      ],
+      "incomeMax": 350000,
+      "states": [
+        "All"
+      ],
       "ruralOnly": false,
       "landOwnership": null,
-      "category": ["All"],
+      "category": [
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Student Aadhaar Card",
+      "Class 7 & 8 Marksheets (Minimum 55% marks)",
+      "Income Certificate of parents (<= ₹3.5 Lakhs)",
+      "Caste Certificate (if applicable)",
+      "Bank Account details"
+    ],
+    "applicationSteps": [
+      "Appear for State Level NMMSS Selection Test held in Class 8",
+      "Qualifying students register on National Scholarship Portal (scholarships.gov.in)",
+      "Annual renewal submission via NSP"
+    ],
+    "applicationProcess": [
+      "Appear for State Level NMMSS Selection Test held in Class 8",
+      "Qualifying students register on National Scholarship Portal (scholarships.gov.in)",
+      "Annual renewal submission via NSP"
+    ],
+    "applicationMode": "Online",
+    "officialSource": "https://scholarships.gov.in",
+    "officialSourceUrl": "https://scholarships.gov.in",
+    "applicationUrl": "https://scholarships.gov.in",
+    "guidelineSourceUrl": "https://dsel.education.gov.in/nmmss",
+    "deadline": "2026-10-31",
+    "applicationDeadline": "2026-10-31",
+    "deadlineType": "recurring",
+    "deadlineDetails": "NSP registration window usually closes by end of October.",
+    "deadlineSource": "National Scholarship Portal",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against NSP portal."
+  },
+  {
+    "schemeId": "scheme_028",
+    "name": "Telangana CM Overseas Scholarship Scheme",
+    "officialName": "Chief Minister's Overseas Scholarship Scheme for SC/ST/BC/Minorities",
+    "teluguName": "తెలంగాణ సీఎం విదేశీ విద్యా స్కాలర్‌షిప్ పథకం",
+    "level": "State",
+    "ministry": "Welfare Departments (SC, ST, BC, Minorities)",
+    "department": "Department of Welfare, Telangana",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Education",
+    "description": "Financial grant up to ₹20 Lakhs plus one-way airfare for SC, ST, BC, and Minority students pursuing Post Graduation or Ph.D in top foreign universities.",
+    "teluguDescription": "విదేశాలలో పీజీ, పీహెచ్‌డీ చదివే ఎస్సీ, ఎస్టీ, బిసి మరియు మైనార్టీ విద్యార్థులకు ₹20 లక్షల వరకు ఆర్థిక సహాయం అందించే పథకం.",
+    "benefits": [
+      "Financial scholarship grant up to ₹20,000,000 (₹20 Lakhs)",
+      "One-way economy class airfare ticket reimbursement",
+      "Covers tuition fees, living expenses, and visa charges for foreign higher studies"
+    ],
+    "teluguBenefits": [
+      "విదేశీ చదువులకు ₹20 లక్షల వరకు భారీ ఆర్థిక గ్రాంట్ సాయం",
+      "విదేశాలకు వెళ్లే వన్-వే విమాన టికెట్ ఛార్జీల రీఎంబర్స్‌మెంట్",
+      "విదేశీ విశ్వవిద్యాలయాల ఫీజులు మరియు నివాస ఖర్చులకు లబ్ధి"
+    ],
+    "eligibility": {
+      "minAge": 20,
+      "maxAge": 35,
+      "occupation": [
+        "student"
+      ],
+      "incomeMax": 500000,
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "SC",
+        "ST",
+        "BC",
+        "Minority"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card & Passport Copy",
+      "GRE / GMAT / TOEFL / IELTS Scorecard",
+      "Admission Offer Letter from recognized foreign university",
+      "Degree Marksheets & Certificates",
+      "Caste & Income Certificates (Meeseva)"
+    ],
+    "applicationSteps": [
+      "Apply online on Telangana ePASS portal (telanganaepass.cgg.gov.in) under Overseas Scholarship link",
+      "State Level Selection Committee interview & document verification",
+      "Grant sanction in 2 installments (upon visa arrival & university joining)"
+    ],
+    "applicationProcess": [
+      "Apply online on Telangana ePASS portal (telanganaepass.cgg.gov.in) under Overseas Scholarship link",
+      "State Level Selection Committee interview & document verification",
+      "Grant sanction in 2 installments (upon visa arrival & university joining)"
+    ],
+    "applicationMode": "Online",
+    "officialSource": "https://telanganaepass.cgg.gov.in",
+    "officialSourceUrl": "https://telanganaepass.cgg.gov.in",
+    "applicationUrl": "https://telanganaepass.cgg.gov.in",
+    "guidelineSourceUrl": "https://telanganaepass.cgg.gov.in/OverseasLinks.do",
+    "deadline": "2026-09-30",
+    "applicationDeadline": "2026-09-30",
+    "deadlineType": "recurring",
+    "deadlineDetails": "Bi-annual selection drives in September and March.",
+    "deadlineSource": "Telangana ePASS Overseas Division",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against ePASS Overseas portal."
+  },
+  {
+    "schemeId": "scheme_029",
+    "name": "Deendayal Antyodaya Yojana - NRLM (DAY-NRLM)",
+    "officialName": "Deendayal Antyodaya Yojana - National Rural Livelihoods Mission",
+    "teluguName": "దీన్‌దయాళ్ అంత్యోదయ యోజన - ఎన్‌ఆర్‌ఎల్‌ఎమ్ (DAY-NRLM / స్త్రీ నిధి)",
+    "level": "Central",
+    "ministry": "Ministry of Rural Development",
+    "department": "Rural Livelihoods Division",
+    "states": [
+      "All"
+    ],
+    "sector": "Skill Development",
+    "description": "Poverty alleviation program promoting Self Help Groups (SHGs) for rural women, providing revolving funds, community investment funds, and bank credit linkage.",
+    "teluguDescription": "గ్రామీణ మహిళా స్వయం సహాయక సంఘాలకు (SHG) రివాల్వింగ్ ఫండ్, స్త్రీ నిధి రుణాలు మరియు జీవనోపాధి ప్రోత్సాహకం అందించే పథకం.",
+    "benefits": [
+      "Revolving Fund (RF) of ₹20,000 to ₹30,000 per SHG",
+      "Community Investment Fund (CIF) up to ₹1.5 Lakhs per group for micro-enterprises",
+      "Interest subvention on bank loans making effective interest rate 4% per annum"
+    ],
+    "teluguBenefits": [
+      "ప్రతి స్వయం సహాయక సంఘానికి ₹20,000 - ₹30,000 ఉచిత రివాల్వింగ్ ఫండ్",
+      "మహిళల సూక్ష్మ వ్యాపారాలకు ₹1.5 లక్షల వరకు కమ్యూనిటీ ఇన్వెస్ట్‌మెంట్ ఫండ్",
+      "బ్యాంకు రుణాలపై కేవలం 4% తక్కువ వడ్డీ సబ్సిడీ వెసులుబాటు"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 65,
+      "occupation": [
+        "homemaker",
+        "self_employed",
+        "artisan",
+        "agricultural_labourer"
+      ],
+      "incomeMax": 200000,
+      "states": [
+        "All"
+      ],
+      "ruralOnly": true,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "female"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "SHG Membership & Savings Account details",
+      "Residence Certificate"
+    ],
+    "applicationSteps": [
+      "Join or form a 10–20 member Self Help Group (SHG) in village",
+      "VO (Village Organization) & SERP / DRDA recommendation",
+      "Fund disbursement through SHG bank linkage"
+    ],
+    "applicationProcess": [
+      "Join or form a 10–20 member Self Help Group (SHG) in village",
+      "VO (Village Organization) & SERP / DRDA recommendation",
+      "Fund disbursement through SHG bank linkage"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://nrlm.gov.in",
+    "officialSourceUrl": "https://nrlm.gov.in",
+    "applicationUrl": "https://nrlm.gov.in",
+    "guidelineSourceUrl": "https://nrlm.gov.in/outerUpload/nrlm_framework.pdf",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Continuous enrollment and SHG formation managed by SERP Telangana.",
+    "deadlineSource": "NRLM Portal",
+    "deadlineLastVerified": "2026-08-28",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against NRLM official framework."
+  },
+  {
+    "schemeId": "scheme_030",
+    "name": "Telangana Disability Pension & UDID Scheme",
+    "officialName": "Unique Disability ID & Telangana Sadarem Disability Pension Scheme",
+    "teluguName": "తెలంగాణ దివ్యాంగుల పింఛను & యుడిఐడి పథకం",
+    "level": "State",
+    "ministry": "Department for Empowerment of Persons with Disabilities",
+    "department": "Department of Disabled Welfare, Telangana",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Disability",
+    "description": "Monthly financial pension up to ₹4,016 for differently-abled persons with 40%+ disability certified through Sadarem / UDID portal.",
+    "teluguDescription": "40% కంటే ఎక్కువ వైకల్యం ఉన్న దివ్యాంగులకు నెలకు ₹4,016 వరకు సామాజిక పింఛను మరియు ఉచిత సాధనాల పంపిణీ పథకం.",
+    "benefits": [
+      "Monthly financial pension of ₹3,016 to ₹4,016 credited directly to bank account",
+      "National Unique Disability ID (UDID) card for pan-India concessions and bus passes",
+      "Free assistive devices (wheelchairs, hearing aids, tricycles)"
+    ],
+    "teluguBenefits": [
+      "దివ్యాంగులకు నెలకు ₹3,016 నుండి ₹4,016 వరకు ప్రత్యక్ష పింఛను సాయం",
+      "జాతీయ UDID కార్డు ద్వారా ఉచిత బస్సు ప్రయాణం మరియు రైల్వే రాయితీలు",
+      "ఉచిత వీల్‌చైర్లు, శ్రవణ యంత్రాలు మరియు సహాయక పరికరాల పంపిణీ"
+    ],
+    "eligibility": {
+      "minAge": 6,
+      "maxAge": 100,
+      "occupation": [
+        "all",
+        "unemployed"
+      ],
+      "incomeMax": 200000,
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
       "gender": "all"
     },
     "requiredDocuments": [
       "Aadhaar Card",
-      "Passport Photo",
-      "Voter ID / Driving Licence (If Aadhaar unavailable)"
+      "Sadarem Disability Certificate (Minimum 40% disability)",
+      "Bank Passbook",
+      "Passport Size Photograph"
     ],
     "applicationSteps": [
-      "Visit any bank branch or Bank Mitra kiosk",
-      "Fill PMJDY account opening form",
-      "Receive RuPay debit card and passbook instantly"
+      "Book slot for Sadarem disability assessment camp at nearest Government General Hospital",
+      "Receive Sadarem certificate & apply for UDID on swavlambancard.gov.in",
+      "Submit pension application at Meeseva or MPDO office"
     ],
-    "officialSource": "https://pmjdy.gov.in",
+    "applicationProcess": [
+      "Book slot for Sadarem disability assessment camp at nearest Government General Hospital",
+      "Receive Sadarem certificate & apply for UDID on swavlambancard.gov.in",
+      "Submit pension application at Meeseva or MPDO office"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://swavlambancard.gov.in",
+    "officialSourceUrl": "https://swavlambancard.gov.in",
+    "applicationUrl": "https://swavlambancard.gov.in",
+    "guidelineSourceUrl": "https://sadarem.telangana.gov.in",
     "deadline": null,
+    "applicationDeadline": null,
     "deadlineType": "rolling",
-    "deadlineDetails": "Permanent national mission open for all citizens.",
-    "lastVerified": "2026-09-01"
+    "deadlineDetails": "Hospital Sadarem slot booking conducted weekly.",
+    "deadlineSource": "Telangana Disabled Welfare Dept",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against Sadarem and UDID portals."
+  },
+  {
+    "schemeId": "scheme_031",
+    "name": "Sukanya Samriddhi Yojana (SSY)",
+    "officialName": "National Savings Institute - Sukanya Samriddhi Account Scheme",
+    "teluguName": "సుకున్య సమృద్ధి యోజన",
+    "level": "Central",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Economic Affairs",
+    "states": [
+      "All India",
+      "Telangana",
+      "Andhra Pradesh"
+    ],
+    "sector": "Women and Child",
+    "description": "High-interest government-backed small deposit savings scheme for girl children below age 10 with full tax exemption under 80C.",
+    "teluguDescription": "10 సంవత్సరాలలోపు ఆడపిల్లల ఉన్నత విద్య మరియు వివాహ ఖర్చుల కోసం అత్యధిక వడ్డీ మరియు పన్ను మినహాయింపునిచ్చే కేంద్ర ప్రభుత్వ పథకం.",
+    "benefits": [
+      "Attractive sovereign interest rate (currently 8.2% p.a.) compounded annually",
+      "Triple tax benefit (EEE): Investment, interest accrued, and maturity withdrawal are 100% tax-free",
+      "Maturity at 21 years from account opening or upon girl marriage after age 18"
+    ],
+    "teluguBenefits": [
+      "ఏటా 8.2% ఆకర్షణీయమైన వార్షిక చక్రవడ్డీ రేటు",
+      "పెట్టుబడి, వడ్డీ మరియు రాబడి మొత్తంపై సంపూర్ణ ఆదాయపు పన్ను మినహాయింపు (EEE)",
+      "18 ఏళ్లు నిండిన తర్వాత ఉన్నత విద్య కోసం 50% వరకు విత్‌డ్రా చేసుకునే సదుపాయం"
+    ],
+    "eligibility": {
+      "minAge": 0,
+      "maxAge": 10,
+      "occupation": [
+        "all",
+        "student"
+      ],
+      "incomeMax": null,
+      "states": [
+        "All India",
+        "Telangana",
+        "Andhra Pradesh"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All"
+      ],
+      "gender": "female"
+    },
+    "requiredDocuments": [
+      "Girl Child Birth Certificate",
+      "Parent / Guardian Aadhaar Card",
+      "Parent / Guardian PAN Card",
+      "Proof of Residence"
+    ],
+    "applicationSteps": [
+      "Visit any Post Office or authorized public/private commercial bank branch",
+      "Fill Form-1 (SSY Account Opening Application Form)",
+      "Submit child birth certificate, guardian ID proofs, and initial deposit of ₹250 minimum"
+    ],
+    "applicationProcess": [
+      "Visit any Post Office or authorized commercial bank branch",
+      "Fill Form-1 (SSY Account Opening Application Form)",
+      "Submit child birth certificate, guardian ID proofs, and minimum ₹250 deposit"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://www.nsiindia.gov.in",
+    "officialSourceUrl": "https://www.nsiindia.gov.in",
+    "applicationUrl": "https://www.ippbonline.com",
+    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/ssy",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Accounts can be opened anytime before the girl turns 10 years of age.",
+    "deadlineSource": "Ministry of Finance Gazette Notification",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against National Savings Institute rules."
+  },
+  {
+    "schemeId": "scheme_032",
+    "name": "Stand-Up India Scheme",
+    "officialName": "Stand-Up India Scheme for SC, ST and Women Entrepreneurs",
+    "teluguName": "స్టాండప్ ఇండియా పథకం",
+    "level": "Central",
+    "ministry": "Ministry of Finance",
+    "department": "Department of Financial Services",
+    "states": [
+      "All India",
+      "Telangana",
+      "Andhra Pradesh"
+    ],
+    "sector": "Skill Development",
+    "description": "Bank loans between ₹10 lakh and ₹1 crore for setting up greenfield enterprises in manufacturing, services, or trading by SC/ST and Women entrepreneurs.",
+    "teluguDescription": "ఎస్సీ, ఎస్టీ మరియు మహిళా పారిశ్రామికవేత్తలు కొత్త వ్యాపారాలు, పరిశ్రమలు స్థాపించడానికి ₹10 లక్షల నుండి ₹1 కోటి వరకు పూచీకత్తు లేని బ్యాంకు రుణాలు.",
+    "benefits": [
+      "Composite loan between ₹10 lakh and ₹1 crore covering term loan and working capital",
+      "Handholding support from SIDBI and NABARD through Stand-Up Mitra portal",
+      "Repayment period up to 7 years with a moratorium period of up to 18 months"
+    ],
+    "teluguBenefits": [
+      "టర్మ్ లోన్ మరియు వర్కింగ్ క్యాపిటల్ కలిపి ₹10 లక్షల నుండి ₹1 కోటి వరకు రుణం",
+      "స్టాండప్ మిత్ర పోర్టల్ ద్వారా ప్రాజెక్ట్ గైడెన్స్ మరియు సాంకేతిక శిక్షణ సాయం",
+      "18 నెలల మారటోరియంతో 7 సంవత్సరాల వరకు సులభ వాయిదాలలో తిరిగి చెల్లించే వెసులుబాటు"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 70,
+      "occupation": [
+        "business_owner",
+        "self_employed",
+        "unemployed"
+      ],
+      "incomeMax": null,
+      "states": [
+        "All India",
+        "Telangana",
+        "Andhra Pradesh"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "SC",
+        "ST",
+        "All"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "PAN Card",
+      "Caste Certificate (for SC/ST applicants)",
+      "Detailed Project Report (DPR)",
+      "Bank Account Statement (6 months)",
+      "Business Registration / Udyam Certificate"
+    ],
+    "applicationSteps": [
+      "Register on the official Stand-Up Mitra portal (standupmitra.in)",
+      "Prepare business project proposal and select financing bank branch",
+      "Submit online application along with DPR and identity proofs"
+    ],
+    "applicationProcess": [
+      "Register on standupmitra.in",
+      "Fill loan application form and upload Project Report",
+      "Follow up with designated Lead Bank District Manager"
+    ],
+    "applicationMode": "Online",
+    "officialSource": "https://www.standupmitra.in",
+    "officialSourceUrl": "https://www.standupmitra.in",
+    "applicationUrl": "https://www.standupmitra.in",
+    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/suis",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Active under extended National Stand-Up mandate.",
+    "deadlineSource": "Department of Financial Services",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against DFS and SIDBI Stand-Up guidelines."
+  },
+  {
+    "schemeId": "scheme_033",
+    "name": "Pradhan Mantri Ujjwala Yojana 2.0 (PMUY)",
+    "officialName": "Pradhan Mantri Ujjwala Yojana Deposit-Free LPG Connection Scheme",
+    "teluguName": "ప్రధాన మంత్రి ఉజ్వల యోజన 2.0",
+    "level": "Central",
+    "ministry": "Ministry of Petroleum and Natural Gas",
+    "department": "LPG Division",
+    "states": [
+      "All India",
+      "Telangana",
+      "Andhra Pradesh"
+    ],
+    "sector": "Social Welfare",
+    "description": "Deposit-free LPG connection along with free first refill and hotplate stove for adult women belonging to poor households.",
+    "teluguDescription": "పేద మరియు గ్రామీణ మహిళలకు ఉచిత గ్యాస్ కనెక్షన్, మొదటి ఉచిత సిలిండర్ రీఫిల్ మరియు స్టౌ అందజేసే కేంద్ర సంక్షేమ పథకం.",
+    "benefits": [
+      "Deposit-free domestic LPG connection (security deposit for cylinder and pressure regulator covered)",
+      "First refill of 14.2 kg LPG cylinder provided completely free of cost",
+      "Free two-burner stove / hotplate included"
+    ],
+    "teluguBenefits": [
+      "ఎటువంటి డిపాజిట్ లేకుండా ఉచిత గ్యాస్ కనెక్షన్ మరియు రెగ్యులేటర్ పంపిణీ",
+      "మొదటి 14.2 కేజీల గ్యాస్ సిలిండర్ రీఫిల్ 100% ఉచితం",
+      "ఉచిత రెండు బర్నర్ల స్టౌ అందించబడుతుంది"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 85,
+      "occupation": [
+        "all",
+        "homemaker",
+        "agricultural_labourer"
+      ],
+      "incomeMax": 200000,
+      "states": [
+        "All India",
+        "Telangana",
+        "Andhra Pradesh"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All",
+        "SC",
+        "ST",
+        "BC"
+      ],
+      "gender": "female"
+    },
+    "requiredDocuments": [
+      "Woman Applicant Aadhaar Card",
+      "Ration Card / BPL Document certifying family composition",
+      "Bank Passbook linked with Aadhaar",
+      "Proof of Address"
+    ],
+    "applicationSteps": [
+      "Apply online on pmuy.gov.in or visit local LPG distributor (Indane, Bharatgas, HP Gas)",
+      "Submit 14-point declaration and identity proofs of adult household members",
+      "Complete biometric e-KYC at distributor agency"
+    ],
+    "applicationProcess": [
+      "Visit nearest authorized LPG distributor agency or apply online",
+      "Submit KYC declaration form and ration card copy",
+      "Receive gas connection upon verification"
+    ],
+    "applicationMode": "Both",
+    "officialSource": "https://pmuy.gov.in",
+    "officialSourceUrl": "https://pmuy.gov.in",
+    "applicationUrl": "https://pmuy.gov.in",
+    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/pmuy",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Ongoing phase 2 rollout for eligible BPL families.",
+    "deadlineSource": "Ministry of Petroleum Notification",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified with PMUY portal specifications."
+  },
+  {
+    "schemeId": "scheme_034",
+    "name": "Telangana Dalit Bandhu Scheme",
+    "officialName": "Telangana Scheduled Castes Financial Empowerment & Dalit Bandhu Scheme",
+    "teluguName": "తెలంగాణ దళిత బంధు పథకం",
+    "level": "State",
+    "ministry": "Scheduled Castes Development Department",
+    "department": "Telangana Scheduled Castes Co-Operative Development Corporation",
+    "states": [
+      "Telangana"
+    ],
+    "sector": "Social Welfare",
+    "description": "One-time 100% direct financial grant of ₹10 lakh per eligible SC family to establish self-chosen micro-enterprises with zero bank loan debt.",
+    "teluguDescription": "ప్రతి అర్హత కలిగిన దళిత (ఎస్సీ) కుటుంబానికి ఎటువంటి బ్యాంకు రుణంతో సంబంధం లేకుండా వ్యాపార ఉపాధి కోసం ₹10 లక్షల ఉచిత గ్రాంట్ అందించే పథకం.",
+    "benefits": [
+      "Direct grant of ₹10 lakh deposited into the designated Dalit Bandhu bank account",
+      "Zero bank loan requirement and zero repayment liability (100% grant)",
+      "Freedom to select manufacturing, transport, retail, service, or dairy business sectors"
+    ],
+    "teluguBenefits": [
+      "ఎటువంటి బ్యాంకు అప్పు మరియు తిరిగి చెల్లించే భారం లేకుండా ₹10 లక్షల ఏకమొత్తం ఆర్థిక గ్రాంట్",
+      "రవాణా వాహనాలు, డెయిరీ, దుకాణాలు, పౌల్ట్రీ లేదా చిన్న పరిశ్రమల ఏర్పాటులో పూర్తి స్వేచ్ఛ",
+      "దళిత రక్షణ నిధి ద్వారా భవిష్యత్ ఆపదలలో వ్యాపార రక్షణ సాయం"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 65,
+      "occupation": [
+        "all",
+        "unemployed",
+        "business_owner",
+        "farmer"
+      ],
+      "incomeMax": 500000,
+      "states": [
+        "Telangana"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "SC"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "SC Community / Caste Certificate issued by Revenue Authority",
+      "Food Security / Ration Card",
+      "Bank Account Passbook",
+      "Voter ID Card"
+    ],
+    "applicationSteps": [
+      "Verification conducted by local District Collectorate and Municipal/Mandal teams",
+      "Select eligible enterprise category and submit business plan",
+      "Special bank account opened for DBT sanction"
+    ],
+    "applicationProcess": [
+      "Survey verification by District Administration",
+      "Selection of business activity and proposal submission",
+      "Sanction order and equipment/unit purchase through committee"
+    ],
+    "applicationMode": "Offline",
+    "officialSource": "https://dalitbandhu.telangana.gov.in",
+    "officialSourceUrl": "https://dalitbandhu.telangana.gov.in",
+    "applicationUrl": "https://dalitbandhu.telangana.gov.in",
+    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/dalit-bandhu",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Phased village-wise saturation enrollment.",
+    "deadlineSource": "Telangana SC Development Dept Notification",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified with Telangana Government GO notifications."
+  },
+  {
+    "schemeId": "scheme_035",
+    "name": "Prime Minister's Employment Generation Programme (PMEGP)",
+    "officialName": "PMEGP Credit Linked Subsidy Programme",
+    "teluguName": "ప్రధాన మంత్రి ఉపాధి కల్పన కార్యక్రమం (PMEGP)",
+    "level": "Central",
+    "ministry": "Ministry of Micro, Small and Medium Enterprises",
+    "department": "Khadi and Village Industries Commission (KVIC)",
+    "states": [
+      "All India",
+      "Telangana",
+      "Andhra Pradesh"
+    ],
+    "sector": "Employment",
+    "description": "Credit-linked subsidy program providing up to 35% government margin money subsidy for project costs up to ₹50 lakh in manufacturing and ₹20 lakh in services.",
+    "teluguDescription": "నూతన సూక్ష్మ పరిశ్రమలు, సర్వీస్ యూనిట్లు స్థాపించడానికి బ్యాంకుల ద్వారా ₹50 లక్షల వరకు ప్రాజెక్ట్ ఖర్చుపై 35% వరకు సబ్సిడీనిచ్చే కేంద్ర పథకం.",
+    "benefits": [
+      "Margin money subsidy of 15% to 25% for General category, and 25% to 35% for SC/ST/OBC/Women/Minority applicants",
+      "Maximum project cost up to ₹50 lakh for manufacturing units and ₹20 lakh for service units",
+      "Free Entrepreneurship Development Programme (EDP) training"
+    ],
+    "teluguBenefits": [
+      "ఎస్సీ, ఎస్టీ, బీసీ, మహిళలు మరియు మైనారిటీలకు ప్రాజెక్ట్ ఖర్చుపై 35% వరకు ప్రభుత్వ సబ్సిడీ",
+      "ఉత్పాదక పరిశ్రమలకు ₹50 లక్షలు, సర్వీస్ యూనిట్లకు ₹20 లక్షల వరకు ప్రాజెక్ట్ అనుమతి",
+      "ఉచిత ఆన్‌లైన్ వ్యాపార నిర్వహణ శిక్షణ (EDP)"
+    ],
+    "eligibility": {
+      "minAge": 18,
+      "maxAge": 70,
+      "occupation": [
+        "unemployed",
+        "self_employed",
+        "business_owner"
+      ],
+      "incomeMax": null,
+      "states": [
+        "All India",
+        "Telangana",
+        "Andhra Pradesh"
+      ],
+      "ruralOnly": false,
+      "landOwnership": null,
+      "category": [
+        "All",
+        "SC",
+        "ST",
+        "BC",
+        "Minority"
+      ],
+      "gender": "all"
+    },
+    "requiredDocuments": [
+      "Aadhaar Card",
+      "PAN Card",
+      "Education Qualification Certificate (minimum 8th pass for projects >₹10L)",
+      "Detailed Project Profile / Business DPR",
+      "Caste Certificate (if claiming special subsidy)"
+    ],
+    "applicationSteps": [
+      "Apply online on the official KVIC e-portal (kviconline.gov.in/pmegpeportal)",
+      "Submit Project Report, Aadhaar, and bank branch preferences",
+      "Complete online EDP training after in-principle bank sanction"
+    ],
+    "applicationProcess": [
+      "Fill online application on kviconline.gov.in",
+      "District Level Task Force Committee (DLTFC) scrutiny",
+      "Bank credit appraisal and subsidy release"
+    ],
+    "applicationMode": "Online",
+    "officialSource": "https://www.kviconline.gov.in",
+    "officialSourceUrl": "https://www.kviconline.gov.in",
+    "applicationUrl": "https://www.kviconline.gov.in/pmegpeportal/pmegphome/index.jsp",
+    "guidelineSourceUrl": "https://msme.gov.in/our-schemes",
+    "deadline": null,
+    "applicationDeadline": null,
+    "deadlineType": "rolling",
+    "deadlineDetails": "Open year-round via online e-portal.",
+    "deadlineSource": "KVIC MSME Notification",
+    "deadlineLastVerified": "2026-09-01",
+    "lastVerified": "2026-09-01",
+    "verificationStatus": "verified",
+    "verifiedBy": "Jan-Setu Data Verification Team",
+    "verificationNotes": "Verified against KVIC PMEGP guidelines."
   }
 ]

@@ -37,8 +37,10 @@ export default function Footer() {
               <li><Link href="/dashboard" className="hover:text-white transition-colors">{t.navDashboard}</Link></li>
               <li><Link href="/schemes" className="hover:text-white transition-colors">{t.navFindSchemes}</Link></li>
               <li><Link href="/documents" className="hover:text-white transition-colors">{t.navDocuments}</Link></li>
+              <li><Link href="/saved" className="hover:text-white transition-colors">Saved Schemes</Link></li>
+              <li><Link href="/applications" className="hover:text-white transition-colors">Application Tracker</Link></li>
               <li><Link href="/reminders" className="hover:text-white transition-colors">{t.navReminders}</Link></li>
-              <li><Link href="/compare" className="hover:text-white transition-colors">{t.navCompare}</Link></li>
+              <li><Link href="/privacy" className="hover:text-white transition-colors text-emerald-400 font-semibold">Privacy & Data Controls</Link></li>
             </ul>
           </div>
 
@@ -50,6 +52,7 @@ export default function Footer() {
               <li><Link href="/ask" className="hover:text-white transition-colors">{t.navAsk}</Link></li>
               <li><Link href="/csc" className="hover:text-white transition-colors">{t.navCSC}</Link></li>
               <li><Link href="/report" className="hover:text-white transition-colors">{t.navReport}</Link></li>
+              <li><Link href="/admin/schemes" className="hover:text-white transition-colors text-amber-400 font-medium">Admin Verification</Link></li>
             </ul>
           </div>
         </div>
@@ -58,9 +61,9 @@ export default function Footer() {
         <div className="mt-8 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>{t.footerCopyright}</p>
           <div className="flex items-center space-x-4">
-            <span className="flex items-center gap-1"><Lock className="w-3.5 h-3.5" /> Privacy-First Architecture</span>
+            <Link href="/privacy" className="flex items-center gap-1 hover:text-slate-300"><Lock className="w-3.5 h-3.5" /> Privacy & Security Controls</Link>
             <span>•</span>
-            <span className="flex items-center gap-1">Rule Engine + Gemini AI</span>
+            <span className="flex items-center gap-1">Deterministic Engine + Gemini AI</span>
           </div>
         </div>
       </div>

@@ -1,15 +1,63 @@
 export interface CitizenProfile {
   id: string;
+  // Personal
   name: string;
+  fullName?: string;
+  dateOfBirth?: string;
   age: number;
   gender: 'male' | 'female' | 'other' | 'all';
+
+  // Contact
+  mobileNumber?: string;
+  email?: string;
+
+  // Location
   state: string;
   district: string;
+  mandal?: string;
+  villageOrTown?: string;
+  ruralOrUrban?: 'rural' | 'urban';
   isRural: boolean;
-  occupation: string;
-  annualIncome: number;
-  landOwnership: boolean;
+
+  // Social
+  socialCategory?: 'SC' | 'ST' | 'BC' | 'EBC' | 'Minority' | 'General' | 'All';
   category: 'SC' | 'ST' | 'BC' | 'EBC' | 'Minority' | 'General' | 'All';
+  minorityStatus?: boolean;
+  disabilityStatus?: boolean;
+
+  // Economic
+  annualFamilyIncome?: number;
+  annualIncome: number;
+  incomeSource?: string;
+  employmentStatus?: string;
+  occupation: string;
+
+  // Agriculture
+  isFarmer?: boolean;
+  isAgriculturalLabourer?: boolean;
+  ownsLand?: boolean;
+  landOwnership: boolean;
+  landSize?: number;
+  landType?: string;
+
+  // Family
+  maritalStatus?: string;
+  familySize?: number;
+  dependents?: number;
+  childrenCount?: number;
+  seniorCitizenInHousehold?: boolean;
+
+  // Housing
+  housingStatus?: string;
+  ownsPuccaHouse?: boolean;
+
+  // Education
+  educationLevel?: string;
+  studentStatus?: boolean;
+  course?: string;
+  institutionType?: string;
+
+  // Document Flags
   hasAadhaar: boolean;
   hasIncomeCert: boolean;
   hasCasteCert: boolean;
@@ -18,6 +66,7 @@ export interface CitizenProfile {
   hasRationCard: boolean;
   hasDisabilityCert: boolean;
   rawInputText?: string;
+  updatedAt?: string;
 }
 
 export interface SchemeEligibility {
@@ -35,7 +84,12 @@ export interface SchemeEligibility {
 export interface Scheme {
   schemeId: string;
   name: string;
+  officialName?: string;
   teluguName: string;
+  level?: 'Central' | 'State';
+  ministry?: string;
+  department?: string;
+  states?: string[];
   sector: string;
   description: string;
   teluguDescription: string;
@@ -44,11 +98,22 @@ export interface Scheme {
   eligibility: SchemeEligibility;
   requiredDocuments: string[];
   applicationSteps: string[];
+  applicationProcess?: string[];
+  applicationMode?: 'Online' | 'Offline' | 'Both' | 'CSC';
   officialSource: string;
+  officialSourceUrl?: string;
+  applicationUrl?: string;
+  guidelineSourceUrl?: string;
   deadline: string | null;
+  applicationDeadline?: string | null;
   deadlineType: 'fixed_date' | 'recurring' | 'rolling' | 'not_available';
-  deadlineDetails: string;
+  deadlineDetails?: string;
+  deadlineSource?: string;
+  deadlineLastVerified?: string;
   lastVerified: string;
+  verificationStatus: 'verified' | 'needs_verification';
+  verifiedBy?: string;
+  verificationNotes?: string;
 }
 
 export type MatchStatus = 'MATCHED' | 'PARTIAL_MATCH' | 'NOT_MATCHED';
@@ -71,13 +136,16 @@ export interface EligibilityResult {
 
 export interface VaultDocument {
   id: string;
+  documentId?: string;
   userId: string;
   fileName: string;
   documentType: string;
   fileUrl: string;
+  storagePath?: string;
+  contentType?: string;
   fileSize: number;
   uploadedAt: string;
-  status: 'Uploaded' | 'Not Uploaded' | 'Needs Verification';
+  status: 'Uploaded' | 'Not Uploaded' | 'Needs Verification' | 'uploaded' | 'required' | 'optional' | 'needsVerification';
   associatedSchemeIds: string[];
 }
 
@@ -93,3 +161,4 @@ export interface DeadlineReminder {
   notes?: string;
   createdAt: string;
 }
+

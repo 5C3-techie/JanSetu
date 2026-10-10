@@ -151,8 +151,9 @@ You are Jan-Setu, an AI assistant for discovering Indian government welfare sche
 
 RULES:
 - Answer the user's question using ONLY the knowledge base context provided below.
-- If information is not available in the context, explicitly say: "This information is currently unavailable in our curated knowledge base or requires official verification."
+- If information is not available in the context, explicitly say: "I don't have verified information about that requirement in the Jan-Setu knowledge base. Please check the official scheme source."
 - NEVER claim official government authority or guarantee scheme approval.
+- DO NOT invent government schemes, eligibility rules, application URLs, or document requirements.
 - Language: ${lang === 'te' ? 'Telugu script (తెలుగు)' : 'Simple English'}.
 
 CITIZEN PROFILE:
@@ -170,7 +171,7 @@ QUESTION:
       contents: prompt,
     });
 
-    return response.text || 'Information unavailable.';
+    return response.text || "I don't have verified information about that requirement in the Jan-Setu knowledge base. Please check the official scheme source.";
   } catch (err) {
     console.error('Gemini Q&A failed:', err);
     return fallbackAssistant(question, schemes, lang);

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { LanguageProvider } from '@/lib/i18n/LanguageContext';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import { AuthProvider } from '@/context/AuthContext';
+import AppShell from '@/components/AppShell';
 
 export const metadata: Metadata = {
   title: 'Jan-Setu — AI Welfare Discovery & Application Readiness',
@@ -18,14 +18,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-slate-50 text-slate-900 flex flex-col min-h-screen antialiased selection:bg-blue-100 selection:text-blue-900">
-        <LanguageProvider>
-          <Navbar />
-          <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            {children}
-          </main>
-          <Footer />
-        </LanguageProvider>
+        <AuthProvider>
+          <LanguageProvider>
+            <AppShell>
+              {children}
+            </AppShell>
+          </LanguageProvider>
+        </AuthProvider>
       </body>
     </html>
   );
 }
+

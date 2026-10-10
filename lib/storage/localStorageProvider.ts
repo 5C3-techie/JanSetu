@@ -1,110 +1,53 @@
 import { CitizenProfile, VaultDocument, DeadlineReminder, Scheme } from './types';
 import rawSchemes from '@/data/schemes.json';
 
-export const DEMO_CITIZEN_PROFILE: CitizenProfile = {
-  id: 'citizen_demo_01',
-  name: 'Ramesh Kumar (Demo)',
-  age: 42,
-  gender: 'male',
-  state: 'Telangana',
-  district: 'Nalgonda',
-  isRural: true,
-  occupation: 'agricultural_labourer',
-  annualIncome: 120000,
+export const EMPTY_CITIZEN_PROFILE: CitizenProfile = {
+  id: '',
+  name: '',
+  age: 0,
+  gender: 'all',
+  state: '',
+  district: '',
+  isRural: false,
+  occupation: '',
+  annualIncome: 0,
   landOwnership: false,
-  category: 'BC',
-  hasAadhaar: true,
+  category: 'All',
+  hasAadhaar: false,
   hasIncomeCert: false,
   hasCasteCert: false,
   hasLandDoc: false,
-  hasBankPassbook: true,
-  hasRationCard: true,
+  hasBankPassbook: false,
+  hasRationCard: false,
   hasDisabilityCert: false,
-  rawInputText: 'I am a 42 year old agricultural labourer from a village in Telangana. My annual income is around 1.2 lakh and I don\'t own land.',
 };
 
-export const INITIAL_VAULT_DOCUMENTS: VaultDocument[] = [
-  {
-    id: 'doc_001',
-    userId: 'citizen_demo_01',
-    fileName: 'Aadhaar_Card_Ramesh.pdf',
-    documentType: 'Aadhaar Card',
-    fileUrl: '#',
-    fileSize: 1024 * 450, // 450 KB
-    uploadedAt: '2026-09-01T10:30:00Z',
-    status: 'Uploaded',
-    associatedSchemeIds: ['scheme_001', 'scheme_002', 'scheme_003', 'scheme_004'],
-  },
-  {
-    id: 'doc_002',
-    userId: 'citizen_demo_01',
-    fileName: 'Bank_Passbook_SBI.pdf',
-    documentType: 'Bank Passbook',
-    fileUrl: '#',
-    fileSize: 1024 * 680, // 680 KB
-    uploadedAt: '2026-09-05T14:15:00Z',
-    status: 'Uploaded',
-    associatedSchemeIds: ['scheme_001', 'scheme_002', 'scheme_006'],
-  },
-  {
-    id: 'doc_003',
-    userId: 'citizen_demo_01',
-    fileName: 'Food_Security_Ration_Card.pdf',
-    documentType: 'Ration Card / Food Security Card',
-    fileUrl: '#',
-    fileSize: 1024 * 320, // 320 KB
-    uploadedAt: '2026-09-10T11:00:00Z',
-    status: 'Uploaded',
-    associatedSchemeIds: ['scheme_004', 'scheme_005', 'scheme_009'],
-  }
-];
+// Deprecated demo profile alias for type backward compatibility
+export const DEMO_CITIZEN_PROFILE = EMPTY_CITIZEN_PROFILE;
 
-export const INITIAL_REMINDERS: DeadlineReminder[] = [
-  {
-    id: 'rem_001',
-    userId: 'citizen_demo_01',
-    schemeId: 'scheme_001',
-    schemeName: 'Rythu Bharosa / Rythu Bandhu Scheme',
-    deadline: '2026-10-31',
-    reminderDate: '2026-10-24',
-    reminderType: '7_days_before',
-    status: 'active',
-    notes: 'Check status of seasonal Kharif investment assistance credit',
-    createdAt: '2026-09-15T08:00:00Z',
-  },
-  {
-    id: 'rem_002',
-    userId: 'citizen_demo_01',
-    schemeId: 'scheme_006',
-    schemeName: 'Telangana Aasara Pension Scheme',
-    deadline: '2026-11-15',
-    reminderDate: '2026-10-16',
-    reminderType: '30_days_before',
-    status: 'active',
-    notes: 'Submit Income Certificate renewal at Meeseva center',
-    createdAt: '2026-09-18T09:30:00Z',
-  }
-];
+export const INITIAL_VAULT_DOCUMENTS: VaultDocument[] = [];
+
+export const INITIAL_REMINDERS: DeadlineReminder[] = [];
 
 // Helper for client-side local storage fallback
 const isClient = typeof window !== 'undefined';
 
 export const profileStore = {
   getProfile: (): CitizenProfile => {
-    if (!isClient) return DEMO_CITIZEN_PROFILE;
+    if (!isClient) return EMPTY_CITIZEN_PROFILE;
     const stored = localStorage.getItem('jan_setu_profile');
-    return stored ? JSON.parse(stored) : DEMO_CITIZEN_PROFILE;
+    return stored ? JSON.parse(stored) : EMPTY_CITIZEN_PROFILE;
   },
   saveProfile: (profile: CitizenProfile): void => {
     if (isClient) {
       localStorage.setItem('jan_setu_profile', JSON.stringify(profile));
     }
   },
-  resetProfileToDemo: (): CitizenProfile => {
+  resetProfileToEmpty: (): CitizenProfile => {
     if (isClient) {
-      localStorage.setItem('jan_setu_profile', JSON.stringify(DEMO_CITIZEN_PROFILE));
+      localStorage.setItem('jan_setu_profile', JSON.stringify(EMPTY_CITIZEN_PROFILE));
     }
-    return DEMO_CITIZEN_PROFILE;
+    return EMPTY_CITIZEN_PROFILE;
   }
 };
 
@@ -119,9 +62,9 @@ export const schemeStore = {
 
 export const documentStore = {
   getDocuments: (): VaultDocument[] => {
-    if (!isClient) return INITIAL_VAULT_DOCUMENTS;
+    if (!isClient) return [];
     const stored = localStorage.getItem('jan_setu_documents');
-    return stored ? JSON.parse(stored) : INITIAL_VAULT_DOCUMENTS;
+    return stored ? JSON.parse(stored) : [];
   },
   addDocument: (doc: Omit<VaultDocument, 'id' | 'uploadedAt'>): VaultDocument => {
     const docs = documentStore.getDocuments();
@@ -147,9 +90,9 @@ export const documentStore = {
 
 export const reminderStore = {
   getReminders: (): DeadlineReminder[] => {
-    if (!isClient) return INITIAL_REMINDERS;
+    if (!isClient) return [];
     const stored = localStorage.getItem('jan_setu_reminders');
-    return stored ? JSON.parse(stored) : INITIAL_REMINDERS;
+    return stored ? JSON.parse(stored) : [];
   },
   addReminder: (reminder: Omit<DeadlineReminder, 'id' | 'createdAt' | 'status'>): DeadlineReminder => {
     const reminders = reminderStore.getReminders();
@@ -173,3 +116,22 @@ export const reminderStore = {
     }
   }
 };
+
+export const savedSchemeStore = {
+  getSavedSchemes: (): string[] => {
+    if (!isClient) return [];
+    const stored = localStorage.getItem('jan_setu_saved_schemes');
+    return stored ? JSON.parse(stored) : [];
+  },
+  toggleSavedScheme: (id: string): boolean => {
+    const saved = savedSchemeStore.getSavedSchemes();
+    const exists = saved.includes(id);
+    const updated = exists ? saved.filter(s => s !== id) : [...saved, id];
+    if (isClient) {
+      localStorage.setItem('jan_setu_saved_schemes', JSON.stringify(updated));
+    }
+    return !exists;
+  }
+};
+
+
