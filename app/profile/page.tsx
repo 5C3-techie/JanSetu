@@ -5,13 +5,13 @@ import { useRouter } from 'next/navigation';
 import { profileStore, CitizenProfile, DEMO_CITIZEN_PROFILE } from '@/lib/storage';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import VoiceInputModal from '@/components/VoiceInputModal';
-import { 
-  UserCheck, 
-  Mic, 
-  Sparkles, 
-  Loader2, 
-  Save, 
-  CheckCircle2, 
+import {
+  UserCheck,
+  Mic,
+  Sparkles,
+  Loader2,
+  Save,
+  CheckCircle2,
   AlertCircle,
   RefreshCw,
   ArrowRight
@@ -25,6 +25,7 @@ export default function ProfilePage() {
   const [isParsing, setIsParsing] = useState(false);
   const [voiceModalOpen, setVoiceModalOpen] = useState(false);
   const [saveSuccess, setSaveSuccess] = useState(false);
+  const [autoFilledFields, setAutoFilledFields] = useState<string[]>([]);
 
   useEffect(() => {
     const existing = profileStore.getProfile();
@@ -44,11 +45,7 @@ export default function ProfilePage() {
       });
       const data = await res.json();
       if (data.profile) {
-        setProfile(prev => ({
-          ...prev,
-          ...data.profile,
-          rawInputText: nlText,
-        }));
+        applyParsedProfile(data.profile, nlText);
       }
     } catch (err) {
       console.error('Failed to parse profile text:', err);
@@ -57,13 +54,46 @@ export default function ProfilePage() {
     }
   };
 
-  const handleVoiceExtracted = (extracted: any, rawText: string) => {
-    setNlText(rawText);
-    setProfile(prev => ({
-      ...prev,
-      ...extracted,
-      rawInputText: rawText,
-    }));
+  const applyParsedProfile = (extracted: Partial<CitizenProfile>, textInput?: string) => {
+    const filledKeys: string[] = [];
+    setProfile((prev) => {
+      const updated = { ...prev };
+      if (extracted.age !== undefined && extracted.age !== null) {
+        updated.age = extracted.age;
+        filledKeys.push('age');
+      }
+      if (extracted.state) {
+        updated.state = extracted.state;
+        filledKeys.push('state');
+      }
+      if (extracted.occupation) {
+        updated.occupation = extracted.occupation;
+        filledKeys.push('occupation');
+      }
+      if (extracted.annualIncome !== undefined && extracted.annualIncome !== null) {
+        updated.annualIncome = extracted.annualIncome;
+        filledKeys.push('annualIncome');
+      }
+      if (extracted.landOwnership !== undefined && extracted.landOwnership !== null) {
+        updated.landOwnership = extracted.landOwnership;
+        filledKeys.push('landOwnership');
+      }
+      if (extracted.isRural !== undefined && extracted.isRural !== null) {
+        updated.isRural = extracted.isRural;
+        filledKeys.push('isRural');
+      }
+      if (extracted.category) {
+        updated.category = extracted.category;
+        filledKeys.push('category');
+      }
+      if (textInput) {
+        updated.rawInputText = textInput;
+      }
+      return updated;
+    });
+
+    setAutoFilledFields(filledKeys);
+    if (textInput) setNlText(textInput);
   };
 
   const handleSave = (e: React.FormEvent) => {
@@ -79,12 +109,13 @@ export default function ProfilePage() {
   const handleLoadDemo = () => {
     const demo = profileStore.resetProfileToDemo();
     setProfile(demo);
+    setAutoFilledFields([]);
     if (demo.rawInputText) setNlText(demo.rawInputText);
   };
 
   return (
     <div className="max-w-4xl mx-auto space-y-8 py-4">
-      
+
       {/* Page Header */}
       <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
@@ -93,7 +124,7 @@ export default function ProfilePage() {
             <span>Citizen Profile & Eligibility Assessment</span>
           </h1>
           <p className="text-xs text-slate-500 mt-1">
-            Provide your profile details manually or type naturally. Review and edit extracted attributes before matching.
+            Provide your profile details manually or speak using natural voice intake. Review and edit extracted attributes before matching.
           </p>
         </div>
 
@@ -116,15 +147,15 @@ export default function ProfilePage() {
           <button
             type="button"
             onClick={() => setVoiceModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-xs"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-md"
           >
             <Mic className="w-4 h-4" />
-            <span>Speak Your Details</span>
+            <span>🎙️ Speak Details (Telugu / English)</span>
           </button>
         </div>
 
         <p className="text-xs text-slate-300 leading-relaxed">
-          Type a plain paragraph about yourself (e.g. "I am a 42 year old agricultural labourer from a village in Telangana. My annual income is around 1.2 lakh and I don't own land."). Gemini AI will auto-extract the structured fields below.
+          Type or speak naturally in Telugu or English (e.g., "Naaku 42 years, Telangana lo village lo untanu, agricultural labourer ni, annual income one lakh twenty thousand, naaku land ledu"). Gemini AI will transcribe your voice verbatim and auto-fill the form fields below.
         </p>
 
         <div className="space-y-3">
@@ -150,13 +181,32 @@ export default function ProfilePage() {
               ) : (
                 <>
                   <Sparkles className="w-4 h-4 text-slate-950" />
-                  <span>Parse Profile with Gemini</span>
+                  <span>Parse Text with Gemini</span>
                 </>
               )}
             </button>
           </div>
         </div>
       </div>
+
+      {/* AUTO-FILLED BADGE ALERT */}
+      {autoFilledFields.length > 0 && (
+        <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex items-center justify-between text-xs text-emerald-800">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+            <span>
+              <strong>Auto-Filled Attributes ({autoFilledFields.length}):</strong> {autoFilledFields.join(', ')}. Please review and adjust if needed below.
+            </span>
+          </div>
+
+          <button
+            onClick={() => setAutoFilledFields([])}
+            className="text-[11px] font-bold text-emerald-700 hover:underline"
+          >
+            Dismiss
+          </button>
+        </div>
+      )}
 
       {/* SECTION 2: STRUCTURED CITIZEN PROFILE FORM */}
       <form onSubmit={handleSave} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-6">
@@ -168,7 +218,7 @@ export default function ProfilePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
-          
+
           {/* Full Name */}
           <div className="space-y-1.5">
             <label className="font-bold text-slate-700 block">Citizen Full Name</label>
@@ -183,12 +233,18 @@ export default function ProfilePage() {
 
           {/* Age */}
           <div className="space-y-1.5">
-            <label className="font-bold text-slate-700 block">{t.age} (Years)</label>
+            <div className="flex items-center justify-between">
+              <label className="font-bold text-slate-700 block">{t.age} (Years)</label>
+              {autoFilledFields.includes('age') && (
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
+              )}
+            </div>
             <input
               type="number"
               value={profile.age || ''}
               onChange={(e) => setProfile({ ...profile, age: parseInt(e.target.value, 10) || 0 })}
-              className="w-full p-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium"
+              className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium ${autoFilledFields.includes('age') ? 'border-emerald-400 bg-emerald-50/30' : 'border-slate-200'
+                }`}
               required
               min={1}
               max={120}
@@ -197,11 +253,17 @@ export default function ProfilePage() {
 
           {/* State */}
           <div className="space-y-1.5">
-            <label className="font-bold text-slate-700 block">{t.state}</label>
+            <div className="flex items-center justify-between">
+              <label className="font-bold text-slate-700 block">{t.state}</label>
+              {autoFilledFields.includes('state') && (
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
+              )}
+            </div>
             <select
               value={profile.state}
               onChange={(e) => setProfile({ ...profile, state: e.target.value })}
-              className="w-full p-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium bg-white"
+              className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium bg-white ${autoFilledFields.includes('state') ? 'border-emerald-400 bg-emerald-50/30' : 'border-slate-200'
+                }`}
             >
               <option value="Telangana">Telangana</option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
@@ -214,11 +276,17 @@ export default function ProfilePage() {
 
           {/* Occupation */}
           <div className="space-y-1.5">
-            <label className="font-bold text-slate-700 block">{t.occupation}</label>
+            <div className="flex items-center justify-between">
+              <label className="font-bold text-slate-700 block">{t.occupation}</label>
+              {autoFilledFields.includes('occupation') && (
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
+              )}
+            </div>
             <select
               value={profile.occupation}
               onChange={(e) => setProfile({ ...profile, occupation: e.target.value })}
-              className="w-full p-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium bg-white"
+              className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium bg-white ${autoFilledFields.includes('occupation') ? 'border-emerald-400 bg-emerald-50/30' : 'border-slate-200'
+                }`}
             >
               <option value="agricultural_labourer">Agricultural Labourer</option>
               <option value="farmer">Landholding Farmer</option>
@@ -234,12 +302,18 @@ export default function ProfilePage() {
 
           {/* Annual Income */}
           <div className="space-y-1.5">
-            <label className="font-bold text-slate-700 block">{t.annualIncome} (INR ₹)</label>
+            <div className="flex items-center justify-between">
+              <label className="font-bold text-slate-700 block">{t.annualIncome} (INR ₹)</label>
+              {autoFilledFields.includes('annualIncome') && (
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
+              )}
+            </div>
             <input
               type="number"
               value={profile.annualIncome || ''}
               onChange={(e) => setProfile({ ...profile, annualIncome: parseInt(e.target.value, 10) || 0 })}
-              className="w-full p-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium"
+              className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium ${autoFilledFields.includes('annualIncome') ? 'border-emerald-400 bg-emerald-50/30' : 'border-slate-200'
+                }`}
               placeholder="e.g. 120000"
               required
             />
@@ -247,11 +321,17 @@ export default function ProfilePage() {
 
           {/* Social Category */}
           <div className="space-y-1.5">
-            <label className="font-bold text-slate-700 block">{t.category}</label>
+            <div className="flex items-center justify-between">
+              <label className="font-bold text-slate-700 block">{t.category}</label>
+              {autoFilledFields.includes('category') && (
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
+              )}
+            </div>
             <select
               value={profile.category}
               onChange={(e) => setProfile({ ...profile, category: e.target.value as any })}
-              className="w-full p-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium bg-white"
+              className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium bg-white ${autoFilledFields.includes('category') ? 'border-emerald-400 bg-emerald-50/30' : 'border-slate-200'
+                }`}
             >
               <option value="BC">BC (Backward Class)</option>
               <option value="SC">SC (Scheduled Caste)</option>
@@ -264,7 +344,12 @@ export default function ProfilePage() {
 
           {/* Rural Resident Radio */}
           <div className="space-y-1.5">
-            <label className="font-bold text-slate-700 block">{t.ruralResident}</label>
+            <div className="flex items-center justify-between">
+              <label className="font-bold text-slate-700 block">{t.ruralResident}</label>
+              {autoFilledFields.includes('isRural') && (
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
+              )}
+            </div>
             <div className="flex items-center gap-4 pt-1">
               <label className="flex items-center gap-2 cursor-pointer font-medium">
                 <input
@@ -291,7 +376,12 @@ export default function ProfilePage() {
 
           {/* Land Ownership Radio */}
           <div className="space-y-1.5">
-            <label className="font-bold text-slate-700 block">{t.landOwnership}</label>
+            <div className="flex items-center justify-between">
+              <label className="font-bold text-slate-700 block">{t.landOwnership}</label>
+              {autoFilledFields.includes('landOwnership') && (
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
+              )}
+            </div>
             <div className="flex items-center gap-4 pt-1">
               <label className="flex items-center gap-2 cursor-pointer font-medium">
                 <input
@@ -395,7 +485,7 @@ export default function ProfilePage() {
       <VoiceInputModal
         isOpen={voiceModalOpen}
         onClose={() => setVoiceModalOpen(false)}
-        onExtractedProfile={handleVoiceExtracted}
+        onParsed={applyParsedProfile}
       />
     </div>
   );

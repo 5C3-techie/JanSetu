@@ -10,8 +10,13 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Text input is required' }, { status: 400 });
     }
 
-    const extracted = await parseProfileFromNL(text);
-    return NextResponse.json({ profile: extracted });
+    const result = await parseProfileFromNL(text);
+    return NextResponse.json({
+      success: true,
+      profile: result.profile,
+      confidence: result.confidence,
+      rawInputText: result.rawInputText,
+    });
   } catch (err: any) {
     console.error('API /api/parse-profile error:', err);
     return NextResponse.json(
