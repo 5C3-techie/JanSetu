@@ -1,492 +1,431 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
-import { profileStore, CitizenProfile, DEMO_CITIZEN_PROFILE } from '@/lib/storage';
+import { useAuth } from '@/context/AuthContext';
+import {
+  getUnifiedProfile,
+  saveUnifiedProfile,
+  CitizenProfile,
+  EMPTY_CITIZEN_PROFILE,
+} from '@/lib/storage';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import VoiceInputModal from '@/components/VoiceInputModal';
+import ProfileWizard from '@/components/ProfileWizard';
+import ProtectedRoute from '@/components/ProtectedRoute';
 import {
   UserCheck,
   Mic,
   Sparkles,
   Loader2,
-  Save,
+  ShieldCheck,
+  ChevronDown,
+  ChevronUp,
   CheckCircle2,
   AlertCircle,
-  RefreshCw,
-  ArrowRight
+  X,
 } from 'lucide-react';
 
 export default function ProfilePage() {
   const router = useRouter();
-  const { language, t } = useLanguage();
-  const [profile, setProfile] = useState<CitizenProfile>(DEMO_CITIZEN_PROFILE);
+  const { language } = useLanguage();
+  const { user, loading: authLoading } = useAuth();
+
+  const [profile, setProfile] = useState<CitizenProfile>(EMPTY_CITIZEN_PROFILE);
   const [nlText, setNlText] = useState('');
   const [isParsing, setIsParsing] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
   const [voiceModalOpen, setVoiceModalOpen] = useState(false);
-  const [saveSuccess, setSaveSuccess] = useState(false);
-  const [autoFilledFields, setAutoFilledFields] = useState<string[]>([]);
+  const [showAiAssistant, setShowAiAssistant] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successNotice, setSuccessNotice] = useState('');
+  const [wizardRevision, setWizardRevision] = useState(0);
 
+  // Load account-specific profile when authentication state is resolved
   useEffect(() => {
-    const existing = profileStore.getProfile();
-    setProfile(existing);
-    if (existing.rawInputText) setNlText(existing.rawInputText);
-  }, []);
+    if (authLoading) return;
 
+    let isMounted = true;
+
+    const loadProfile = async () => {
+      setIsLoading(true);
+      setErrorMessage('');
+
+      try {
+        const loaded = await getUnifiedProfile(user?.uid);
+
+        if (!isMounted) return;
+
+        setProfile(loaded);
+
+        if (loaded.rawInputText) {
+          setNlText(loaded.rawInputText);
+        }
+      } catch (error) {
+        console.error('Failed to load citizen profile:', error);
+
+        if (isMounted) {
+          setErrorMessage(
+            'Unable to load your profile. Please refresh and try again.'
+          );
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    loadProfile();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [authLoading, user?.uid]);
+
+  // Apply parsed attributes from text or voice into the profile and synchronize with ProfileWizard
+  const applyParsedProfile = useCallback(
+    (extracted: Partial<CitizenProfile>, textInput?: string) => {
+      const populatedFields: string[] = [];
+
+      setProfile((previous) => {
+        const updated: CitizenProfile = { ...previous };
+
+        if (extracted.name && extracted.name.trim()) {
+          updated.name = extracted.name.trim();
+          updated.fullName = extracted.name.trim();
+          populatedFields.push('Name');
+        }
+
+        if (extracted.age != null && extracted.age > 0) {
+          updated.age = extracted.age;
+          populatedFields.push('Age');
+        }
+
+        if (extracted.gender) {
+          updated.gender = extracted.gender;
+          populatedFields.push('Gender');
+        }
+
+        if (extracted.state && extracted.state.trim()) {
+          updated.state = extracted.state.trim();
+          populatedFields.push('State');
+        }
+
+        if (extracted.district && extracted.district.trim()) {
+          updated.district = extracted.district.trim();
+          populatedFields.push('District');
+        }
+
+        if (extracted.occupation && extracted.occupation.trim()) {
+          updated.occupation = extracted.occupation.trim();
+          populatedFields.push('Occupation');
+        }
+
+        if (extracted.annualIncome != null && extracted.annualIncome >= 0) {
+          updated.annualIncome = extracted.annualIncome;
+          updated.annualFamilyIncome = extracted.annualIncome;
+          populatedFields.push('Annual Income');
+        }
+
+        if (extracted.landOwnership != null) {
+          updated.landOwnership = extracted.landOwnership;
+          updated.ownsLand = extracted.landOwnership;
+          populatedFields.push('Land Ownership');
+        }
+
+        if (extracted.isRural != null) {
+          updated.isRural = extracted.isRural;
+          updated.ruralOrUrban = extracted.isRural ? 'rural' : 'urban';
+          populatedFields.push('Location Type');
+        }
+
+        if (extracted.category) {
+          updated.category = extracted.category;
+          updated.socialCategory = extracted.category;
+          populatedFields.push('Category');
+        }
+
+        if (textInput) {
+          updated.rawInputText = textInput;
+        }
+
+        return updated;
+      });
+
+      if (textInput) {
+        setNlText(textInput);
+      }
+
+      // Remount the wizard with the newly extracted attributes
+      setWizardRevision((prev) => prev + 1);
+
+      if (populatedFields.length > 0) {
+        setSuccessNotice(
+          `Extracted and auto-filled: ${populatedFields.join(', ')}. Review and edit any field below before saving.`
+        );
+      } else {
+        setSuccessNotice(
+          'Profile intake processed. Please review and adjust the fields below before saving.'
+        );
+      }
+
+      setErrorMessage('');
+    },
+    []
+  );
+
+  // Trigger Gemini AI parsing of natural language text
   const handleParseNL = async () => {
-    if (!nlText.trim()) return;
+    if (!nlText.trim() || isParsing) return;
+
     setIsParsing(true);
+    setErrorMessage('');
+    setSuccessNotice('');
 
     try {
-      const res = await fetch('/api/parse-profile', {
+      const response = await fetch('/api/parse-profile', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text: nlText }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          text: nlText.trim(),
+          language,
+        }),
       });
-      const data = await res.json();
-      if (data.profile) {
-        applyParsedProfile(data.profile, nlText);
+
+      if (!response.ok) {
+        throw new Error(`Profile parsing failed (${response.status})`);
       }
-    } catch (err) {
-      console.error('Failed to parse profile text:', err);
+
+      const data = await response.json();
+
+      if (!data.profile) {
+        throw new Error('No profile information was extracted.');
+      }
+
+      applyParsedProfile(data.profile, nlText.trim());
+      setShowAiAssistant(false);
+    } catch (error) {
+      console.error('Failed to parse profile text:', error);
+
+      setErrorMessage(
+        'Could not extract profile details. Please try again or enter them manually into the wizard below.'
+      );
     } finally {
       setIsParsing(false);
     }
   };
 
-  const applyParsedProfile = (extracted: Partial<CitizenProfile>, textInput?: string) => {
-    const filledKeys: string[] = [];
-    setProfile((prev) => {
-      const updated = { ...prev };
-      if (extracted.age !== undefined && extracted.age !== null) {
-        updated.age = extracted.age;
-        filledKeys.push('age');
-      }
-      if (extracted.state) {
-        updated.state = extracted.state;
-        filledKeys.push('state');
-      }
-      if (extracted.occupation) {
-        updated.occupation = extracted.occupation;
-        filledKeys.push('occupation');
-      }
-      if (extracted.annualIncome !== undefined && extracted.annualIncome !== null) {
-        updated.annualIncome = extracted.annualIncome;
-        filledKeys.push('annualIncome');
-      }
-      if (extracted.landOwnership !== undefined && extracted.landOwnership !== null) {
-        updated.landOwnership = extracted.landOwnership;
-        filledKeys.push('landOwnership');
-      }
-      if (extracted.isRural !== undefined && extracted.isRural !== null) {
-        updated.isRural = extracted.isRural;
-        filledKeys.push('isRural');
-      }
-      if (extracted.category) {
-        updated.category = extracted.category;
-        filledKeys.push('category');
-      }
-      if (textInput) {
-        updated.rawInputText = textInput;
-      }
-      return updated;
-    });
+  // Save the complete profile to account-specific storage (Firestore + local cache)
+  const handleSaveProfile = async (updatedProfile: CitizenProfile) => {
+    if (isSaving) return;
 
-    setAutoFilledFields(filledKeys);
-    if (textInput) setNlText(textInput);
-  };
+    setIsSaving(true);
+    setErrorMessage('');
+    setSuccessNotice('');
 
-  const handleSave = (e: React.FormEvent) => {
-    e.preventDefault();
-    profileStore.saveProfile(profile);
-    setSaveSuccess(true);
-    setTimeout(() => {
-      setSaveSuccess(false);
+    try {
+      const profileToSave: CitizenProfile = {
+        ...updatedProfile,
+        rawInputText: nlText || updatedProfile.rawInputText,
+      };
+
+      await saveUnifiedProfile(profileToSave, user?.uid);
+
+      setProfile(profileToSave);
       router.push('/dashboard');
-    }, 1000);
+    } catch (error) {
+      console.error('Failed to save citizen profile:', error);
+
+      setErrorMessage(
+        'Your profile could not be saved. Please check your connection and try again.'
+      );
+    } finally {
+      setIsSaving(false);
+    }
   };
 
-  const handleLoadDemo = () => {
-    const demo = profileStore.resetProfileToDemo();
-    setProfile(demo);
-    setAutoFilledFields([]);
-    if (demo.rawInputText) setNlText(demo.rawInputText);
-  };
+  if (isLoading || authLoading) {
+    return (
+      <div className="flex min-h-[50vh] flex-col items-center justify-center space-y-4">
+        <Loader2 className="h-8 w-8 animate-spin text-emerald-600" />
+        <p className="text-xs font-semibold text-slate-500">
+          Loading citizen profile...
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 py-4">
+    <ProtectedRoute requireProfileCompletion={false}>
+      <div className="mx-auto max-w-4xl space-y-6 py-4">
+        {/* Page Header */}
+        <div className="flex flex-col items-start justify-between gap-4 rounded-2xl border border-slate-200 bg-white/90 p-6 shadow-sm md:flex-row md:items-center">
+          <div>
+            <h1 className="flex items-center gap-2.5 text-2xl font-black text-slate-900">
+              <UserCheck className="h-7 w-7 text-emerald-700" />
+              Citizen Profile Onboarding
+            </h1>
 
-      {/* Page Header */}
-      <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-            <UserCheck className="w-6 h-6 text-blue-600" />
-            <span>Citizen Profile & Eligibility Assessment</span>
-          </h1>
-          <p className="text-xs text-slate-500 mt-1">
-            Provide your profile details manually or speak using natural voice intake. Review and edit extracted attributes before matching.
-          </p>
-        </div>
+            <p className="mt-2 text-xs text-slate-500">
+              Provide your details manually or speak naturally to discover eligible government welfare schemes.
+            </p>
 
-        <button
-          onClick={handleLoadDemo}
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold hover:bg-emerald-100 transition-all shadow-xs"
-        >
-          <RefreshCw className="w-3.5 h-3.5 text-emerald-600" />
-          <span>Load Telangana Demo Citizen</span>
-        </button>
-      </div>
-
-      {/* SECTION 1: NATURAL LANGUAGE & VOICE INTAKE */}
-      <div className="bg-gradient-to-tr from-blue-900 via-indigo-900 to-slate-900 text-white rounded-2xl p-6 shadow-xl space-y-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-amber-300" />
-            <h2 className="text-base font-bold">Natural Language & Voice Profile Intake</h2>
-          </div>
-          <button
-            type="button"
-            onClick={() => setVoiceModalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-md"
-          >
-            <Mic className="w-4 h-4" />
-            <span>🎙️ Speak Details (Telugu / English)</span>
-          </button>
-        </div>
-
-        <p className="text-xs text-slate-300 leading-relaxed">
-          Type or speak naturally in Telugu or English (e.g., "Naaku 42 years, Telangana lo village lo untanu, agricultural labourer ni, annual income one lakh twenty thousand, naaku land ledu"). Gemini AI will transcribe your voice verbatim and auto-fill the form fields below.
-        </p>
-
-        <div className="space-y-3">
-          <textarea
-            value={nlText}
-            onChange={(e) => setNlText(e.target.value)}
-            placeholder="Type your story or situation here..."
-            className="w-full h-24 p-3 bg-white/10 text-white placeholder-slate-400 border border-white/20 rounded-xl text-xs focus:ring-2 focus:ring-blue-400 focus:outline-none resize-none backdrop-blur-xs"
-          />
-
-          <div className="flex justify-end">
-            <button
-              type="button"
-              onClick={handleParseNL}
-              disabled={!nlText.trim() || isParsing}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs shadow-md disabled:opacity-50 transition-all"
-            >
-              {isParsing ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin text-slate-950" />
-                  <span>Extracting Attributes with Gemini...</span>
-                </>
-              ) : (
-                <>
-                  <Sparkles className="w-4 h-4 text-slate-950" />
-                  <span>Parse Text with Gemini</span>
-                </>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* AUTO-FILLED BADGE ALERT */}
-      {autoFilledFields.length > 0 && (
-        <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 flex items-center justify-between text-xs text-emerald-800">
-          <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
-            <span>
-              <strong>Auto-Filled Attributes ({autoFilledFields.length}):</strong> {autoFilledFields.join(', ')}. Please review and adjust if needed below.
-            </span>
+            {user?.email && (
+              <p className="mt-1 text-xs text-slate-500">
+                Signed in as <span className="font-semibold text-slate-700">{user.email}</span>
+              </p>
+            )}
           </div>
 
-          <button
-            onClick={() => setAutoFilledFields([])}
-            className="text-[11px] font-bold text-emerald-700 hover:underline"
-          >
-            Dismiss
-          </button>
-        </div>
-      )}
-
-      {/* SECTION 2: STRUCTURED CITIZEN PROFILE FORM */}
-      <form onSubmit={handleSave} className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-6">
-        <div className="border-b border-slate-100 pb-3 flex items-center justify-between">
-          <h2 className="text-base font-bold text-slate-900">Review & Edit Extracted Attributes</h2>
-          <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">
-            Deterministic Engine Inputs
+          <span className="flex items-center gap-1.5 rounded-xl border border-emerald-200 bg-emerald-50 px-3.5 py-2 text-xs font-bold text-emerald-800">
+            <ShieldCheck className="h-4 w-4 text-emerald-600" />
+            Account-specific profile
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
-
-          {/* Full Name */}
-          <div className="space-y-1.5">
-            <label className="font-bold text-slate-700 block">Citizen Full Name</label>
-            <input
-              type="text"
-              value={profile.name}
-              onChange={(e) => setProfile({ ...profile, name: e.target.value })}
-              className="w-full p-2.5 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium"
-              required
-            />
-          </div>
-
-          {/* Age */}
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="font-bold text-slate-700 block">{t.age} (Years)</label>
-              {autoFilledFields.includes('age') && (
-                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
-              )}
-            </div>
-            <input
-              type="number"
-              value={profile.age || ''}
-              onChange={(e) => setProfile({ ...profile, age: parseInt(e.target.value, 10) || 0 })}
-              className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium ${autoFilledFields.includes('age') ? 'border-emerald-400 bg-emerald-50/30' : 'border-slate-200'
-                }`}
-              required
-              min={1}
-              max={120}
-            />
-          </div>
-
-          {/* State */}
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="font-bold text-slate-700 block">{t.state}</label>
-              {autoFilledFields.includes('state') && (
-                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
-              )}
-            </div>
-            <select
-              value={profile.state}
-              onChange={(e) => setProfile({ ...profile, state: e.target.value })}
-              className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium bg-white ${autoFilledFields.includes('state') ? 'border-emerald-400 bg-emerald-50/30' : 'border-slate-200'
-                }`}
-            >
-              <option value="Telangana">Telangana</option>
-              <option value="Andhra Pradesh">Andhra Pradesh</option>
-              <option value="Karnataka">Karnataka</option>
-              <option value="Maharashtra">Maharashtra</option>
-              <option value="Tamil Nadu">Tamil Nadu</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          {/* Occupation */}
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="font-bold text-slate-700 block">{t.occupation}</label>
-              {autoFilledFields.includes('occupation') && (
-                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
-              )}
-            </div>
-            <select
-              value={profile.occupation}
-              onChange={(e) => setProfile({ ...profile, occupation: e.target.value })}
-              className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium bg-white ${autoFilledFields.includes('occupation') ? 'border-emerald-400 bg-emerald-50/30' : 'border-slate-200'
-                }`}
-            >
-              <option value="agricultural_labourer">Agricultural Labourer</option>
-              <option value="farmer">Landholding Farmer</option>
-              <option value="small_farmer">Small / Marginal Farmer</option>
-              <option value="unorganised_worker">Unorganised Sector Worker</option>
-              <option value="artisan">Artisan / Craftsperson</option>
-              <option value="street_vendor">Street Vendor</option>
-              <option value="domestic_worker">Domestic Worker</option>
-              <option value="student">Student</option>
-              <option value="unemployed">Unemployed</option>
-            </select>
-          </div>
-
-          {/* Annual Income */}
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="font-bold text-slate-700 block">{t.annualIncome} (INR ₹)</label>
-              {autoFilledFields.includes('annualIncome') && (
-                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
-              )}
-            </div>
-            <input
-              type="number"
-              value={profile.annualIncome || ''}
-              onChange={(e) => setProfile({ ...profile, annualIncome: parseInt(e.target.value, 10) || 0 })}
-              className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium ${autoFilledFields.includes('annualIncome') ? 'border-emerald-400 bg-emerald-50/30' : 'border-slate-200'
-                }`}
-              placeholder="e.g. 120000"
-              required
-            />
-          </div>
-
-          {/* Social Category */}
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="font-bold text-slate-700 block">{t.category}</label>
-              {autoFilledFields.includes('category') && (
-                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
-              )}
-            </div>
-            <select
-              value={profile.category}
-              onChange={(e) => setProfile({ ...profile, category: e.target.value as any })}
-              className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none font-medium bg-white ${autoFilledFields.includes('category') ? 'border-emerald-400 bg-emerald-50/30' : 'border-slate-200'
-                }`}
-            >
-              <option value="BC">BC (Backward Class)</option>
-              <option value="SC">SC (Scheduled Caste)</option>
-              <option value="ST">ST (Scheduled Tribe)</option>
-              <option value="EBC">EBC (Economically Backward Class)</option>
-              <option value="Minority">Minority</option>
-              <option value="General">General Category</option>
-            </select>
-          </div>
-
-          {/* Rural Resident Radio */}
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="font-bold text-slate-700 block">{t.ruralResident}</label>
-              {autoFilledFields.includes('isRural') && (
-                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
-              )}
-            </div>
-            <div className="flex items-center gap-4 pt-1">
-              <label className="flex items-center gap-2 cursor-pointer font-medium">
-                <input
-                  type="radio"
-                  name="rural"
-                  checked={profile.isRural === true}
-                  onChange={() => setProfile({ ...profile, isRural: true })}
-                  className="text-blue-600 focus:ring-blue-500"
-                />
-                <span>Yes (Village / Gram Panchayat)</span>
-              </label>
-              <label className="flex items-center gap-2 cursor-pointer font-medium">
-                <input
-                  type="radio"
-                  name="rural"
-                  checked={profile.isRural === false}
-                  onChange={() => setProfile({ ...profile, isRural: false })}
-                  className="text-blue-600 focus:ring-blue-500"
-                />
-                <span>No (Urban / Town)</span>
-              </label>
-            </div>
-          </div>
-
-          {/* Land Ownership Radio */}
-          <div className="space-y-1.5">
-            <div className="flex items-center justify-between">
-              <label className="font-bold text-slate-700 block">{t.landOwnership}</label>
-              {autoFilledFields.includes('landOwnership') && (
-                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded">Auto-Filled</span>
-              )}
-            </div>
-            <div className="flex items-center gap-4 pt-1">
-              <label className="flex items-center gap-2 cursor-pointer font-medium">
-                <input
-                  type="radio"
-                  name="land"
-                  checked={profile.landOwnership === true}
-                  onChange={() => setProfile({ ...profile, landOwnership: true })}
-                  className="text-blue-600 focus:ring-blue-500"
-                />
-                <span>Yes (Holds Land Title / Passbook)</span>
-              </label>
-              <label className="flex items-center gap-2 cursor-pointer font-medium">
-                <input
-                  type="radio"
-                  name="land"
-                  checked={profile.landOwnership === false}
-                  onChange={() => setProfile({ ...profile, landOwnership: false })}
-                  className="text-blue-600 focus:ring-blue-500"
-                />
-                <span>No (Landless / Non-owner)</span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        {/* Existing Document Checklist Flags */}
-        <div className="pt-4 border-t border-slate-100 space-y-3">
-          <label className="font-bold text-slate-800 block text-xs uppercase tracking-wider">
-            Current Document Verification Flags
-          </label>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-            <label className="flex items-center gap-2 p-2.5 rounded-lg border border-slate-200 bg-slate-50 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={profile.hasAadhaar}
-                onChange={(e) => setProfile({ ...profile, hasAadhaar: e.target.checked })}
-                className="rounded text-blue-600 focus:ring-blue-500"
-              />
-              <span className="font-semibold text-slate-700">Has Aadhaar Card</span>
-            </label>
-
-            <label className="flex items-center gap-2 p-2.5 rounded-lg border border-slate-200 bg-slate-50 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={profile.hasBankPassbook}
-                onChange={(e) => setProfile({ ...profile, hasBankPassbook: e.target.checked })}
-                className="rounded text-blue-600 focus:ring-blue-500"
-              />
-              <span className="font-semibold text-slate-700">Has Bank Account</span>
-            </label>
-
-            <label className="flex items-center gap-2 p-2.5 rounded-lg border border-slate-200 bg-slate-50 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={profile.hasIncomeCert}
-                onChange={(e) => setProfile({ ...profile, hasIncomeCert: e.target.checked })}
-                className="rounded text-blue-600 focus:ring-blue-500"
-              />
-              <span className="font-semibold text-slate-700">Has Income Certificate</span>
-            </label>
-
-            <label className="flex items-center gap-2 p-2.5 rounded-lg border border-slate-200 bg-slate-50 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={profile.hasLandDoc}
-                onChange={(e) => setProfile({ ...profile, hasLandDoc: e.target.checked })}
-                className="rounded text-blue-600 focus:ring-blue-500"
-              />
-              <span className="font-semibold text-slate-700">Has Land Document</span>
-            </label>
-          </div>
-        </div>
-
-        {/* Submit & Redirect Button */}
-        <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-          <p className="text-[11px] text-slate-500">
-            Click save to execute the deterministic rule matching engine across all schemes.
-          </p>
-
-          <button
-            type="submit"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition-all"
+        {/* Error Alert */}
+        {errorMessage && (
+          <div
+            role="alert"
+            className="flex items-start gap-3 rounded-2xl border border-rose-200 bg-rose-50 p-4 text-xs font-medium text-rose-800 animate-in fade-in duration-200"
           >
-            {saveSuccess ? (
-              <>
-                <CheckCircle2 className="w-4 h-4 text-emerald-300" />
-                <span>Saved! Calculating Matches...</span>
-              </>
-            ) : (
-              <>
-                <Save className="w-4 h-4" />
-                <span>{t.btnSaveProfile}</span>
-                <ArrowRight className="w-4 h-4" />
-              </>
-            )}
-          </button>
-        </div>
-      </form>
+            <AlertCircle className="h-4 w-4 shrink-0 text-rose-600 mt-0.5" />
+            <div className="flex-1">{errorMessage}</div>
+            <button
+              onClick={() => setErrorMessage('')}
+              className="text-rose-500 hover:text-rose-700"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        )}
 
-      {/* Voice Modal Component */}
-      <VoiceInputModal
-        isOpen={voiceModalOpen}
-        onClose={() => setVoiceModalOpen(false)}
-        onParsed={applyParsedProfile}
-      />
-    </div>
+        {/* Success / Auto-Fill Notice Alert */}
+        {successNotice && (
+          <div
+            role="status"
+            className="flex items-start gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 p-4 text-xs font-medium text-emerald-900 animate-in fade-in duration-200"
+          >
+            <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600 mt-0.5" />
+            <div className="flex-1">{successNotice}</div>
+            <button
+              onClick={() => setSuccessNotice('')}
+              className="text-emerald-600 hover:text-emerald-800 font-bold"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        )}
+
+        {/* AI Text and Voice Intake Accordion Section */}
+        <section className="space-y-4 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-900 via-slate-800 to-emerald-950 p-5 text-white shadow-md">
+          <button
+            type="button"
+            onClick={() => setShowAiAssistant((current) => !current)}
+            aria-expanded={showAiAssistant}
+            className="flex w-full items-center justify-between gap-3 text-left transition hover:opacity-95"
+          >
+            <span className="flex items-center gap-2.5">
+              <Sparkles className="h-5 w-5 shrink-0 text-amber-300" />
+              <span>
+                <span className="block text-sm font-bold">
+                  Fill with AI Voice or Natural Sentence
+                </span>
+                <span className="mt-1 block text-xs text-slate-300">
+                  Speak or write your circumstances in Telugu or English to auto-populate the wizard.
+                </span>
+              </span>
+            </span>
+
+            <span className="flex items-center gap-1.5 text-xs font-bold text-emerald-300">
+              <span>{showAiAssistant ? 'Hide AI Assistant' : 'Try AI Assistant'}</span>
+              {showAiAssistant ? (
+                <ChevronUp className="h-4 w-4 shrink-0" />
+              ) : (
+                <ChevronDown className="h-4 w-4 shrink-0" />
+              )}
+            </span>
+          </button>
+
+          {showAiAssistant && (
+            <div className="space-y-4 border-t border-white/10 pt-4 animate-in fade-in duration-200">
+              <p className="text-xs leading-relaxed text-slate-300">
+                Example: &quot;Naaku 42 years, Telangana lo village lo untanu, agricultural labourer ni, annual income one lakh twenty thousand, land ledu.&quot;
+                Gemini AI will extract your attributes and populate the wizard below. You can review and adjust every field before saving.
+              </p>
+
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <label
+                  htmlFor="profile-description"
+                  className="text-xs font-semibold text-slate-200"
+                >
+                  Describe your background:
+                </label>
+
+                <button
+                  type="button"
+                  onClick={() => setVoiceModalOpen(true)}
+                  className="inline-flex items-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 px-4 py-2 text-xs font-bold text-white shadow-md transition"
+                >
+                  <Mic className="h-4 w-4" />
+                  <span>🎙️ Speak Details (Telugu / English)</span>
+                </button>
+              </div>
+
+              <textarea
+                id="profile-description"
+                value={nlText}
+                onChange={(event) => setNlText(event.target.value)}
+                placeholder="Type your story or situation here in Telugu or English..."
+                rows={3}
+                className="w-full resize-y rounded-xl border border-white/20 bg-white/10 p-3 text-xs text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 backdrop-blur-xs font-medium"
+              />
+
+              <div className="flex justify-end">
+                <button
+                  type="button"
+                  onClick={handleParseNL}
+                  disabled={!nlText.trim() || isParsing}
+                  className="inline-flex items-center gap-2 rounded-xl bg-amber-400 px-5 py-2.5 text-xs font-bold text-slate-950 transition hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-50 shadow-md"
+                >
+                  {isParsing ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin text-slate-950" />
+                      <span>Extracting with Gemini...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="h-4 w-4 text-slate-950" />
+                      <span>Extract and Populate Fields</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          )}
+        </section>
+
+        {/* Step-by-Step Progressive Profile Wizard */}
+        <ProfileWizard
+          key={`profile-wizard-rev-${wizardRevision}-${profile.id || 'current'}`}
+          initialProfile={profile}
+          onSave={handleSaveProfile}
+          isSaving={isSaving}
+        />
+
+        {/* Browser Web Speech API Voice Intake Modal */}
+        <VoiceInputModal
+          isOpen={voiceModalOpen}
+          onClose={() => setVoiceModalOpen(false)}
+          onParsed={(extracted: Partial<CitizenProfile>, textInput?: string) => {
+            applyParsedProfile(extracted, textInput);
+          }}
+        />
+      </div>
+    </ProtectedRoute>
   );
 }

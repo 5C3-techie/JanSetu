@@ -142,14 +142,14 @@ export function evaluateEligibility(
   const matchScore = totalEvaluated > 0 ? Math.round((matchedCriteria.length / totalEvaluated) * 100) : 50;
 
   // Cross-reference documents with vault & profile flags
+  // Cross-reference documents strictly against the user's Document Vault
   const availableDocuments: string[] = [];
   const missingDocuments: string[] = [];
 
   requiredDocuments.forEach(docName => {
-    const isUploadedInVault = vaultDocs.some(d => d.documentType.toLowerCase().includes(docName.toLowerCase()) || docName.toLowerCase().includes(d.documentType.toLowerCase()));
-    const isFlaggedInProfile = checkProfileDocFlag(docName, profile);
+    const isUploadedInVault = checkVaultDocMatch(docName, vaultDocs);
 
-    if (isUploadedInVault || isFlaggedInProfile) {
+    if (isUploadedInVault) {
       availableDocuments.push(docName);
     } else {
       missingDocuments.push(docName);
@@ -177,6 +177,29 @@ export function evaluateEligibility(
     readinessLabel,
   };
 }
+
+function checkVaultDocMatch(docName: string, vaultDocs: VaultDocument[]): boolean {
+  if (!vaultDocs || vaultDocs.length === 0) return false;
+  const target = docName.toLowerCase();
+  return vaultDocs.some(d => {
+    const type = d.documentType.toLowerCase();
+    const fname = d.fileName.toLowerCase();
+    return (
+      type.includes(target) ||
+      target.includes(type) ||
+      fname.includes(target) ||
+      (target.includes('aadhaar') && (type.includes('aadhaar') || fname.includes('aadhaar'))) ||
+      (target.includes('income') && (type.includes('income') || fname.includes('income'))) ||
+      (target.includes('caste') && (type.includes('caste') || fname.includes('caste'))) ||
+      (target.includes('bank') && (type.includes('bank') || fname.includes('bank'))) ||
+      (target.includes('ration') && (type.includes('ration') || type.includes('food') || fname.includes('ration'))) ||
+      (target.includes('passbook') && (type.includes('passbook') || type.includes('land') || fname.includes('passbook'))) ||
+      (target.includes('residence') && (type.includes('residence') || type.includes('domicile') || fname.includes('residence'))) ||
+      (target.includes('disability') && (type.includes('disability') || type.includes('sadarem') || fname.includes('disability')))
+    );
+  });
+}
+
 
 /**
  * Evaluate all schemes for a citizen profile

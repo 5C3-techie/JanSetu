@@ -294,8 +294,9 @@ You are Jan-Setu, an AI assistant for discovering Indian government welfare sche
 
 RULES:
 - Answer the user's question using ONLY the knowledge base context provided below.
-- If information is not available in the context, explicitly say: "This information is currently unavailable in our curated knowledge base or requires official verification."
+- If information is not available in the context, explicitly say: "I don't have verified information about that requirement in the Jan-Setu knowledge base. Please check the official scheme source."
 - NEVER claim official government authority or guarantee scheme approval.
+- DO NOT invent government schemes, eligibility rules, application URLs, or document requirements.
 - Language: ${lang === 'te' ? 'Telugu script (తెలుగు)' : 'Simple English'}.
 
 CITIZEN PROFILE:
@@ -308,6 +309,7 @@ QUESTION:
 "${question}"
 `;
 
+
   for (const modelName of candidateModels) {
     try {
       const response = await aiClient.models.generateContent({
@@ -315,14 +317,25 @@ QUESTION:
         contents: prompt,
       });
 
-      return response.text || 'Information unavailable.';
+      const answer = (response.text || '').trim();
+
+      if (answer) {
+        return answer;
+      }
+
+      console.warn(`Model ${modelName} returned an empty answer.`);
     } catch (err: any) {
-      console.warn(`Model ${modelName} failed for Q&A, trying fallback:`, err?.message || err);
+      console.warn(
+        `Model ${modelName} failed for Q&A, trying the next model:`,
+        err?.message || err
+      );
     }
   }
 
+  // Use the local fallback if every model fails or returns an empty answer.
   return fallbackAssistant(question, schemes, lang);
 }
+
 
 // Fallback rule parser when Gemini key is not configured or network fails
 function fallbackNLParser(input: string): ParsedProfileResult {
