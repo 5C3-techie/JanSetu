@@ -13,9 +13,15 @@ import {
 } from '@/lib/storage';
 import { evaluateAllSchemes } from '@/lib/eligibility/engine';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
+import dynamic from 'next/dynamic';
 import SchemeCard from '@/components/SchemeCard';
 import SchemeFilterSidebar, { FilterState } from '@/components/SchemeFilterSidebar';
 import ProtectedRoute from '@/components/ProtectedRoute';
+
+const SpeechToTextTranslator = dynamic(
+  () => import('@/components/SpeechToTextTranslator'),
+  { ssr: false }
+);
 import { 
   Search, 
   Filter, 
@@ -23,7 +29,8 @@ import {
   ShieldCheck, 
   BookOpen, 
   Sparkles,
-  RotateCcw
+  RotateCcw,
+  Mic
 } from 'lucide-react';
 
 const INITIAL_FILTERS: FilterState = {
@@ -50,6 +57,7 @@ function SchemesContent() {
   const [filters, setFilters] = useState<FilterState>(INITIAL_FILTERS);
   const [isLoading, setIsLoading] = useState(true);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [isVoiceSearchOpen, setIsVoiceSearchOpen] = useState(false);
 
   // Sync URL search parameters with filter state
   useEffect(() => {
@@ -84,7 +92,7 @@ function SchemesContent() {
 
         setSavedSchemeIds(saved);
         const schemes = schemeStore.getAllSchemes();
-        const evaluated = evaluateAllSchemes(profile, schemes, docs);
+        const evaluated = evaluateAllSchemes(profile, schemes, docs, language);
         setResults(evaluated);
       } catch (err) {
         console.error('Error evaluating schemes:', err);
@@ -93,7 +101,7 @@ function SchemesContent() {
       }
     };
     loadSchemesData();
-  }, [user]);
+  }, [user, language]);
 
   const handleToggleSave = async (schemeId: string) => {
     try {
@@ -210,22 +218,22 @@ function SchemesContent() {
           <div>
             <div className="flex items-center gap-2">
               <span className="text-[11px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                Official Government Scheme Directory
+                {t.officialSchemeDirectory}
               </span>
             </div>
             <h1 className="text-2xl font-black text-slate-900 mt-1 flex items-center gap-2.5">
               <BookOpen className="w-7 h-7 text-emerald-700" />
-              <span>Government Scheme Explorer</span>
+              <span>{t.schemeExplorerTitle}</span>
             </h1>
             <p className="text-xs text-slate-500 mt-1">
-              Deterministic rule evaluation, official guidelines, and application links verified against official government portals.
+              {t.schemeExplorerSubtitle}
             </p>
           </div>
 
           <div className="flex items-center gap-3">
             <span className="text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>{filteredResults.length} Verified Schemes Available</span>
+              <span>{filteredResults.length} {t.verifiedSchemesAvailable}</span>
             </span>
 
             {/* Mobile Filter Button */}
@@ -235,7 +243,7 @@ function SchemesContent() {
               className="lg:hidden inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-900 text-white text-xs font-bold shadow-xs"
             >
               <Filter className="w-4 h-4" />
-              <span>Filters</span>
+              <span>{language === 'te' ? 'ఫిల్టర్లు' : 'Filters'}</span>
             </button>
           </div>
         </div>
@@ -248,9 +256,17 @@ function SchemesContent() {
               type="text"
               value={filters.searchTerm}
               onChange={(e) => setFilters(prev => ({ ...prev, searchTerm: e.target.value }))}
-              placeholder="Search by scheme name, keywords (e.g. 'scholarship', 'farmer', 'housing'), department, or benefits..."
-              className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl text-xs font-semibold focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 placeholder-slate-400 bg-slate-50/50"
+              placeholder={t.searchPlaceholder}
+              className="w-full pl-10 pr-10 py-2.5 border border-slate-200 rounded-xl text-xs font-semibold focus:ring-2 focus:ring-emerald-500 outline-none text-slate-900 placeholder-slate-400 bg-slate-50/50"
             />
+            <button
+              type="button"
+              onClick={() => setIsVoiceSearchOpen(true)}
+              className="absolute right-2.5 top-2 p-1.5 rounded-lg text-slate-500 hover:text-emerald-700 hover:bg-emerald-50 transition-colors"
+              title="Voice search schemes in Telugu or English"
+            >
+              <Mic className="w-4 h-4 text-emerald-600" />
+            </button>
           </div>
 
           {filters.searchTerm && (
@@ -258,10 +274,27 @@ function SchemesContent() {
               onClick={() => setFilters(prev => ({ ...prev, searchTerm: '' }))}
               className="px-3 py-2 text-xs font-bold text-slate-500 hover:text-slate-800 bg-slate-100 rounded-xl"
             >
-              Clear
+              {t.btnClear}
             </button>
           )}
         </div>
+
+        {/* VOICE SEARCH MODAL */}
+        {isVoiceSearchOpen && (
+          <SpeechToTextTranslator
+            isModal
+            onClose={() => setIsVoiceSearchOpen(false)}
+            initialSpeechLang={language === 'te' ? 'te-IN' : 'en-IN'}
+            initialTargetLang={language === 'te' ? 'en' : 'te'}
+            title="Voice Search Schemes"
+            subtitle="Speak scheme name, sector, or benefits in Telugu or English."
+            onTranslated={(translated, original) => {
+              const query = translated || original;
+              setFilters(prev => ({ ...prev, searchTerm: query }));
+              setIsVoiceSearchOpen(false);
+            }}
+          />
+        )}
 
         {/* TWO-COLUMN LAYOUT: SIDEBAR + RESULTS GRID */}
         <div className="flex items-start gap-6">
@@ -281,8 +314,12 @@ function SchemesContent() {
             {isLoading ? (
               <div className="flex flex-col items-center justify-center p-16 bg-white/90 rounded-2xl border border-slate-200 text-center space-y-3">
                 <Loader2 className="w-8 h-8 text-emerald-600 animate-spin" />
-                <p className="text-xs font-bold text-slate-700">Evaluating deterministic eligibility engine...</p>
-                <p className="text-[11px] text-slate-400">Comparing your profile attributes against verified statutory rules.</p>
+                <p className="text-xs font-bold text-slate-700">
+                  {language === 'te' ? 'అర్హత ఇంజిన్ నిబంధనలను లెక్కిస్తోంది...' : 'Evaluating deterministic eligibility engine...'}
+                </p>
+                <p className="text-[11px] text-slate-400">
+                  {language === 'te' ? 'మీ వివరాలను చట్టబద్ధమైన నిబంధనలతో సరిపోలుస్తోంది.' : 'Comparing your profile attributes against verified statutory rules.'}
+                </p>
               </div>
             ) : filteredResults.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -298,9 +335,13 @@ function SchemesContent() {
             ) : (
               <div className="bg-white/90 backdrop-blur-md p-12 rounded-3xl border border-slate-200 text-center space-y-4">
                 <Search className="w-12 h-12 text-slate-300 mx-auto" />
-                <h3 className="text-base font-extrabold text-slate-800">No schemes matched your current filter criteria</h3>
+                <h3 className="text-base font-extrabold text-slate-800">
+                  {language === 'te' ? 'మీ ప్రస్తుత ఫిల్టర్లకు సరిపోయే పథకాలు ఏవీ లేవు' : 'No schemes matched your current filter criteria'}
+                </h3>
                 <p className="text-xs text-slate-500 max-w-md mx-auto">
-                  Try broadening your search term or resetting specific filters (such as Income ceiling or Occupation) to discover more schemes.
+                  {language === 'te' 
+                    ? 'మరిన్ని పథకాలను కనుగొనడానికి శోధన పదాన్ని విస్తరించండి లేదా ఆదాయం లేదా వృత్తి ఫిల్టర్లను రీసెట్ చేయండి.' 
+                    : 'Try broadening your search term or resetting specific filters (such as Income ceiling or Occupation) to discover more schemes.'}
                 </p>
                 <button
                   type="button"
@@ -308,7 +349,7 @@ function SchemesContent() {
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white font-bold text-xs shadow-xs hover:bg-slate-800 transition-all"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
-                  <span>Reset All Filters</span>
+                  <span>{language === 'te' ? 'అన్ని ఫిల్టర్లను రీసెట్ చేయండి' : 'Reset All Filters'}</span>
                 </button>
               </div>
             )}

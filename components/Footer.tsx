@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import { ShieldCheck, Info, Heart, Lock } from 'lucide-react';
 
@@ -16,10 +17,12 @@ export default function Footer() {
           {/* Col 1: Brand & Tagline */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shadow-xs">
-                <img 
+              <div className="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center shadow-xs overflow-hidden">
+                <Image 
                   src="/images/logo.png" 
                   alt="Jan-Setu Logo" 
+                  width={40}
+                  height={40}
                   className="w-full h-full object-contain"
                 />
               </div>

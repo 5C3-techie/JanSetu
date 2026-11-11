@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { 
   getUnifiedReminders, 
@@ -35,11 +35,7 @@ export default function RemindersPage() {
   const [customDate, setCustomDate] = useState('');
   const [notes, setNotes] = useState('');
 
-  useEffect(() => {
-    loadReminders();
-  }, [user]);
-
-  const loadReminders = async () => {
+  const loadReminders = useCallback(async () => {
     setIsLoading(true);
     try {
       const list = await getUnifiedReminders(user?.uid);
@@ -49,7 +45,11 @@ export default function RemindersPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [user]);
+
+  useEffect(() => {
+    loadReminders();
+  }, [loadReminders]);
 
   const handleCreateReminder = async (e: React.FormEvent) => {
     e.preventDefault();

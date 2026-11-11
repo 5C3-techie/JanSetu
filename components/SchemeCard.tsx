@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { EligibilityResult } from '@/lib/storage/types';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
+import { translateSector, translateGovLevel, translateApplicationMode } from '@/lib/i18n/translations';
 import { 
   CheckCircle2, 
   AlertCircle, 
@@ -14,7 +15,8 @@ import {
   Bookmark,
   BookmarkCheck,
   Building,
-  ShieldCheck
+  ShieldCheck,
+  ExternalLink
 } from 'lucide-react';
 
 interface SchemeCardProps {
@@ -47,7 +49,7 @@ export default function SchemeCard({
     }
   };
 
-  const levelLabel = scheme.level === 'Central' ? 'Central Government' : scheme.states?.includes('Telangana') ? 'Telangana State' : 'State Government';
+  const levelLabel = translateGovLevel(scheme.level, language, scheme.states);
 
   return (
     <div className={`rounded-2xl border p-5 transition-all duration-200 flex flex-col justify-between ${
@@ -72,7 +74,7 @@ export default function SchemeCard({
             </span>
 
             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
-              {scheme.sector}
+              {translateSector(scheme.sector, language)}
             </span>
           </div>
 
@@ -80,7 +82,7 @@ export default function SchemeCard({
           <button
             type="button"
             onClick={handleBookmark}
-            title={saved ? 'Remove from Saved Schemes' : 'Save Scheme for Later'}
+            title={saved ? (language === 'te' ? 'సేవ్ చేసిన జాబితా నుండి తీసివేయండి' : 'Remove from Saved Schemes') : (language === 'te' ? 'పథకాన్ని సేవ్ చేయండి' : 'Save Scheme for Later')}
             className={`p-1.5 rounded-xl border transition-all ${
               saved 
                 ? 'bg-blue-50 text-blue-600 border-blue-300 shadow-xs' 
@@ -93,18 +95,18 @@ export default function SchemeCard({
 
         {/* Scheme Name */}
         <h3 className="text-base font-extrabold text-slate-900 leading-snug line-clamp-2">
-          {language === 'te' ? scheme.teluguName : scheme.name}
+          {language === 'te' && scheme.teluguName ? scheme.teluguName : scheme.name}
         </h3>
 
         {/* Short Description */}
         <p className="text-xs text-slate-600 mt-1.5 line-clamp-2 leading-relaxed">
-          {language === 'te' ? scheme.teluguDescription : scheme.description}
+          {language === 'te' && scheme.teluguDescription ? scheme.teluguDescription : scheme.description}
         </p>
 
         {/* Key Benefits */}
         <div className="mt-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
           <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block mb-1">
-            Core Benefits
+            {language === 'te' ? 'ముఖ్య ప్రయోజనాలు' : 'Core Benefits'}
           </span>
           <ul className="space-y-1">
             {(language === 'te' ? scheme.teluguBenefits : scheme.benefits).slice(0, 2).map((benefit, idx) => (
@@ -136,7 +138,7 @@ export default function SchemeCard({
           </div>
 
           <span className="text-[10px] font-semibold text-slate-400">
-            {scheme.applicationMode || 'Online'}
+            {translateApplicationMode(scheme.applicationMode, language)}
           </span>
         </div>
 
@@ -161,7 +163,7 @@ export default function SchemeCard({
           <div className="flex items-center justify-between text-[11px] mb-1">
             <span className="font-semibold text-slate-600 flex items-center gap-1">
               <FileText className="w-3 h-3 text-slate-400" />
-              Documents: {readinessLabel}
+              <span>{language === 'te' ? `పత్రాలు: ${readinessLabel}` : `Documents: ${readinessLabel}`}</span>
             </span>
             <span className="font-bold text-emerald-700">{readinessPercentage}%</span>
           </div>
@@ -180,21 +182,37 @@ export default function SchemeCard({
         </div>
 
         {/* Footer Meta & Details Button */}
-        <div className="flex items-center justify-between text-xs pt-1">
-          <div className="flex items-center gap-1 text-[11px] text-slate-500">
-            <Calendar className="w-3.5 h-3.5 text-slate-400" />
-            <span className="truncate max-w-[120px]">
-              {scheme.deadline ? scheme.deadline : 'Rolling'}
+        <div className="flex items-center justify-between text-xs pt-1 gap-2">
+          <div className="flex items-center gap-1 text-[11px] text-slate-500 min-w-0">
+            <Calendar className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+            <span className="truncate max-w-[100px]">
+              {scheme.deadline ? scheme.deadline : (language === 'te' ? 'నిరంతరం ఓపెన్' : 'Rolling')}
             </span>
           </div>
 
-          <Link
-            href={`/schemes/${scheme.schemeId}`}
-            className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-colors shadow-xs"
-          >
-            <span>View Details</span>
-            <ChevronRight className="w-3.5 h-3.5" />
-          </Link>
+          <div className="flex items-center gap-1.5 shrink-0">
+            {scheme.applicationUrl && (
+              <a
+                href={scheme.applicationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-slate-200 hover:border-blue-300 text-slate-600 hover:text-blue-700 hover:bg-blue-50/50 text-[11px] font-bold transition-all"
+                title={`Open official portal: ${scheme.portalName || scheme.name}`}
+              >
+                <span>{language === 'te' ? 'పోర్టల్' : 'Portal'}</span>
+                <ExternalLink className="w-3 h-3 text-slate-400" />
+              </a>
+            )}
+
+            <Link
+              href={`/schemes/${scheme.schemeId}`}
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-colors shadow-xs"
+            >
+              <span>{language === 'te' ? 'వివరాలు చూడండి' : 'View Details'}</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
         </div>
 
       </div>

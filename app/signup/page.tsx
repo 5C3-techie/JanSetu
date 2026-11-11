@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { saveUnifiedProfile, EMPTY_CITIZEN_PROFILE } from '@/lib/storage';
@@ -76,9 +77,12 @@ export default function SignupPage() {
       <div className="sm:mx-auto sm:w-full sm:max-w-md flex flex-col items-center mb-6">
         <Link href="/" className="flex items-center space-x-3 group mb-6">
           <div className="w-12 h-12 rounded-2xl overflow-hidden flex items-center justify-center shadow-md shadow-blue-500/10 group-hover:scale-105 transition-transform">
-            <img 
+            <Image 
               src="/images/logo.png" 
               alt="Jan-Setu Logo" 
+              width={48}
+              height={48}
+              priority
               className="w-full h-full object-contain"
             />
           </div>

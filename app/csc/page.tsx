@@ -18,8 +18,8 @@ export default function CSCModePage() {
     const docs = documentStore.getDocuments();
 
     setProfile(current);
-    setResults(evaluateAllSchemes(current, schemes, docs));
-  }, []);
+    setResults(evaluateAllSchemes(current, schemes, docs, language));
+  }, [language]);
 
   if (!profile) return null;
 

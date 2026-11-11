@@ -27,13 +27,19 @@ export default function RouteGuard({ children }: { children: React.ReactNode }) 
   const [isAuthorizing, setIsAuthorizing] = useState(true);
 
   useEffect(() => {
-    if (loading || !isFirebaseReady) return;
+    if (loading) return;
+
+    if (!isFirebaseReady) {
+      // Local storage / offline mode: allow access
+      setIsAuthorizing(false);
+      return;
+    }
 
     const isProtectedRoute = PROTECTED_ROUTES.some(route => pathname?.startsWith(route));
     const isAuthRoute = pathname === '/login' || pathname === '/signup';
 
     if (isProtectedRoute && !user) {
-      router.push('/login');
+      router.push(`/login?redirect=${encodeURIComponent(pathname || '/dashboard')}`);
     } else if ((isAuthRoute || pathname === '/') && user) {
       router.push('/dashboard');
     } else {
@@ -41,7 +47,7 @@ export default function RouteGuard({ children }: { children: React.ReactNode }) 
     }
   }, [user, loading, isFirebaseReady, pathname, router]);
 
-  if (loading || !isFirebaseReady || isAuthorizing) {
+  if (loading || isAuthorizing) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <Loader2 className="w-10 h-10 text-blue-600 animate-spin" />

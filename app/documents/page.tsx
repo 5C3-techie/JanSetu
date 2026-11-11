@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { 
   getUnifiedDocuments, 
@@ -43,11 +43,7 @@ export default function DocumentsPage() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [docType, setDocType] = useState<string>('Aadhaar Card');
 
-  useEffect(() => {
-    loadDocs();
-  }, [user]);
-
-  const loadDocs = async () => {
+  const loadDocs = useCallback(async () => {
     setIsLoadingDocs(true);
     try {
       const list = await getUnifiedDocuments(user?.uid);
@@ -57,7 +53,11 @@ export default function DocumentsPage() {
     } finally {
       setIsLoadingDocs(false);
     }
-  };
+  }, [user]);
+
+  useEffect(() => {
+    loadDocs();
+  }, [loadDocs]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {

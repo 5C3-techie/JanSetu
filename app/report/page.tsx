@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { profileStore, schemeStore, documentStore, CitizenProfile, EligibilityResult } from '@/lib/storage';
 import { evaluateAllSchemes } from '@/lib/eligibility/engine';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
@@ -18,8 +19,8 @@ export default function ReadinessReportPage() {
     const docs = documentStore.getDocuments();
 
     setProfile(current);
-    setResults(evaluateAllSchemes(current, schemes, docs));
-  }, []);
+    setResults(evaluateAllSchemes(current, schemes, docs, language));
+  }, [language]);
 
   if (!profile) return null;
 
@@ -57,9 +58,11 @@ export default function ReadinessReportPage() {
         <div className="flex items-center justify-between border-b-2 border-slate-900 pb-4">
           <div className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center border border-slate-200">
-              <img 
+              <Image 
                 src="/images/logo.png" 
                 alt="Jan-Setu Logo" 
+                width={40}
+                height={40}
                 className="w-full h-full object-contain"
               />
             </div>

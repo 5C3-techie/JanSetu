@@ -104,6 +104,9 @@ export interface Scheme {
   officialSourceUrl?: string;
   applicationUrl?: string;
   guidelineSourceUrl?: string;
+  portalName?: string;
+  secondaryPortalUrl?: string;
+  secondaryPortalName?: string;
   deadline: string | null;
   applicationDeadline?: string | null;
   deadlineType: 'fixed_date' | 'recurring' | 'rolling' | 'not_available';

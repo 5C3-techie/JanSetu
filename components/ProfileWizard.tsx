@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CitizenProfile } from '@/lib/storage/types';
 import { 
   User, 
@@ -30,6 +30,12 @@ export default function ProfileWizard({ initialProfile, onSave, isSaving }: Prof
   const [currentStep, setCurrentStep] = useState(1);
   const [profile, setProfile] = useState<CitizenProfile>(initialProfile);
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    if (initialProfile) {
+      setProfile(initialProfile);
+    }
+  }, [initialProfile]);
 
   const updateField = (field: keyof CitizenProfile, value: any) => {
     setProfile(prev => ({ ...prev, [field]: value }));

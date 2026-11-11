@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import { useAuth } from '@/context/AuthContext';
 import { getUnifiedProfile, isProfileComplete, CitizenProfile } from '@/lib/storage';
@@ -58,9 +59,12 @@ export default function LandingPage() {
         <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 pb-8 mb-8 border-b border-slate-200/60 text-xs text-slate-500 font-medium">
           <div className="flex items-center gap-2.5 font-bold tracking-tight text-slate-900">
             <div className="w-8 h-8 rounded-xl overflow-hidden flex items-center justify-center">
-              <img 
+              <Image 
                 src="/images/logo.png" 
                 alt="Jan-Setu Logo" 
+                width={32}
+                height={32}
+                priority
                 className="w-full h-full object-contain"
               />
             </div>

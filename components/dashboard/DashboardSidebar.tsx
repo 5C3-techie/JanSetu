@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
@@ -135,9 +136,11 @@ export default function DashboardSidebar({
           className="flex items-center gap-3 group transition-transform focus:outline-hidden"
         >
           <div className="w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center group-hover:scale-105 transition-transform">
-            <img 
+            <Image 
               src="/images/logo.png" 
               alt="Jan-Setu Logo" 
+              width={40}
+              height={40}
               className="w-full h-full object-contain"
             />
           </div>

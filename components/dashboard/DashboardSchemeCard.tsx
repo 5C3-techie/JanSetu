@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { EligibilityResult } from '@/lib/storage/types';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
+import { translateGovLevel, translateSector } from '@/lib/i18n/translations';
 import { 
   CheckCircle2, 
   AlertCircle, 
@@ -12,7 +13,8 @@ import {
   BookmarkCheck, 
   ChevronRight,
   Sparkles,
-  FileText
+  FileText,
+  ExternalLink
 } from 'lucide-react';
 
 interface DashboardSchemeCardProps {
@@ -33,14 +35,9 @@ export default function DashboardSchemeCard({
   const isPartial = matchStatus === 'PARTIAL_MATCH';
 
   // Government & Ministry Label
-  const govLabel = 
-    scheme.level === 'Central'
-      ? 'GOVERNMENT OF INDIA'
-      : scheme.states?.includes('Telangana')
-      ? 'GOVERNMENT OF TELANGANA'
-      : 'STATE GOVERNMENT';
+  const govLabel = translateGovLevel(scheme.level, language, scheme.states);
 
-  const ministryOrDept = scheme.ministry || scheme.department || scheme.sector;
+  const ministryOrDept = scheme.ministry || scheme.department || translateSector(scheme.sector, language);
 
   // Primary benefit excerpt
   const primaryBenefit = 
@@ -120,10 +117,10 @@ export default function DashboardSchemeCard({
           <div className="flex items-center justify-between text-[11px] mb-1">
             <span className="font-semibold text-slate-500 flex items-center gap-1">
               <FileText className="w-3 h-3 text-slate-400" />
-              <span>Documents</span>
+              <span>{language === 'te' ? 'పత్రాలు' : 'Documents'}</span>
             </span>
             <span className="font-bold text-slate-700">
-              {totalDocs > 0 ? `${readyCount}/${totalDocs}` : 'Not Specified'}
+              {totalDocs > 0 ? `${readyCount}/${totalDocs}` : (language === 'te' ? 'పేర్కొనబడలేదు' : 'Not Specified')}
             </span>
           </div>
           <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
@@ -141,14 +138,30 @@ export default function DashboardSchemeCard({
         </div>
 
         {/* Footer Actions */}
-        <div className="flex items-center justify-between pt-1">
-          <Link
-            href={`/schemes/${scheme.schemeId}`}
-            className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition-colors shadow-xs"
-          >
-            <span>{language === 'te' ? 'పథకం వివరాలు' : 'View Scheme'}</span>
-            <ChevronRight className="w-3.5 h-3.5" />
-          </Link>
+        <div className="flex items-center justify-between pt-1 gap-2">
+          <div className="flex items-center gap-1.5">
+            <Link
+              href={`/schemes/${scheme.schemeId}`}
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition-colors shadow-xs"
+            >
+              <span>{language === 'te' ? 'పథకం వివరాలు' : 'View Scheme'}</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </Link>
+
+            {scheme.applicationUrl && (
+              <a
+                href={scheme.applicationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border border-slate-200 hover:border-blue-300 text-slate-600 hover:text-blue-700 hover:bg-blue-50/50 text-[11px] font-bold transition-all"
+                title={`Open official portal: ${scheme.portalName || scheme.name}`}
+              >
+                <span>{language === 'te' ? 'పోర్టల్' : 'Portal'}</span>
+                <ExternalLink className="w-3 h-3 text-slate-400" />
+              </a>
+            )}
+          </div>
 
           <button
             type="button"
@@ -156,7 +169,7 @@ export default function DashboardSchemeCard({
               e.preventDefault();
               if (onToggleSave) onToggleSave(scheme.schemeId);
             }}
-            title={isSaved ? 'Remove from Saved' : 'Save Scheme'}
+            title={isSaved ? (language === 'te' ? 'దాచిన వాటి నుండి తొలగించండి' : 'Remove from Saved') : (language === 'te' ? 'పథకాన్ని దాచు' : 'Save Scheme')}
             className={`inline-flex items-center gap-1 px-2.5 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
               isSaved
                 ? 'bg-blue-50 text-blue-700 border-blue-200 shadow-xs'
@@ -166,12 +179,12 @@ export default function DashboardSchemeCard({
             {isSaved ? (
               <>
                 <BookmarkCheck className="w-3.5 h-3.5 text-blue-600 fill-blue-600" />
-                <span>Saved</span>
+                <span>{language === 'te' ? 'దాచబడింది' : 'Saved'}</span>
               </>
             ) : (
               <>
                 <Bookmark className="w-3.5 h-3.5 text-slate-400" />
-                <span>Save</span>
+                <span>{language === 'te' ? 'దాచు' : 'Save'}</span>
               </>
             )}
           </button>

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
@@ -72,11 +72,7 @@ export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
 
-  useEffect(() => {
-    loadDashboardData();
-  }, [user]);
-
-  const loadDashboardData = async () => {
+  const loadDashboardData = useCallback(async () => {
     setIsLoading(true);
     try {
       const [currentProfile, docs, rems, savedIds] = await Promise.all([
@@ -94,7 +90,7 @@ export default function DashboardPage() {
       setSavedSchemeIds(savedIds);
 
       // Evaluate schemes deterministically based on real profile & documents
-      const evaluated = evaluateAllSchemes(currentProfile, allSchemes, docs);
+      const evaluated = evaluateAllSchemes(currentProfile, allSchemes, docs, language);
       setResults(evaluated);
 
       // Load applications logged in localStorage
@@ -115,7 +111,11 @@ export default function DashboardPage() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [user, language]);
+
+  useEffect(() => {
+    loadDashboardData();
+  }, [loadDashboardData]);
 
   const handleToggleSave = async (schemeId: string) => {
     try {

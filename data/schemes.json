@@ -59,10 +59,10 @@
       "Verify linked bank account details for DBT enrollment"
     ],
     "applicationMode": "Both",
-    "officialSource": "https://rythubandhu.telangana.gov.in",
-    "officialSourceUrl": "https://rythubandhu.telangana.gov.in",
-    "applicationUrl": "https://rythubandhu.telangana.gov.in",
-    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/rythu-bandhu",
+    "officialSource": "https://agri.telangana.gov.in",
+    "officialSourceUrl": "https://rythubharosa.telangana.gov.in",
+    "applicationUrl": "https://rythubharosa.telangana.gov.in",
+    "guidelineSourceUrl": "https://rythubharosa.telangana.gov.in",
     "deadline": "2026-10-31",
     "applicationDeadline": "2026-10-31",
     "deadlineType": "recurring",
@@ -72,7 +72,8 @@
     "lastVerified": "2026-09-15",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against Telangana Agriculture Department Portal and myScheme."
+    "verificationNotes": "Verified against Telangana Agriculture Department Portal and myScheme.",
+    "portalName": "Telangana Rythu Bharosa Portal"
   },
   {
     "schemeId": "scheme_002",
@@ -137,7 +138,7 @@
     "officialSource": "https://pmkisan.gov.in",
     "officialSourceUrl": "https://pmkisan.gov.in",
     "applicationUrl": "https://pmkisan.gov.in",
-    "guidelineSourceUrl": "https://pmkisan.gov.in/Documents/RevisedKisanSchemeGuidelines.pdf",
+    "guidelineSourceUrl": "https://pmkisan.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -147,7 +148,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against PM-KISAN official portal."
+    "verificationNotes": "Verified against PM-KISAN official portal.",
+    "portalName": "PM-KISAN Official Portal"
   },
   {
     "schemeId": "scheme_003",
@@ -212,10 +214,10 @@
       "Field verification by Panchayat Secretary / MPDO officer"
     ],
     "applicationMode": "CSC",
-    "officialSource": "https://aasara.telangana.gov.in",
-    "officialSourceUrl": "https://aasara.telangana.gov.in",
-    "applicationUrl": "https://aasara.telangana.gov.in",
-    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/aasara-pension-scheme",
+    "officialSource": "https://telangana.gov.in",
+    "officialSourceUrl": "https://cheyutha.telangana.gov.in",
+    "applicationUrl": "https://cheyutha.telangana.gov.in",
+    "guidelineSourceUrl": "https://cheyutha.telangana.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -225,7 +227,8 @@
     "lastVerified": "2026-09-10",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against Aasara portal and Telangana GO directives."
+    "verificationNotes": "Verified against Aasara portal and Telangana GO directives.",
+    "portalName": "Telangana Cheyutha & Aasara Pension Portal"
   },
   {
     "schemeId": "scheme_004",
@@ -290,7 +293,7 @@
     ],
     "applicationMode": "Both",
     "officialSource": "https://telangana.gov.in",
-    "officialSourceUrl": "https://telangana.gov.in",
+    "officialSourceUrl": "https://prajapalana.telangana.gov.in",
     "applicationUrl": "https://prajapalana.telangana.gov.in",
     "guidelineSourceUrl": "https://prajapalana.telangana.gov.in",
     "deadline": null,
@@ -302,7 +305,10 @@
     "lastVerified": "2026-09-05",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against Praja Palana guidelines."
+    "verificationNotes": "Verified against Praja Palana guidelines.",
+    "portalName": "Praja Palana Portal (Financial Aid & LPG Subsidy)",
+    "secondaryPortalUrl": "https://www.tgsrtcbus.in",
+    "secondaryPortalName": "TGSRTC Portal (Free Bus Travel)"
   },
   {
     "schemeId": "scheme_005",
@@ -364,7 +370,7 @@
     "officialSource": "https://tssouthernpower.com",
     "officialSourceUrl": "https://tssouthernpower.com",
     "applicationUrl": "https://prajapalana.telangana.gov.in",
-    "guidelineSourceUrl": "https://tssouthernpower.com/gruhajyothi",
+    "guidelineSourceUrl": "https://prajapalana.telangana.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -374,7 +380,10 @@
     "lastVerified": "2026-09-08",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against TSSPDCL notification."
+    "verificationNotes": "Verified against TSSPDCL notification.",
+    "portalName": "Praja Palana Portal (Gruha Jyothi)",
+    "secondaryPortalUrl": "https://tssouthernpower.com",
+    "secondaryPortalName": "TGSPDCL Electricity Portal"
   },
   {
     "schemeId": "scheme_006",
@@ -441,7 +450,7 @@
     "officialSource": "https://tshousing.cgg.gov.in",
     "officialSourceUrl": "https://tshousing.cgg.gov.in",
     "applicationUrl": "https://prajapalana.telangana.gov.in",
-    "guidelineSourceUrl": "https://tshousing.cgg.gov.in",
+    "guidelineSourceUrl": "https://prajapalana.telangana.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -451,7 +460,10 @@
     "lastVerified": "2026-09-12",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against Telangana Housing Corp."
+    "verificationNotes": "Verified against Telangana Housing Corp.",
+    "portalName": "Praja Palana Housing Portal",
+    "secondaryPortalUrl": "https://tshousing.cgg.gov.in",
+    "secondaryPortalName": "Telangana Housing Corporation (TSHCL)"
   },
   {
     "schemeId": "scheme_007",
@@ -510,10 +522,10 @@
       "Treatment provided without out-of-pocket expenses"
     ],
     "applicationMode": "Both",
-    "officialSource": "https://aarogyasri.telangana.gov.in",
-    "officialSourceUrl": "https://aarogyasri.telangana.gov.in",
-    "applicationUrl": "https://aarogyasri.telangana.gov.in",
-    "guidelineSourceUrl": "https://aarogyasri.telangana.gov.in/AHCT/index.html",
+    "officialSource": "https://www.rajivaarogyasri.telangana.gov.in",
+    "officialSourceUrl": "https://www.rajivaarogyasri.telangana.gov.in",
+    "applicationUrl": "https://www.rajivaarogyasri.telangana.gov.in",
+    "guidelineSourceUrl": "https://www.rajivaarogyasri.telangana.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -523,7 +535,8 @@
     "lastVerified": "2026-09-02",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against Aarogyasri Trust portal."
+    "verificationNotes": "Verified against Aarogyasri Trust portal.",
+    "portalName": "Rajiv Aarogyasri Health Care Trust Portal"
   },
   {
     "schemeId": "scheme_008",
@@ -587,10 +600,10 @@
       "Geotagged construction milestones & direct fund transfer to bank account"
     ],
     "applicationMode": "Both",
-    "officialSource": "https://pmayg.nic.in",
-    "officialSourceUrl": "https://pmayg.nic.in",
-    "applicationUrl": "https://pmayg.nic.in",
-    "guidelineSourceUrl": "https://pmayg.nic.in/netiic/PMAYG_framework.pdf",
+    "officialSource": "https://rural.gov.in",
+    "officialSourceUrl": "https://pmayg.dord.gov.in",
+    "applicationUrl": "https://pmayg.dord.gov.in",
+    "guidelineSourceUrl": "https://pmayg.dord.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -600,7 +613,8 @@
     "lastVerified": "2026-08-25",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against PMAY-G portal."
+    "verificationNotes": "Verified against PMAY-G portal.",
+    "portalName": "PMAY-G AwaasSoft Portal"
   },
   {
     "schemeId": "scheme_009",
@@ -663,10 +677,10 @@
       "Subsidy release directly into home loan account"
     ],
     "applicationMode": "Online",
-    "officialSource": "https://pmaymis.gov.in",
-    "officialSourceUrl": "https://pmaymis.gov.in",
-    "applicationUrl": "https://pmaymis.gov.in",
-    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/pmay-u",
+    "officialSource": "https://mohua.gov.in",
+    "officialSourceUrl": "https://pmay-urban.gov.in",
+    "applicationUrl": "https://pmay-urban.gov.in",
+    "guidelineSourceUrl": "https://pmay-urban.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -676,7 +690,8 @@
     "lastVerified": "2026-08-30",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against MoHUA mis portal."
+    "verificationNotes": "Verified against MoHUA mis portal.",
+    "portalName": "PMAY Urban Official Portal"
   },
   {
     "schemeId": "scheme_010",
@@ -740,9 +755,9 @@
     ],
     "applicationMode": "Both",
     "officialSource": "https://nha.gov.in",
-    "officialSourceUrl": "https://nha.gov.in",
+    "officialSourceUrl": "https://beneficiary.nha.gov.in",
     "applicationUrl": "https://beneficiary.nha.gov.in",
-    "guidelineSourceUrl": "https://pmjay.gov.in/about/pmjay",
+    "guidelineSourceUrl": "https://beneficiary.nha.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -752,7 +767,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against NHA PM-JAY official portal."
+    "verificationNotes": "Verified against NHA PM-JAY official portal.",
+    "portalName": "NHA Ayushman Beneficiary Portal"
   },
   {
     "schemeId": "scheme_011",
@@ -817,7 +833,7 @@
     "officialSource": "https://epds.telangana.gov.in",
     "officialSourceUrl": "https://epds.telangana.gov.in",
     "applicationUrl": "https://epds.telangana.gov.in",
-    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/telangana-food-security-card",
+    "guidelineSourceUrl": "https://epds.telangana.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -827,7 +843,8 @@
     "lastVerified": "2026-09-04",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against ePDS Telangana."
+    "verificationNotes": "Verified against ePDS Telangana.",
+    "portalName": "Telangana ePDS Ration Card Portal"
   },
   {
     "schemeId": "scheme_012",
@@ -892,7 +909,7 @@
     "officialSource": "https://pmfby.gov.in",
     "officialSourceUrl": "https://pmfby.gov.in",
     "applicationUrl": "https://pmfby.gov.in",
-    "guidelineSourceUrl": "https://pmfby.gov.in/pdf/Revised_Operational_Guidelines.pdf",
+    "guidelineSourceUrl": "https://pmfby.gov.in",
     "deadline": "2026-07-31",
     "applicationDeadline": "2026-07-31",
     "deadlineType": "recurring",
@@ -902,7 +919,8 @@
     "lastVerified": "2026-06-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against PMFBY official portal."
+    "verificationNotes": "Verified against PMFBY official portal.",
+    "portalName": "PMFBY National Crop Insurance Portal"
   },
   {
     "schemeId": "scheme_013",
@@ -962,10 +980,10 @@
       "In case of demise, AEO submits claim form for automatic transfer of ₹5 Lakhs"
     ],
     "applicationMode": "Offline",
-    "officialSource": "https://rythubima.telangana.gov.in",
-    "officialSourceUrl": "https://rythubima.telangana.gov.in",
-    "applicationUrl": "https://rythubima.telangana.gov.in",
-    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/rythu-bima",
+    "officialSource": "https://agri.telangana.gov.in",
+    "officialSourceUrl": "https://agri.telangana.gov.in",
+    "applicationUrl": "https://agri.telangana.gov.in",
+    "guidelineSourceUrl": "https://agri.telangana.gov.in",
     "deadline": "2026-08-15",
     "applicationDeadline": "2026-08-15",
     "deadlineType": "recurring",
@@ -975,7 +993,8 @@
     "lastVerified": "2026-08-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against Rythu Bima official portal."
+    "verificationNotes": "Verified against Rythu Bima official portal.",
+    "portalName": "Telangana Agriculture Portal (Rythu Bima)"
   },
   {
     "schemeId": "scheme_014",
@@ -1037,10 +1056,10 @@
       "Funds credited directly into mother's Aadhaar-linked bank account"
     ],
     "applicationMode": "Both",
-    "officialSource": "https://pmmvy.wcd.gov.in",
+    "officialSource": "https://wcd.nic.in",
     "officialSourceUrl": "https://pmmvy.wcd.gov.in",
     "applicationUrl": "https://pmmvy.wcd.gov.in",
-    "guidelineSourceUrl": "https://pmmvy.wcd.gov.in/assets/docs/PMMVY_Guidelines.pdf",
+    "guidelineSourceUrl": "https://pmmvy.wcd.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -1050,7 +1069,8 @@
     "lastVerified": "2026-08-20",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against PMMVY WCD portal."
+    "verificationNotes": "Verified against PMMVY WCD portal.",
+    "portalName": "PMMVY Citizen Application Portal"
   },
   {
     "schemeId": "scheme_015",
@@ -1107,10 +1127,10 @@
       "Undergo eye testing and receive free glasses or surgery referral"
     ],
     "applicationMode": "Offline",
-    "officialSource": "https://kantivelugu.telangana.gov.in",
-    "officialSourceUrl": "https://kantivelugu.telangana.gov.in",
-    "applicationUrl": "https://kantivelugu.telangana.gov.in",
-    "guidelineSourceUrl": "https://telangana.gov.in",
+    "officialSource": "https://telangana.gov.in",
+    "officialSourceUrl": "https://chfw.telangana.gov.in",
+    "applicationUrl": "https://chfw.telangana.gov.in",
+    "guidelineSourceUrl": "https://chfw.telangana.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -1120,7 +1140,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against Kanti Velugu portal."
+    "verificationNotes": "Verified against Kanti Velugu portal.",
+    "portalName": "Telangana Health & Family Welfare Portal"
   },
   {
     "schemeId": "scheme_016",
@@ -1199,7 +1220,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against Telangana ePASS official website."
+    "verificationNotes": "Verified against Telangana ePASS official website.",
+    "portalName": "Telangana ePASS Post-Matric Portal"
   },
   {
     "schemeId": "scheme_017",
@@ -1275,7 +1297,8 @@
     "lastVerified": "2026-08-15",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against ePASS Telangana portal."
+    "verificationNotes": "Verified against ePASS Telangana portal.",
+    "portalName": "Telangana ePASS Pre-Matric Portal"
   },
   {
     "schemeId": "scheme_018",
@@ -1342,10 +1365,10 @@
       "Sanction and disbursement by lender without collateral"
     ],
     "applicationMode": "Both",
-    "officialSource": "https://mudra.org.in",
-    "officialSourceUrl": "https://mudra.org.in",
+    "officialSource": "https://www.mudra.org.in",
+    "officialSourceUrl": "https://www.mudra.org.in",
     "applicationUrl": "https://udyamimitra.in",
-    "guidelineSourceUrl": "https://mudra.org.in/Offerings",
+    "guidelineSourceUrl": "https://www.mudra.org.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -1355,7 +1378,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against MUDRA official site."
+    "verificationNotes": "Verified against MUDRA official site.",
+    "portalName": "Udyami Mitra MUDRA Loan Portal"
   },
   {
     "schemeId": "scheme_019",
@@ -1428,7 +1452,7 @@
     "officialSource": "https://pmvishwakarma.gov.in",
     "officialSourceUrl": "https://pmvishwakarma.gov.in",
     "applicationUrl": "https://pmvishwakarma.gov.in",
-    "guidelineSourceUrl": "https://pmvishwakarma.gov.in/Guidelines",
+    "guidelineSourceUrl": "https://pmvishwakarma.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -1438,7 +1462,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against PM Vishwakarma official portal."
+    "verificationNotes": "Verified against PM Vishwakarma official portal.",
+    "portalName": "PM Vishwakarma Official Portal"
   },
   {
     "schemeId": "scheme_020",
@@ -1500,10 +1525,10 @@
       "Direct loan credit into bank account"
     ],
     "applicationMode": "Both",
-    "officialSource": "https://pmsvanidhi.mohua.gov.in",
+    "officialSource": "https://mohua.gov.in",
     "officialSourceUrl": "https://pmsvanidhi.mohua.gov.in",
     "applicationUrl": "https://pmsvanidhi.mohua.gov.in",
-    "guidelineSourceUrl": "https://pmsvanidhi.mohua.gov.in/Schemes.aspx",
+    "guidelineSourceUrl": "https://pmsvanidhi.mohua.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -1513,7 +1538,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against PM SVANidhi portal."
+    "verificationNotes": "Verified against PM SVANidhi portal.",
+    "portalName": "PM SVANidhi Street Vendor Portal"
   },
   {
     "schemeId": "scheme_021",
@@ -1578,7 +1604,7 @@
     "officialSource": "https://nrega.nic.in",
     "officialSourceUrl": "https://nrega.nic.in",
     "applicationUrl": "https://nrega.nic.in",
-    "guidelineSourceUrl": "https://nrega.nic.in/netnrega/home.aspx",
+    "guidelineSourceUrl": "https://nrega.nic.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -1588,7 +1614,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against MGNREGA portal."
+    "verificationNotes": "Verified against MGNREGA portal.",
+    "portalName": "NREGA Job Card & Wages Portal"
   },
   {
     "schemeId": "scheme_022",
@@ -1657,9 +1684,9 @@
     ],
     "applicationMode": "Online",
     "officialSource": "https://telanganaepass.cgg.gov.in",
-    "officialSourceUrl": "https://telanganaepass.cgg.gov.in",
-    "applicationUrl": "https://telanganaepass.cgg.gov.in",
-    "guidelineSourceUrl": "https://telanganaepass.cgg.gov.in/KalyanaLakshmi.do",
+    "officialSourceUrl": "https://telanganaepass.cgg.gov.in/KalyanLakshmi.do",
+    "applicationUrl": "https://telanganaepass.cgg.gov.in/KalyanLakshmi.do",
+    "guidelineSourceUrl": "https://telanganaepass.cgg.gov.in/KalyanLakshmi.do",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -1669,7 +1696,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against ePASS Kalyana Lakshmi section."
+    "verificationNotes": "Verified against ePASS Kalyana Lakshmi section.",
+    "portalName": "Telangana ePASS Kalyana Lakshmi & Shaadi Mubarak Portal"
   },
   {
     "schemeId": "scheme_023",
@@ -1728,10 +1756,10 @@
       "Insurance cover runs from June 1 to May 31"
     ],
     "applicationMode": "Both",
-    "officialSource": "https://jansuraksha.gov.in",
+    "officialSource": "https://financialservices.gov.in",
     "officialSourceUrl": "https://jansuraksha.gov.in",
     "applicationUrl": "https://jansuraksha.gov.in",
-    "guidelineSourceUrl": "https://jansuraksha.gov.in/Rules.aspx",
+    "guidelineSourceUrl": "https://jansuraksha.gov.in",
     "deadline": "2026-05-31",
     "applicationDeadline": "2026-05-31",
     "deadlineType": "recurring",
@@ -1741,7 +1769,8 @@
     "lastVerified": "2026-05-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against Jan Suraksha guidelines."
+    "verificationNotes": "Verified against Jan Suraksha guidelines.",
+    "portalName": "Jan Suraksha Accident Insurance Portal"
   },
   {
     "schemeId": "scheme_024",
@@ -1800,10 +1829,10 @@
       "Claim settled directly to nominee's bank account upon submission of death certificate"
     ],
     "applicationMode": "Both",
-    "officialSource": "https://jansuraksha.gov.in",
+    "officialSource": "https://financialservices.gov.in",
     "officialSourceUrl": "https://jansuraksha.gov.in",
     "applicationUrl": "https://jansuraksha.gov.in",
-    "guidelineSourceUrl": "https://jansuraksha.gov.in/Files/PMJJBY/English/Rules.pdf",
+    "guidelineSourceUrl": "https://jansuraksha.gov.in",
     "deadline": "2026-05-31",
     "applicationDeadline": "2026-05-31",
     "deadlineType": "recurring",
@@ -1813,7 +1842,8 @@
     "lastVerified": "2026-05-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against Jan Suraksha official site."
+    "verificationNotes": "Verified against Jan Suraksha official site.",
+    "portalName": "Jan Suraksha Life Insurance Portal"
   },
   {
     "schemeId": "scheme_025",
@@ -1877,10 +1907,10 @@
       "Set up monthly auto-debit contribution based on entry age"
     ],
     "applicationMode": "Both",
-    "officialSource": "https://pfrda.org.in",
-    "officialSourceUrl": "https://pfrda.org.in",
-    "applicationUrl": "https://npslite-nsdl.com",
-    "guidelineSourceUrl": "https://pfrda.org.in/index1.cshtml?lsid=165",
+    "officialSource": "https://www.pfrda.org.in",
+    "officialSourceUrl": "https://www.pfrda.org.in",
+    "applicationUrl": "https://jansuraksha.gov.in",
+    "guidelineSourceUrl": "https://jansuraksha.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -1890,7 +1920,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against PFRDA APY documentation."
+    "verificationNotes": "Verified against PFRDA APY documentation.",
+    "portalName": "Jan Suraksha & PFRDA Pension Portal"
   },
   {
     "schemeId": "scheme_026",
@@ -1953,10 +1984,10 @@
       "Disbursement via direct bank transfer under NSAP portal"
     ],
     "applicationMode": "Both",
-    "officialSource": "https://nsap.nic.in",
-    "officialSourceUrl": "https://nsap.nic.in",
-    "applicationUrl": "https://nsap.nic.in",
-    "guidelineSourceUrl": "https://nsap.nic.in/guidelines.htm",
+    "officialSource": "https://rural.gov.in",
+    "officialSourceUrl": "https://nsap.dord.gov.in",
+    "applicationUrl": "https://nsap.dord.gov.in",
+    "guidelineSourceUrl": "https://nsap.dord.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -1966,7 +1997,8 @@
     "lastVerified": "2026-08-10",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against NSAP portal."
+    "verificationNotes": "Verified against NSAP portal.",
+    "portalName": "NSAP National Social Assistance Portal"
   },
   {
     "schemeId": "scheme_027",
@@ -2030,7 +2062,7 @@
     "officialSource": "https://scholarships.gov.in",
     "officialSourceUrl": "https://scholarships.gov.in",
     "applicationUrl": "https://scholarships.gov.in",
-    "guidelineSourceUrl": "https://dsel.education.gov.in/nmmss",
+    "guidelineSourceUrl": "https://scholarships.gov.in",
     "deadline": "2026-10-31",
     "applicationDeadline": "2026-10-31",
     "deadlineType": "recurring",
@@ -2040,7 +2072,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against NSP portal."
+    "verificationNotes": "Verified against NSP portal.",
+    "portalName": "National Scholarship Portal (NSP)"
   },
   {
     "schemeId": "scheme_028",
@@ -2105,8 +2138,8 @@
     ],
     "applicationMode": "Online",
     "officialSource": "https://telanganaepass.cgg.gov.in",
-    "officialSourceUrl": "https://telanganaepass.cgg.gov.in",
-    "applicationUrl": "https://telanganaepass.cgg.gov.in",
+    "officialSourceUrl": "https://telanganaepass.cgg.gov.in/OverseasLinks.do",
+    "applicationUrl": "https://telanganaepass.cgg.gov.in/OverseasLinks.do",
     "guidelineSourceUrl": "https://telanganaepass.cgg.gov.in/OverseasLinks.do",
     "deadline": "2026-09-30",
     "applicationDeadline": "2026-09-30",
@@ -2117,7 +2150,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against ePASS Overseas portal."
+    "verificationNotes": "Verified against ePASS Overseas portal.",
+    "portalName": "Telangana ePASS Overseas Scholarship Portal"
   },
   {
     "schemeId": "scheme_029",
@@ -2179,10 +2213,10 @@
       "Fund disbursement through SHG bank linkage"
     ],
     "applicationMode": "Both",
-    "officialSource": "https://nrlm.gov.in",
-    "officialSourceUrl": "https://nrlm.gov.in",
-    "applicationUrl": "https://nrlm.gov.in",
-    "guidelineSourceUrl": "https://nrlm.gov.in/outerUpload/nrlm_framework.pdf",
+    "officialSource": "https://rural.gov.in",
+    "officialSourceUrl": "https://aajeevika.gov.in",
+    "applicationUrl": "https://aajeevika.gov.in",
+    "guidelineSourceUrl": "https://aajeevika.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -2192,7 +2226,8 @@
     "lastVerified": "2026-08-28",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against NRLM official framework."
+    "verificationNotes": "Verified against NRLM official framework.",
+    "portalName": "Aajeevika DAY-NRLM National Portal"
   },
   {
     "schemeId": "scheme_030",
@@ -2254,9 +2289,9 @@
     ],
     "applicationMode": "Both",
     "officialSource": "https://swavlambancard.gov.in",
-    "officialSourceUrl": "https://swavlambancard.gov.in",
+    "officialSourceUrl": "https://cheyutha.telangana.gov.in",
     "applicationUrl": "https://swavlambancard.gov.in",
-    "guidelineSourceUrl": "https://sadarem.telangana.gov.in",
+    "guidelineSourceUrl": "https://swavlambancard.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -2266,7 +2301,10 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against Sadarem and UDID portals."
+    "verificationNotes": "Verified against Sadarem and UDID portals.",
+    "portalName": "UDID Swavlamban Card Portal",
+    "secondaryPortalUrl": "https://cheyutha.telangana.gov.in",
+    "secondaryPortalName": "Telangana Cheyutha Disability Pension Portal"
   },
   {
     "schemeId": "scheme_031",
@@ -2332,9 +2370,9 @@
     ],
     "applicationMode": "Both",
     "officialSource": "https://www.nsiindia.gov.in",
-    "officialSourceUrl": "https://www.nsiindia.gov.in",
-    "applicationUrl": "https://www.ippbonline.com",
-    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/ssy",
+    "officialSourceUrl": "https://www.indiapost.gov.in",
+    "applicationUrl": "https://www.indiapost.gov.in",
+    "guidelineSourceUrl": "https://www.indiapost.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -2344,7 +2382,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against National Savings Institute rules."
+    "verificationNotes": "Verified against National Savings Institute rules.",
+    "portalName": "India Post National Savings Portal"
   },
   {
     "schemeId": "scheme_032",
@@ -2417,7 +2456,7 @@
     "officialSource": "https://www.standupmitra.in",
     "officialSourceUrl": "https://www.standupmitra.in",
     "applicationUrl": "https://www.standupmitra.in",
-    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/suis",
+    "guidelineSourceUrl": "https://www.standupmitra.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -2427,7 +2466,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against DFS and SIDBI Stand-Up guidelines."
+    "verificationNotes": "Verified against DFS and SIDBI Stand-Up guidelines.",
+    "portalName": "Stand-Up Mitra Official Portal"
   },
   {
     "schemeId": "scheme_033",
@@ -2496,10 +2536,10 @@
       "Receive gas connection upon verification"
     ],
     "applicationMode": "Both",
-    "officialSource": "https://pmuy.gov.in",
+    "officialSource": "https://mopng.gov.in",
     "officialSourceUrl": "https://pmuy.gov.in",
     "applicationUrl": "https://pmuy.gov.in",
-    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/pmuy",
+    "guidelineSourceUrl": "https://pmuy.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -2509,7 +2549,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified with PMUY portal specifications."
+    "verificationNotes": "Verified with PMUY portal specifications.",
+    "portalName": "PMUY 2.0 Ujjwala Portal"
   },
   {
     "schemeId": "scheme_034",
@@ -2573,10 +2614,10 @@
       "Sanction order and equipment/unit purchase through committee"
     ],
     "applicationMode": "Offline",
-    "officialSource": "https://dalitbandhu.telangana.gov.in",
-    "officialSourceUrl": "https://dalitbandhu.telangana.gov.in",
-    "applicationUrl": "https://dalitbandhu.telangana.gov.in",
-    "guidelineSourceUrl": "https://myscheme.gov.in/schemes/dalit-bandhu",
+    "officialSource": "https://telangana.gov.in",
+    "officialSourceUrl": "https://tsobmms.cgg.gov.in",
+    "applicationUrl": "https://tsobmms.cgg.gov.in",
+    "guidelineSourceUrl": "https://tsobmms.cgg.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -2586,7 +2627,8 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified with Telangana Government GO notifications."
+    "verificationNotes": "Verified with Telangana Government GO notifications.",
+    "portalName": "Telangana OBMMS Welfare Portal"
   },
   {
     "schemeId": "scheme_035",
@@ -2657,10 +2699,10 @@
       "Bank credit appraisal and subsidy release"
     ],
     "applicationMode": "Online",
-    "officialSource": "https://www.kviconline.gov.in",
-    "officialSourceUrl": "https://www.kviconline.gov.in",
-    "applicationUrl": "https://www.kviconline.gov.in/pmegpeportal/pmegphome/index.jsp",
-    "guidelineSourceUrl": "https://msme.gov.in/our-schemes",
+    "officialSource": "https://msme.gov.in",
+    "officialSourceUrl": "https://pmegp.msme.gov.in",
+    "applicationUrl": "https://pmegp.msme.gov.in",
+    "guidelineSourceUrl": "https://pmegp.msme.gov.in",
     "deadline": null,
     "applicationDeadline": null,
     "deadlineType": "rolling",
@@ -2670,6 +2712,7 @@
     "lastVerified": "2026-09-01",
     "verificationStatus": "verified",
     "verifiedBy": "Jan-Setu Data Verification Team",
-    "verificationNotes": "Verified against KVIC PMEGP guidelines."
+    "verificationNotes": "Verified against KVIC PMEGP guidelines.",
+    "portalName": "MSME PMEGP Official Portal"
   }
 ]

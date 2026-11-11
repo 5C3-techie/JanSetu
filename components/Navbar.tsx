@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import { useAuth } from '@/context/AuthContext';
@@ -23,7 +24,8 @@ import {
   User as UserIcon,
   Bookmark,
   FileCheck,
-  Globe
+  Globe,
+  Mic
 } from 'lucide-react';
 
 export default function Navbar() {
@@ -37,13 +39,13 @@ export default function Navbar() {
     { href: '/dashboard', label: t.navDashboard, icon: LayoutDashboard },
     { href: '/schemes', label: t.navFindSchemes, icon: Search },
     { href: '/documents', label: t.navDocuments, icon: FolderLock },
-    { href: '/saved', label: 'Saved', icon: Bookmark },
-    { href: '/applications', label: 'Tracker', icon: FileCheck },
+    { href: '/saved', label: t.navSaved || 'Saved', icon: Bookmark },
+    { href: '/applications', label: t.navTracker || 'Tracker', icon: FileCheck },
     { href: '/reminders', label: t.navReminders, icon: Bell },
     { href: '/compare', label: t.navCompare, icon: GitCompare },
     { href: '/what-if', label: t.navWhatIf, icon: Sliders },
     { href: '/ask', label: t.navAsk, icon: MessageSquare },
-    { href: '/profile', label: t.navProfile, icon: UserCheck },
+    { href: '/profile', label: language === 'te' ? 'వాయిస్ ప్రొఫైల్' : 'Voice Profile Intake', icon: Mic },
   ];
 
   return (
@@ -54,9 +56,12 @@ export default function Navbar() {
           {/* Brand Logo Only */}
           <Link href="/" className="flex items-center group py-1">
             <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-              <img 
+              <Image 
                 src="/images/logo.png" 
                 alt="Jan-Setu" 
+                width={56}
+                height={56}
+                priority
                 className="w-full h-full object-contain drop-shadow-xs"
               />
             </div>

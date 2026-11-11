@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import type { CitizenProfile } from '@/lib/storage';
 import {
   Mic,
@@ -56,26 +56,21 @@ interface JanSetuSpeechRecognitionConstructor {
   new(): JanSetuSpeechRecognitionInstance;
 }
 
-declare global {
-  interface Window {
-    SpeechRecognition?: JanSetuSpeechRecognitionConstructor;
-    webkitSpeechRecognition?: JanSetuSpeechRecognitionConstructor;
-  }
-}
-
 interface VoiceInputModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onParsed: (profileData: Partial<CitizenProfile>, textInput?: string) => void;
+  onParsed?: (profileData: Partial<CitizenProfile>, textInput?: string) => void;
+  onExtractedProfile?: (extracted: any, rawText: string) => void;
 }
 
 type UIState = 'IDLE' | 'RECORDING' | 'TRANSCRIBING' | 'PARSING' | 'TRANSCRIBED' | 'ERROR';
 
-export default function VoiceInputModal({ isOpen, onClose, onParsed }: VoiceInputModalProps) {
+export default function VoiceInputModal({ isOpen, onClose, onParsed, onExtractedProfile }: VoiceInputModalProps) {
   const [uiState, setUiState] = useState<UIState>('IDLE');
   const [language, setLanguage] = useState<'te-IN' | 'en-IN'>('te-IN');
   const [recordingTime, setRecordingTime] = useState(0);
   const [transcript, setTranscript] = useState('');
+  const [translatedTranscript, setTranslatedTranscript] = useState('');
   const [extractedProfile, setExtractedProfile] = useState<Partial<CitizenProfile>>({});
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -84,13 +79,14 @@ export default function VoiceInputModal({ isOpen, onClose, onParsed }: VoiceInpu
   const recognitionErrorRef = useRef(false);
   const timerIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  useEffect(() => {
-    if (!isOpen) {
-      resetState();
+  const stopTimer = useCallback(() => {
+    if (timerIntervalRef.current) {
+      clearInterval(timerIntervalRef.current);
+      timerIntervalRef.current = null;
     }
-  }, [isOpen]);
+  }, []);
 
-  const resetState = () => {
+  const resetState = useCallback(() => {
     stopTimer();
 
     const recognition = recognitionRef.current;
@@ -110,9 +106,16 @@ export default function VoiceInputModal({ isOpen, onClose, onParsed }: VoiceInpu
     setUiState('IDLE');
     setRecordingTime(0);
     setTranscript('');
+    setTranslatedTranscript('');
     setExtractedProfile({});
     setErrorMessage('');
-  };
+  }, [stopTimer]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      resetState();
+    }
+  }, [isOpen, resetState]);
 
   const startTimer = () => {
     stopTimer();
@@ -132,16 +135,10 @@ export default function VoiceInputModal({ isOpen, onClose, onParsed }: VoiceInpu
     }, 1000);
   };
 
-  const stopTimer = () => {
-    if (timerIntervalRef.current) {
-      clearInterval(timerIntervalRef.current);
-      timerIntervalRef.current = null;
-    }
-  };
-
   const startRecording = () => {
     setErrorMessage('');
     setTranscript('');
+    setTranslatedTranscript('');
     setExtractedProfile({});
     finalTranscriptRef.current = '';
     recognitionErrorRef.current = false;
@@ -150,8 +147,8 @@ export default function VoiceInputModal({ isOpen, onClose, onParsed }: VoiceInpu
       return;
     }
 
-    const SpeechRecognitionAPI =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
+    const SpeechRecognitionAPI: JanSetuSpeechRecognitionConstructor | undefined =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
     if (!SpeechRecognitionAPI) {
       setErrorMessage(
@@ -296,23 +293,49 @@ export default function VoiceInputModal({ isOpen, onClose, onParsed }: VoiceInpu
   const parseTranscript = async (text: string) => {
     setUiState('PARSING');
     try {
-      const parseRes = await fetch('/api/parse-profile', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text }),
-      });
+      const sourceLang = language === 'te-IN' ? 'te' : 'en';
+      const targetLang = language === 'te-IN' ? 'en' : 'te';
 
-      const parseData = await parseRes.json();
-      if (!parseRes.ok || !parseData.profile) {
-        throw new Error('Could not parse profile attributes from transcript.');
+      // Run profile extraction and Gemini 3.1 Flash Lite translation concurrently
+      const [parseRes, transRes] = await Promise.allSettled([
+        fetch('/api/parse-profile', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text }),
+        }),
+        fetch('/api/translate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text, sourceLang, targetLang }),
+        }),
+      ]);
+
+      if (transRes.status === 'fulfilled' && transRes.value.ok) {
+        const transData = await transRes.value.json();
+        if (transData.translatedText) {
+          setTranslatedTranscript(transData.translatedText);
+        }
       }
 
-      const extracted = parseData.profile;
-      setExtractedProfile(extracted);
-      setUiState('TRANSCRIBED');
+      if (parseRes.status === 'fulfilled' && parseRes.value.ok) {
+        const parseData = await parseRes.value.json();
+        if (parseData.profile) {
+          const extracted = parseData.profile;
+          setExtractedProfile(extracted);
+          setUiState('TRANSCRIBED');
 
-      // AUTOMATIC FORM AUTO-FILL TRIGGER
-      onParsed(extracted, text);
+          // AUTOMATIC FORM AUTO-FILL TRIGGER
+          if (onParsed) {
+            onParsed(extracted, text);
+          }
+          if (onExtractedProfile) {
+            onExtractedProfile(extracted, text);
+          }
+          return;
+        }
+      }
+
+      setUiState('TRANSCRIBED');
     } catch (err: any) {
       console.error('Transcript parsing error:', err);
       setErrorMessage('Could not extract profile attributes from transcript.');
@@ -484,16 +507,33 @@ export default function VoiceInputModal({ isOpen, onClose, onParsed }: VoiceInpu
           <div className="space-y-4">
             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-4 space-y-1.5">
               <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
-                1. Verbatim Speech Transcript:
+                1. Verbatim Speech Transcript ({language === 'te-IN' ? 'Telugu' : 'English'}):
               </span>
               <p className="text-xs text-slate-900 font-medium bg-white p-3 rounded-xl border border-slate-200 leading-relaxed">
                 "{transcript}"
               </p>
             </div>
 
+            {translatedTranscript && (
+              <div className="bg-blue-50/70 border border-blue-200/80 rounded-2xl p-4 space-y-1.5">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-bold text-blue-900 uppercase tracking-wider flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-blue-600" />
+                    <span>2. Gemini 3.1 Flash Lite Translation ({language === 'te-IN' ? 'English' : 'Telugu'}):</span>
+                  </span>
+                  <span className="text-[10px] font-mono font-bold text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded-md">
+                    gemini-3.1-flash-lite
+                  </span>
+                </div>
+                <p className="text-xs text-slate-900 font-medium bg-white p-3 rounded-xl border border-blue-100 leading-relaxed">
+                  "{translatedTranscript}"
+                </p>
+              </div>
+            )}
+
             <div className="space-y-2">
               <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
-                2. Auto-Populated Profile Fields:
+                3. Auto-Populated Profile Fields:
               </span>
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-xs">
