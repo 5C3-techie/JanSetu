@@ -34,24 +34,24 @@ export const getUnifiedDocuments = async (uid?: string): Promise<VaultDocument[]
 };
 
 export const getUnifiedReminders = async (uid?: string): Promise<DeadlineReminder[]> => {
-  if (uid && isFirebaseConfigured()) {
-    const rems = await firebaseReminderStore.getReminders(uid);
-    if (rems.length > 0) return rems;
-  }
-  return reminderStore.getReminders();
+  // LocalStorage-only: completely independent of Firebase Firestore
+  return reminderStore.getReminders(uid);
 };
 
 export const addUnifiedReminder = async (
   reminder: Omit<DeadlineReminder, 'id' | 'createdAt' | 'status'>,
   uid?: string
 ): Promise<DeadlineReminder> => {
-  const localRem = reminderStore.addReminder(reminder);
+  // LocalStorage-only: completely independent of Firebase Firestore
+  return reminderStore.addReminder(reminder, uid);
+};
 
-  if (uid && isFirebaseConfigured()) {
-    await firebaseReminderStore.addReminder(localRem);
-  }
+export const dismissUnifiedReminder = async (id: string, uid?: string): Promise<void> => {
+  reminderStore.dismissReminder(id, uid);
+};
 
-  return localRem;
+export const deleteUnifiedReminder = async (id: string, uid?: string): Promise<void> => {
+  reminderStore.deleteReminder(id, uid);
 };
 
 export const getUnifiedSavedSchemes = async (uid?: string): Promise<string[]> => {

@@ -1,12 +1,12 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { 
-  User, 
-  onAuthStateChanged, 
-  signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword, 
-  signOut, 
+import {
+  User,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut,
   sendPasswordResetEmail,
   UserCredential
 } from 'firebase/auth';
@@ -28,12 +28,14 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  // If Firebase env vars are absent we know immediately there is no auth session.
+  // Start loading = false in that case to avoid a blank-screen flash on first render.
   const firebaseReady = isFirebaseConfigured();
+  const [loading, setLoading] = useState<boolean>(firebaseReady);
 
   useEffect(() => {
     if (!firebaseReady) {
-      setLoading(false);
+      // Already initialised to false above; nothing to subscribe.
       return;
     }
 
@@ -70,7 +72,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         loading,
         isFirebaseReady: firebaseReady,
         isDemoUser: false,
-        setIsDemoUser: () => {},
+        setIsDemoUser: () => { },
         login,
         signup,
         logout,

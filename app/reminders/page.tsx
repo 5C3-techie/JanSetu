@@ -5,7 +5,6 @@ import { useAuth } from '@/context/AuthContext';
 import { 
   getUnifiedReminders, 
   addUnifiedReminder, 
-  firebaseReminderStore, 
   reminderStore,
   schemeStore, 
   DeadlineReminder 
@@ -30,6 +29,9 @@ export default function RemindersPage() {
   
   const [reminders, setReminders] = useState<DeadlineReminder[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [schemeId, setSchemeId] = useState('scheme_001');
   const [reminderType, setReminderType] = useState<'30_days_before' | '7_days_before' | '1_day_before' | 'custom'>('7_days_before');
   const [customDate, setCustomDate] = useState('');
@@ -46,6 +48,7 @@ export default function RemindersPage() {
       setReminders(list);
     } catch (err) {
       console.error('Error loading reminders:', err);
+      setErrorMsg('Failed to load reminders from local storage.');
     } finally {
       setIsLoading(false);
     }
@@ -53,59 +56,94 @@ export default function RemindersPage() {
 
   const handleCreateReminder = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
+
+    setErrorMsg(null);
+    setSuccessMsg(null);
+
     const scheme = schemeStore.getSchemeById(schemeId);
-    if (!scheme) return;
-
-    const deadline = scheme.deadline || scheme.applicationDeadline || '2026-11-30';
-    let remDate = deadline;
-
-    if (reminderType === 'custom' && customDate) {
-      remDate = customDate;
-    } else if (reminderType === '30_days_before') {
-      const d = new Date(deadline);
-      d.setDate(d.getDate() - 30);
-      remDate = d.toISOString().split('T')[0];
-    } else if (reminderType === '7_days_before') {
-      const d = new Date(deadline);
-      d.setDate(d.getDate() - 7);
-      remDate = d.toISOString().split('T')[0];
-    } else if (reminderType === '1_day_before') {
-      const d = new Date(deadline);
-      d.setDate(d.getDate() - 1);
-      remDate = d.toISOString().split('T')[0];
+    if (!scheme) {
+      setErrorMsg('Please select a valid scheme.');
+      return;
     }
 
-    await addUnifiedReminder({
-      userId: user?.uid || 'guest_user',
-      schemeId: scheme.schemeId,
-      schemeName: scheme.name,
-      deadline,
-      reminderDate: remDate,
-      reminderType,
-      notes: notes || `Submit documents & complete registration for ${scheme.name}`,
-    }, user?.uid);
+    if (reminderType === 'custom' && !customDate) {
+      setErrorMsg('Please select a custom alert date.');
+      return;
+    }
 
-    setNotes('');
-    await loadReminders();
+    setIsSubmitting(true);
+    try {
+      const deadline = scheme.deadline || scheme.applicationDeadline || '2026-11-30';
+      let remDate = deadline;
+
+      if (reminderType === 'custom' && customDate) {
+        remDate = customDate;
+      } else if (reminderType === '30_days_before') {
+        const d = new Date(deadline);
+        d.setDate(d.getDate() - 30);
+        remDate = d.toISOString().split('T')[0];
+      } else if (reminderType === '7_days_before') {
+        const d = new Date(deadline);
+        d.setDate(d.getDate() - 7);
+        remDate = d.toISOString().split('T')[0];
+      } else if (reminderType === '1_day_before') {
+        const d = new Date(deadline);
+        d.setDate(d.getDate() - 1);
+        remDate = d.toISOString().split('T')[0];
+      }
+
+      const assignedUid = user?.uid || 'guest_user';
+
+      await addUnifiedReminder({
+        userId: assignedUid,
+        schemeId: scheme.schemeId,
+        schemeName: scheme.name,
+        deadline,
+        reminderDate: remDate,
+        reminderType,
+        notes: notes.trim() || `Submit documents & complete registration for ${scheme.name}`,
+      }, user?.uid);
+
+      setNotes('');
+      if (reminderType === 'custom') {
+        setCustomDate('');
+      }
+      setSuccessMsg(`Deadline alert scheduled for "${scheme.name}" on ${remDate}.`);
+      await loadReminders();
+    } catch (err: any) {
+      console.error('Error creating reminder:', err);
+      setErrorMsg(err.message || 'Failed to save reminder to local storage.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleDismiss = async (id: string) => {
-    if (user) {
-      await firebaseReminderStore.dismissReminder(id);
-    } else {
-      reminderStore.dismissReminder(id);
+    setErrorMsg(null);
+    setSuccessMsg(null);
+    try {
+      reminderStore.dismissReminder(id, user?.uid);
+      setSuccessMsg('Reminder status marked as dismissed.');
+      await loadReminders();
+    } catch (err: any) {
+      console.error('Error dismissing reminder:', err);
+      setErrorMsg('Failed to dismiss reminder.');
     }
-    await loadReminders();
   };
 
   const handleDelete = async (id: string) => {
-    if (confirm('Delete this deadline reminder?')) {
-      if (user) {
-        await firebaseReminderStore.deleteReminder(id);
-      } else {
-        reminderStore.dismissReminder(id);
+    setErrorMsg(null);
+    setSuccessMsg(null);
+    if (confirm('Delete this deadline reminder permanently?')) {
+      try {
+        reminderStore.deleteReminder(id, user?.uid);
+        setSuccessMsg('Reminder removed permanently.');
+        await loadReminders();
+      } catch (err: any) {
+        console.error('Error deleting reminder:', err);
+        setErrorMsg('Failed to delete reminder.');
       }
-      await loadReminders();
     }
   };
 
@@ -113,7 +151,7 @@ export default function RemindersPage() {
 
   return (
     <ProtectedRoute requireProfileCompletion={true}>
-      <div className="space-y-8 py-2">
+      <div className="space-y-6 py-2">
       
       {/* Top Header */}
       <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -124,8 +162,8 @@ export default function RemindersPage() {
           </h1>
           <p className="text-xs text-slate-500 mt-1">
             {user 
-              ? `Persistent Firestore Reminders for ${user.email}` 
-              : 'Guest Mode — sign in to sync reminders across your devices'}
+              ? `Personalized deadline alerts for ${user.email} (saved locally in browser)` 
+              : 'Guest Mode — reminders stored in this browser session'}
           </p>
         </div>
 
@@ -133,6 +171,37 @@ export default function RemindersPage() {
           {reminders.filter(r => r.status === 'active').length} Active Scheduled Alerts
         </span>
       </div>
+
+      {/* Status Alerts */}
+      {errorMsg && (
+        <div className="p-3 bg-rose-50 text-rose-800 text-xs rounded-xl border border-rose-200 flex items-center justify-between gap-2 shadow-xs">
+          <div className="flex items-center gap-2">
+            <AlertCircle className="w-4 h-4 text-rose-600 shrink-0" />
+            <span>{errorMsg}</span>
+          </div>
+          <button 
+            onClick={() => setErrorMsg(null)}
+            className="text-rose-500 hover:text-rose-700 text-xs font-bold px-1"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
+      {successMsg && (
+        <div className="p-3 bg-emerald-50 text-emerald-800 text-xs rounded-xl border border-emerald-200 flex items-center justify-between gap-2 shadow-xs">
+          <div className="flex items-center gap-2">
+            <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+            <span>{successMsg}</span>
+          </div>
+          <button 
+            onClick={() => setSuccessMsg(null)}
+            className="text-emerald-500 hover:text-emerald-700 text-xs font-bold px-1"
+          >
+            ✕
+          </button>
+        </div>
+      )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
@@ -199,10 +268,20 @@ export default function RemindersPage() {
 
             <button
               type="submit"
-              className="w-full py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-1.5"
+              disabled={isSubmitting}
+              className="w-full py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 disabled:opacity-50 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-1.5"
             >
-              <Bell className="w-4 h-4" />
-              <span>Schedule Reminder</span>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Scheduling...</span>
+                </>
+              ) : (
+                <>
+                  <Bell className="w-4 h-4" />
+                  <span>Schedule Reminder</span>
+                </>
+              )}
             </button>
           </form>
         </div>
@@ -214,7 +293,7 @@ export default function RemindersPage() {
           {isLoading ? (
             <div className="flex flex-col items-center justify-center p-12 bg-white rounded-2xl border border-slate-200">
               <Loader2 className="w-6 h-6 text-purple-600 animate-spin" />
-              <p className="text-xs font-semibold text-slate-500 mt-2">Loading reminders from Firestore...</p>
+              <p className="text-xs font-semibold text-slate-500 mt-2">Loading reminders from local storage...</p>
             </div>
           ) : reminders.length > 0 ? (
             <div className="space-y-3">

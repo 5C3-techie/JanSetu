@@ -88,31 +88,87 @@ export const documentStore = {
   }
 };
 
+const getReminderStorageKey = (userId?: string): string => {
+  if (userId && userId.trim()) {
+    return `jan_setu_reminders_${userId.trim()}`;
+  }
+  return 'jan_setu_reminders_guest';
+};
+
 export const reminderStore = {
-  getReminders: (): DeadlineReminder[] => {
+  getReminders: (userId?: string): DeadlineReminder[] => {
     if (!isClient) return [];
-    const stored = localStorage.getItem('jan_setu_reminders');
-    return stored ? JSON.parse(stored) : [];
+    const userKey = getReminderStorageKey(userId);
+    const stored = localStorage.getItem(userKey);
+    if (stored !== null) {
+      try {
+        return JSON.parse(stored);
+      } catch (e) {
+        console.error('Error parsing stored reminders:', e);
+        return [];
+      }
+    }
+
+    // Safe one-time legacy migration from 'jan_setu_reminders' if userKey does not exist yet
+    const legacyStored = localStorage.getItem('jan_setu_reminders');
+    if (legacyStored) {
+      try {
+        const legacyReminders = JSON.parse(legacyStored);
+        if (Array.isArray(legacyReminders) && legacyReminders.length > 0) {
+          const assignedUid = userId && userId.trim() ? userId.trim() : 'guest_user';
+          const migrated: DeadlineReminder[] = legacyReminders.map(r => ({
+            ...r,
+            userId: r.userId && r.userId !== 'guest_user' ? r.userId : assignedUid,
+          }));
+          localStorage.setItem(userKey, JSON.stringify(migrated));
+          return migrated;
+        }
+      } catch (e) {
+        console.error('Error migrating legacy reminders:', e);
+      }
+    }
+
+    return [];
   },
-  addReminder: (reminder: Omit<DeadlineReminder, 'id' | 'createdAt' | 'status'>): DeadlineReminder => {
-    const reminders = reminderStore.getReminders();
+
+  addReminder: (
+    reminder: Omit<DeadlineReminder, 'id' | 'createdAt' | 'status'>,
+    userId?: string
+  ): DeadlineReminder => {
+    const assignedUid = userId && userId.trim() ? userId.trim() : (reminder.userId || 'guest_user');
+    const userKey = getReminderStorageKey(assignedUid);
+    const reminders = reminderStore.getReminders(assignedUid);
     const newReminder: DeadlineReminder = {
       ...reminder,
-      id: `rem_${Date.now()}`,
+      userId: assignedUid,
+      id: `rem_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
       status: 'active',
       createdAt: new Date().toISOString(),
     };
     const updated = [newReminder, ...reminders];
     if (isClient) {
-      localStorage.setItem('jan_setu_reminders', JSON.stringify(updated));
+      localStorage.setItem(userKey, JSON.stringify(updated));
     }
     return newReminder;
   },
-  dismissReminder: (id: string): void => {
-    const reminders = reminderStore.getReminders();
-    const updated = reminders.map(r => r.id === id ? { ...r, status: 'dismissed' as const } : r);
+
+  dismissReminder: (id: string, userId?: string): void => {
+    const assignedUid = userId && userId.trim() ? userId.trim() : undefined;
+    const userKey = getReminderStorageKey(assignedUid);
+    const reminders = reminderStore.getReminders(assignedUid);
+    const updated = reminders.map(r => (r.id === id ? { ...r, status: 'dismissed' as const } : r));
     if (isClient) {
-      localStorage.setItem('jan_setu_reminders', JSON.stringify(updated));
+      localStorage.setItem(userKey, JSON.stringify(updated));
+    }
+  },
+
+  deleteReminder: (id: string, userId?: string): void => {
+    const assignedUid = userId && userId.trim() ? userId.trim() : undefined;
+    const userKey = getReminderStorageKey(assignedUid);
+    const reminders = reminderStore.getReminders(assignedUid);
+    const updated = reminders.filter(r => r.id !== id);
+    if (isClient) {
+      localStorage.setItem(userKey, JSON.stringify(updated));
     }
   }
 };

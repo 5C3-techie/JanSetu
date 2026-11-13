@@ -5,19 +5,17 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 import { useAuth } from '@/context/AuthContext';
-import { 
-  ShieldCheck, 
-  LayoutDashboard, 
-  Search, 
-  FolderLock, 
-  Bell, 
-  GitCompare, 
-  Sliders, 
-  MessageSquare, 
-  UserCheck, 
-  Building2, 
-  Menu, 
-  X, 
+import {
+  ShieldCheck,
+  LayoutDashboard,
+  Search,
+  FolderLock,
+  Bell,
+  MessageSquare,
+  UserCheck,
+  Building2,
+  Menu,
+  X,
   LogIn,
   LogOut,
   User as UserIcon,
@@ -40,8 +38,9 @@ export default function Navbar() {
     { href: '/saved', label: 'Saved', icon: Bookmark },
     { href: '/applications', label: 'Tracker', icon: FileCheck },
     { href: '/reminders', label: t.navReminders, icon: Bell },
-    { href: '/compare', label: t.navCompare, icon: GitCompare },
-    { href: '/what-if', label: t.navWhatIf, icon: Sliders },
+    // Temporarily hidden from main navigation for citizen simplification:
+    // { href: '/compare', label: t.navCompare, icon: GitCompare },
+    // { href: '/what-if', label: t.navWhatIf, icon: Sliders },
     { href: '/ask', label: t.navAsk, icon: MessageSquare },
     { href: '/profile', label: t.navProfile, icon: UserCheck },
   ];
@@ -50,13 +49,13 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 bg-white/75 backdrop-blur-2xl border-b border-white/60 shadow-[0_4px_25px_-5px_rgba(15,23,42,0.03)] transition-all">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          
+
           {/* Brand Logo Only */}
           <Link href="/" className="flex items-center group py-1">
             <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-              <img 
-                src="/images/logo.png" 
-                alt="Jan-Setu" 
+              <img
+                src="/images/logo.png"
+                alt="Jan-Setu"
                 className="w-full h-full object-contain drop-shadow-xs"
               />
             </div>
@@ -71,11 +70,10 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-                    isActive
+                  className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${isActive
                       ? 'bg-blue-50/90 text-blue-700 font-bold border border-blue-200/60 shadow-xs'
                       : 'text-slate-600 hover:text-blue-600 hover:bg-white/60'
-                  }`}
+                    }`}
                 >
                   <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-blue-600' : 'text-slate-400'}`} />
                   <span>{link.label}</span>
@@ -86,7 +84,7 @@ export default function Navbar() {
 
           {/* Right Action Bar: Auth + Language Switcher */}
           <div className="flex items-center space-x-2.5">
-            
+
             {/* User Authentication Status */}
             {user ? (
               <div className="flex items-center space-x-2 bg-blue-50/70 border border-blue-100 pl-2.5 pr-1 py-1 rounded-xl">
@@ -124,21 +122,19 @@ export default function Navbar() {
             <div className="flex items-center bg-slate-100/80 p-0.5 rounded-xl border border-slate-200/60">
               <button
                 onClick={() => setLanguage('en')}
-                className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all ${
-                  language === 'en'
+                className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all ${language === 'en'
                     ? 'bg-white text-blue-700 shadow-xs'
                     : 'text-slate-500 hover:text-slate-800'
-                }`}
+                  }`}
               >
                 EN
               </button>
               <button
                 onClick={() => setLanguage('te')}
-                className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all ${
-                  language === 'te'
+                className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all ${language === 'te'
                     ? 'bg-white text-blue-700 shadow-xs'
                     : 'text-slate-500 hover:text-slate-800'
-                }`}
+                  }`}
               >
                 తెలుగు
               </button>
@@ -166,11 +162,10 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className={`flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-sm font-medium ${
-                  isActive
+                className={`flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-sm font-medium ${isActive
                     ? 'bg-blue-50 text-blue-700 font-bold border border-blue-200/50'
                     : 'text-slate-600 hover:bg-slate-50'
-                }`}
+                  }`}
               >
                 <Icon className="w-4 h-4" />
                 <span>{link.label}</span>
